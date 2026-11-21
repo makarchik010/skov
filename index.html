@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
@@ -83,12 +82,19 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border-glass);
-      transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+      transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease, box-shadow 0.35s ease;
     }
 
     .glass-panel-interactive:hover {
       border-color: var(--border-glass-hover);
       background: rgba(24, 24, 27, 0.85);
+    }
+
+    /* Highlighted Case Card */
+    .case-highlight {
+      border-color: rgba(255, 255, 255, 0.65) !important;
+      box-shadow: 0 0 36px -6px rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
     }
 
     /* Selected Calculator Option */
@@ -157,15 +163,10 @@
   <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/80 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo + Custom Logo Slot -->
+      <!-- Brand Logo + Graphic Logo Container -->
       <a href="#" class="flex items-center gap-3 group focus:outline-none">
-        <!-- Контейнер для вставки SVG или PNG логотипа -->
-        <div id="brand-logo-slot" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-white/15 bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center shrink-0 group-hover:border-white/35 transition-colors">
-          <!-- Замените этот SVG на свой логотип при необходимости -->
-          <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 7L12 3L20 7V17L12 21L4 17V7Z" stroke-linejoin="round"/>
-            <path d="M12 12L20 7M12 12V21M12 12L4 7" stroke-linejoin="round" stroke-opacity="0.6"/>
-          </svg>
+        <div id="brand-logo-slot" class="h-9 sm:h-10 min-w-[2.25rem] px-1.5 rounded-xl border border-white/15 bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center shrink-0 group-hover:border-white/35 transition-colors overflow-hidden">
+          <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-8 w-auto object-contain">
         </div>
         <div class="flex flex-col">
           <span class="font-display font-extrabold text-base sm:text-lg tracking-wider text-white leading-none">SKOV</span>
@@ -242,8 +243,8 @@
         <!-- Key Metrics Strip for Live Meetings -->
         <div class="grid grid-cols-3 gap-3 sm:gap-6 mt-12 sm:mt-16 pt-8 border-t border-white/[0.08] max-w-2xl">
           <div>
-            <div class="font-display font-bold text-xl sm:text-2xl text-white">5–14 дн.</div>
-            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Средний запуск</div>
+            <div class="font-display font-bold text-xl sm:text-2xl text-white">1–7 дн.</div>
+            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Быстрый запуск</div>
           </div>
           <div>
             <div class="font-display font-bold text-xl sm:text-2xl text-white">24 / 7</div>
@@ -275,10 +276,10 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
         
-        <!-- Card 1: Flagship -->
+        <!-- Card 1: Popular for SMB -->
         <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between border-white/20">
           <div class="absolute top-0 right-0 px-3.5 py-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase rounded-bl-2xl">
-            FLAGSHIP
+            ХИТ ДЛЯ ИП
           </div>
           <div>
             <div class="w-12 h-12 rounded-2xl bg-white/[0.08] border border-white/15 flex items-center justify-center mb-6 text-white">
@@ -292,9 +293,15 @@
               Боты для онлайн-записи 24/7, автоматические напоминания клиентам перед визитом и мгновенное занесение всех заявок, записей и финансов в Google Таблицы.
             </p>
           </div>
-          <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between text-xs text-zinc-300">
-            <span>Синхронизация в реальном времени</span>
-            <span class="font-semibold text-white">от 15 000 ₽</span>
+          <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
+            <div class="flex items-center justify-between text-xs text-zinc-300">
+              <span>Синхронизация в реальном времени</span>
+              <span class="font-semibold text-white">от 4 900 ₽</span>
+            </div>
+            <button type="button" data-target-case="case3" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
+              <span>Смотреть пример</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </button>
           </div>
         </article>
 
@@ -312,9 +319,15 @@
               Продающие сайты с высокой конверсией и веб-приложения внутри Telegram с собственной удобной панелью управления контентом прямо со смартфона.
             </p>
           </div>
-          <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between text-xs text-zinc-300">
-            <span>Редактирование цен и акций за 10 сек</span>
-            <span class="font-semibold text-white">от 25 000 ₽</span>
+          <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
+            <div class="flex items-center justify-between text-xs text-zinc-300">
+              <span>Редактирование цен и акций за 10 сек</span>
+              <span class="font-semibold text-white">от 9 900 ₽</span>
+            </div>
+            <button type="button" data-target-case="case1" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
+              <span>Смотреть пример</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </button>
           </div>
         </article>
 
@@ -332,9 +345,15 @@
               Подключение внешних сервисов бронирования, онлайн-эквайринга и умных ИИ-ассистентов для мгновенных ответов клиентам на первой линии поддержки.
             </p>
           </div>
-          <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between text-xs text-zinc-300">
-            <span>Снижение нагрузки на менеджеров до 70%</span>
-            <span class="font-semibold text-white">от 45 000 ₽</span>
+          <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
+            <div class="flex items-center justify-between text-xs text-zinc-300">
+              <span>Снижение нагрузки на менеджеров до 70%</span>
+              <span class="font-semibold text-white">от 19 900 ₽</span>
+            </div>
+            <button type="button" data-target-case="case2" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
+              <span>Смотреть пример</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </button>
           </div>
         </article>
 
@@ -372,7 +391,7 @@
 
             <div class="space-y-3" id="step-1-options">
               <!-- Item 1 -->
-              <button type="button" data-group="base" data-id="tg_booking" data-price="15000" data-days="5" data-name="Telegram-бот для записи и учета клиентов"
+              <button type="button" data-group="base" data-id="tg_booking" data-price="4900" data-days="2" data-name="Telegram-бот для записи и учета клиентов"
                 class="calc-option is-selected w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
                 <div class="flex items-start gap-3.5">
                   <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
@@ -384,13 +403,13 @@
                   </div>
                 </div>
                 <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">от 15 000 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+5 раб. дн.</div>
+                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">4 900 ₽</div>
+                  <div class="text-[11px] text-zinc-500 mt-0.5">+2 раб. дн.</div>
                 </div>
               </button>
 
               <!-- Item 2 -->
-              <button type="button" data-group="base" data-id="gsheets_sync" data-price="8000" data-days="3" data-name="Синхронизация и авто-отчеты в Google Таблицах"
+              <button type="button" data-group="base" data-id="gsheets_sync" data-price="2500" data-days="1" data-name="Синхронизация и авто-отчеты в Google Таблицах"
                 class="calc-option is-selected w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
                 <div class="flex items-start gap-3.5">
                   <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
@@ -402,13 +421,13 @@
                   </div>
                 </div>
                 <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">от 8 000 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+3 раб. дн.</div>
+                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">2 500 ₽</div>
+                  <div class="text-[11px] text-zinc-500 mt-0.5">+1 раб. дн.</div>
                 </div>
               </button>
 
               <!-- Item 3 -->
-              <button type="button" data-group="base" data-id="landing_site" data-price="25000" data-days="7" data-name="Лендинг / Имиджевый сайт под ключ"
+              <button type="button" data-group="base" data-id="landing_site" data-price="9900" data-days="4" data-name="Лендинг / Имиджевый сайт под ключ"
                 class="calc-option w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
                 <div class="flex items-start gap-3.5">
                   <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
@@ -420,13 +439,13 @@
                   </div>
                 </div>
                 <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">от 25 000 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+7 раб. дн.</div>
+                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">9 900 ₽</div>
+                  <div class="text-[11px] text-zinc-500 mt-0.5">+4 раб. дн.</div>
                 </div>
               </button>
 
               <!-- Item 4 -->
-              <button type="button" data-group="base" data-id="complex_api" data-price="45000" data-days="12" data-name="Сложный веб-сервис / интеграция с внешним API"
+              <button type="button" data-group="base" data-id="complex_api" data-price="19900" data-days="7" data-name="Сложный веб-сервис / интеграция с внешним API"
                 class="calc-option w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
                 <div class="flex items-start gap-3.5">
                   <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
@@ -438,8 +457,8 @@
                   </div>
                 </div>
                 <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">от 45 000 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+12 раб. дн.</div>
+                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">19 900 ₽</div>
+                  <div class="text-[11px] text-zinc-500 mt-0.5">+7 раб. дн.</div>
                 </div>
               </button>
             </div>
@@ -456,24 +475,39 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="step-2-options">
+              <!-- Free Default Option -->
+              <button type="button" id="addon-none-btn" data-group="addon-free" data-id="base_only" data-price="0" data-days="0" data-name="Базовая комплектация (без доп. модулей)"
+                class="calc-option is-selected sm:col-span-2 w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
+                <div class="flex items-center gap-3.5">
+                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  </div>
+                  <div>
+                    <div class="font-medium text-sm sm:text-base text-white">Базовая комплектация (без доп. модулей)</div>
+                    <div class="text-xs text-zinc-400 mt-0.5">Стартовый запуск без лишних расходов — модули можно подключить позже</div>
+                  </div>
+                </div>
+                <div class="font-display font-semibold text-sm text-emerald-400 shrink-0 whitespace-nowrap">0 ₽</div>
+              </button>
+
               <!-- Addon 1 -->
-              <button type="button" data-group="addon" data-id="tg_admin" data-price="7000" data-days="2" data-name="Удобная админ-панель управления контентом через Telegram"
+              <button type="button" data-group="addon" data-id="tg_admin" data-price="2500" data-days="1" data-name="Удобная админ-панель управления через Telegram"
                 class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
                 <div class="flex items-start justify-between gap-3">
-                  <span class="font-medium text-sm text-white leading-snug">Удобная админ-панель управления контентом через Telegram</span>
+                  <span class="font-medium text-sm text-white leading-snug">Удобная админ-панель управления через Telegram</span>
                   <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   </div>
                 </div>
                 <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
-                  <span class="text-xs text-zinc-500">+2 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+7 000 ₽</span>
+                  <span class="text-xs text-zinc-500">+1 раб. дн.</span>
+                  <span class="font-display font-semibold text-sm text-white">+2 500 ₽</span>
                 </div>
               </button>
 
               <!-- Addon 2 -->
-              <button type="button" data-group="addon" data-id="reminders" data-price="5000" data-days="2" data-name="Автоматические напоминания клиентам о визите"
-                class="calc-option is-selected w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
+              <button type="button" data-group="addon" data-id="reminders" data-price="1500" data-days="1" data-name="Автоматические напоминания клиентам о визите"
+                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
                 <div class="flex items-start justify-between gap-3">
                   <span class="font-medium text-sm text-white leading-snug">Автоматические напоминания клиентам о визите</span>
                   <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
@@ -481,13 +515,13 @@
                   </div>
                 </div>
                 <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
-                  <span class="text-xs text-zinc-500">+2 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+5 000 ₽</span>
+                  <span class="text-xs text-zinc-500">+1 раб. дн.</span>
+                  <span class="font-display font-semibold text-sm text-white">+1 500 ₽</span>
                 </div>
               </button>
 
               <!-- Addon 3 -->
-              <button type="button" data-group="addon" data-id="payments" data-price="6000" data-days="2" data-name="Прием онлайн-оплаты"
+              <button type="button" data-group="addon" data-id="payments" data-price="2000" data-days="1" data-name="Прием онлайн-оплаты"
                 class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
                 <div class="flex items-start justify-between gap-3">
                   <span class="font-medium text-sm text-white leading-snug">Прием онлайн-оплаты (СБП / карты / предоплата)</span>
@@ -496,23 +530,23 @@
                   </div>
                 </div>
                 <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
-                  <span class="text-xs text-zinc-500">+2 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+6 000 ₽</span>
+                  <span class="text-xs text-zinc-500">+1 раб. дн.</span>
+                  <span class="font-display font-semibold text-sm text-white">+2 000 ₽</span>
                 </div>
               </button>
 
               <!-- Addon 4 -->
-              <button type="button" data-group="addon" data-id="seo_analytics" data-price="5000" data-days="1" data-name="Базовая SEO-оптимизация и подключение аналитики"
+              <button type="button" data-group="addon" data-id="seo_analytics" data-price="1500" data-days="1" data-name="Базовая SEO-оптимизация и аналитика"
                 class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
                 <div class="flex items-start justify-between gap-3">
-                  <span class="font-medium text-sm text-white leading-snug">Базовая SEO-оптимизация и подключение аналитики</span>
+                  <span class="font-medium text-sm text-white leading-snug">Базовая SEO-оптимизация и аналитика</span>
                   <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   </div>
                 </div>
                 <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
                   <span class="text-xs text-zinc-500">+1 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+5 000 ₽</span>
+                  <span class="font-display font-semibold text-sm text-white">+1 500 ₽</span>
                 </div>
               </button>
             </div>
@@ -537,13 +571,13 @@
               </button>
 
               <!-- Support Option 2 -->
-              <button type="button" data-group="support" data-monthly="2000" data-name="Техподдержка, хостинг и доработки 24/7"
+              <button type="button" data-group="support" data-monthly="990" data-name="Техподдержка, хостинг и мелкие правки"
                 class="calc-option w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3 transition-all active:scale-[0.99]">
                 <div>
-                  <div class="font-medium text-sm sm:text-base text-white">Техподдержка, хостинг и доработки 24/7</div>
-                  <div class="text-xs text-zinc-400 mt-1">Мониторинг серверов, защита от сбоев и мелкие правки</div>
+                  <div class="font-medium text-sm sm:text-base text-white">Техподдержка, хостинг и мелкие правки</div>
+                  <div class="text-xs text-zinc-400 mt-1">Мониторинг серверов, защита от сбоев и оперативные правки</div>
                 </div>
-                <div class="font-display font-semibold text-sm text-white shrink-0">+2 000 ₽/мес</div>
+                <div class="font-display font-semibold text-sm text-white shrink-0">+990 ₽/мес</div>
               </button>
             </div>
           </div>
@@ -557,7 +591,7 @@
 
             <div class="flex items-center justify-between mb-6">
               <span class="text-xs font-semibold tracking-[0.18em] text-zinc-400 uppercase">Итоговая смета</span>
-              <span id="selected-count-badge" class="px-2.5 py-1 rounded-full bg-white/10 text-xs font-medium text-white">3 модуля</span>
+              <span id="selected-count-badge" class="px-2.5 py-1 rounded-full bg-white/10 text-xs font-medium text-white">2 модуля</span>
             </div>
 
             <!-- Selected Modules Breakdown -->
@@ -569,7 +603,7 @@
               <!-- Total Implementation Cost -->
               <div class="flex items-baseline justify-between gap-2">
                 <span class="text-sm text-zinc-400">Стоимость внедрения:</span>
-                <span id="total-price" class="font-display font-bold text-2xl sm:text-3xl text-white">28 000 ₽</span>
+                <span id="total-price" class="font-display font-bold text-2xl sm:text-3xl text-white">7 400 ₽</span>
               </div>
 
               <!-- Monthly Fee -->
@@ -586,7 +620,7 @@
                   </svg>
                   <span>Срок запуска:</span>
                 </div>
-                <span id="total-days" class="font-display font-bold text-sm sm:text-base text-white">8 рабочих дней</span>
+                <span id="total-days" class="font-display font-bold text-sm sm:text-base text-white">3 рабочих дня</span>
               </div>
             </div>
 
@@ -623,7 +657,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- CASE 1 -->
-        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+        <article id="case-card-case1" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
           <div>
             <!-- Visual Preview Header -->
             <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/80 via-zinc-900 to-black border border-white/10 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
@@ -656,7 +690,7 @@
         </article>
 
         <!-- CASE 2 -->
-        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+        <article id="case-card-case2" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
           <div>
             <!-- Visual Preview Header -->
             <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/80 via-zinc-900 to-black border border-white/10 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
@@ -694,7 +728,7 @@
         </article>
 
         <!-- CASE 3 (With Interactive Simulator Trigger) -->
-        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-white/20 relative group">
+        <article id="case-card-case3" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-white/20 relative group">
           <div>
             <!-- Visual Preview Header -->
             <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/90 via-zinc-900 to-black border border-white/15 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
@@ -740,11 +774,8 @@
         
         <!-- Logo -->
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl border border-white/15 bg-white/[0.04] flex items-center justify-center">
-            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 7L12 3L20 7V17L12 21L4 17V7Z" stroke-linejoin="round"/>
-              <path d="M12 12L20 7M12 12V21M12 12L4 7" stroke-linejoin="round" stroke-opacity="0.6"/>
-            </svg>
+          <div class="h-9 min-w-[2.25rem] px-1.5 rounded-xl border border-white/15 bg-white/[0.04] flex items-center justify-center shrink-0 overflow-hidden">
+            <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-8 w-auto object-contain">
           </div>
           <div class="flex flex-col">
             <span class="font-display font-extrabold text-base tracking-wider text-white leading-none">SKOV</span>
@@ -772,8 +803,8 @@
   <div id="mobile-sticky-bar" class="lg:hidden fixed bottom-0 inset-x-0 z-30 border-t border-white/15 bg-[#0A0A0C]/95 backdrop-blur-2xl px-4 py-3 shadow-2xl">
     <div class="max-w-xl mx-auto flex items-center justify-between gap-3">
       <div>
-        <div class="text-[11px] text-zinc-400">Итого • <span id="mobile-bar-days" class="text-zinc-200 font-medium">8 раб. дн.</span></div>
-        <div id="mobile-bar-price" class="font-display font-bold text-lg text-white leading-tight">28 000 ₽</div>
+        <div class="text-[11px] text-zinc-400">Итого • <span id="mobile-bar-days" class="text-zinc-200 font-medium">3 раб. дн.</span></div>
+        <div id="mobile-bar-price" class="font-display font-bold text-lg text-white leading-tight">7 400 ₽</div>
       </div>
       <button type="button" id="mobile-bar-cta" class="btn-metallic px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap">
         Оформить расчет
@@ -801,12 +832,12 @@
         <ul id="modal-summary-items" class="space-y-1.5 text-xs sm:text-sm text-zinc-200 mb-3"></ul>
         <div class="pt-3 border-t border-white/10 flex items-center justify-between">
           <div>
-            <div class="text-[11px] text-zinc-400">Запуск: <span id="modal-days" class="text-white font-medium">8 раб. дн.</span></div>
+            <div class="text-[11px] text-zinc-400">Запуск: <span id="modal-days" class="text-white font-medium">3 раб. дн.</span></div>
             <div class="text-[11px] text-zinc-400">Поддержка: <span id="modal-monthly" class="text-white font-medium">0 ₽/мес</span></div>
           </div>
           <div class="text-right">
             <div class="text-[11px] text-zinc-400">Итого внедрение</div>
-            <div id="modal-total" class="font-display font-bold text-xl text-white">28 000 ₽</div>
+            <div id="modal-total" class="font-display font-bold text-xl text-white">7 400 ₽</div>
           </div>
         </div>
       </div>
@@ -883,7 +914,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       /* =====================================================================
-         1. AMBIENT SPOTLIGHT & MOBILE NAVIGATION
+      1. AMBIENT SPOTLIGHT & MOBILE NAVIGATION
       ===================================================================== */
       const spotlight = document.getElementById('spotlight');
       window.addEventListener('mousemove', (e) => {
@@ -901,9 +932,10 @@
       });
 
       /* =====================================================================
-         2. INTERACTIVE PROJECT ESTIMATOR (CALCULATOR)
+      2. INTERACTIVE PROJECT ESTIMATOR (CALCULATOR)
       ===================================================================== */
       const baseButtons = document.querySelectorAll('[data-group="base"]');
+      const addonNoneBtn = document.getElementById('addon-none-btn');
       const addonButtons = document.querySelectorAll('[data-group="addon"]');
       const supportButtons = document.querySelectorAll('[data-group="support"]');
 
@@ -919,6 +951,7 @@
 
       let currentEstimate = {
         items: [],
+        hasPaidAddons: false,
         totalPrice: 0,
         monthlyPrice: 0,
         days: 0,
@@ -947,6 +980,7 @@
         let items = [];
         let total = 0;
         let rawDays = 0;
+        let paidAddonsCount = 0;
 
         baseButtons.forEach(btn => {
           if (btn.classList.contains('is-selected')) {
@@ -965,6 +999,7 @@
             items.push({ name: btn.dataset.name, price });
             total += price;
             rawDays += days;
+            paidAddonsCount += 1;
           }
         });
 
@@ -977,14 +1012,17 @@
           }
         });
 
-        // Parallelization efficiency: if multiple modules chosen, compress timeline slightly
-        const finalDays = items.length > 2 ? Math.max(4, Math.round(rawDays * 0.8)) : Math.max(3, rawDays);
+        // Parallelization efficiency: slight timeline compression for 3+ modules, honest 1-day minimum
+        const finalDays = items.length === 0
+          ? 0
+          : (items.length > 2 ? Math.max(2, Math.round(rawDays * 0.85)) : Math.max(1, rawDays));
 
         currentEstimate = {
           items,
+          hasPaidAddons: paidAddonsCount > 0,
           totalPrice: total,
           monthlyPrice: monthly,
-          days: items.length === 0 ? 0 : finalDays,
+          days: finalDays,
           supportName
         };
 
@@ -1002,6 +1040,16 @@
             `;
             summaryListEl.appendChild(row);
           });
+
+          if (!currentEstimate.hasPaidAddons) {
+            const baseRow = document.createElement('div');
+            baseRow.className = 'flex items-start justify-between gap-3 text-xs sm:text-sm';
+            baseRow.innerHTML = `
+              <span class="text-zinc-400 leading-snug">Базовая комплектация (без доп. модулей)</span>
+              <span class="text-emerald-400 font-medium shrink-0">0 ₽</span>
+            `;
+            summaryListEl.appendChild(baseRow);
+          }
         }
 
         selectedCountBadge.textContent = pluralizeModules(items.length);
@@ -1014,10 +1062,30 @@
         mobileBarDays.textContent = items.length === 0 ? 'выберите модули' : `${finalDays} раб. дн.`;
       }
 
-      // Multi-select handlers (Step 1 & Step 2)
-      [...baseButtons, ...addonButtons].forEach(btn => {
+      // Multi-select handler (Step 1)
+      baseButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           btn.classList.toggle('is-selected');
+          recalculateEstimate();
+        });
+      });
+
+      // Step 2: Free default vs Paid addons mutual logic
+      addonNoneBtn.addEventListener('click', () => {
+        addonButtons.forEach(b => b.classList.remove('is-selected'));
+        addonNoneBtn.classList.add('is-selected');
+        recalculateEstimate();
+      });
+
+      addonButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.classList.toggle('is-selected');
+          const anyPaidSelected = Array.from(addonButtons).some(b => b.classList.contains('is-selected'));
+          if (anyPaidSelected) {
+            addonNoneBtn.classList.remove('is-selected');
+          } else {
+            addonNoneBtn.classList.add('is-selected');
+          }
           recalculateEstimate();
         });
       });
@@ -1034,7 +1102,7 @@
       recalculateEstimate();
 
       /* =====================================================================
-         3. LEAD MODAL & TELEGRAM BOT API INTEGRATION
+      3. LEAD MODAL & TELEGRAM BOT API INTEGRATION
       ===================================================================== */
       const leadModal = document.getElementById('lead-modal');
       const openLeadBtn = document.getElementById('open-lead-modal-btn');
@@ -1057,6 +1125,12 @@
             li.innerHTML = `<span>• ${item.name}</span><span class="text-zinc-400 shrink-0">${formatRub(item.price)}</span>`;
             modalSummaryItems.appendChild(li);
           });
+          if (!currentEstimate.hasPaidAddons) {
+            const li = document.createElement('li');
+            li.className = 'flex justify-between gap-2 text-zinc-400';
+            li.innerHTML = `<span>• Базовая комплектация (без доп. модулей)</span><span class="text-emerald-400 shrink-0">0 ₽</span>`;
+            modalSummaryItems.appendChild(li);
+          }
         }
 
         document.getElementById('modal-total').textContent = formatRub(currentEstimate.totalPrice);
@@ -1082,9 +1156,13 @@
       });
 
       function buildEstimateText(clientName = '', clientContact = '', clientNiche = '') {
-        const modulesList = currentEstimate.items.length
+        let modulesList = currentEstimate.items.length
           ? currentEstimate.items.map(i => `— ${i.name} (${formatRub(i.price)})`).join('\n')
           : '— Индивидуальная конфигурация';
+
+        if (currentEstimate.items.length && !currentEstimate.hasPaidAddons) {
+          modulesList += '\n— Базовая комплектация (без доп. модулей) (0 ₽)';
+        }
 
         return [
           `🔥 НОВАЯ ЗАЯВКА | SKOV TECHNOLOGIES`,
@@ -1095,7 +1173,7 @@
           `🛠 Сопровождение: ${currentEstimate.supportName}`,
           `\n💰 Итого внедрение: ${formatRub(currentEstimate.totalPrice)}`,
           `🔄 Ежемесячно: ${formatRub(currentEstimate.monthlyPrice)}/мес`,
-          `⏱ Оценка срока: ${pluralizeDays(currentEstimate.days)}`
+          `⏱ Оценка срока: ${currentEstimate.days > 0 ? pluralizeDays(currentEstimate.days) : 'Уточняется'}`
         ].filter(Boolean).join('\n');
       }
 
@@ -1161,7 +1239,7 @@
       });
 
       /* =====================================================================
-         4. PORTFOLIO CASE MODALS & INTERACTIVE BOT SIMULATOR (CASE 3)
+      4. PORTFOLIO CASE MODALS & INTERACTIVE BOT SIMULATOR (CASE 3)
       ===================================================================== */
       const caseModal = document.getElementById('case-modal');
       const caseModalTag = document.getElementById('case-modal-tag');
@@ -1420,22 +1498,45 @@
         bindSimButtons();
       }
 
+      function openCaseModal(caseKey) {
+        const data = casesData[caseKey];
+        if (!data) return;
+
+        caseModalTag.textContent = data.tag;
+        caseModalTitle.textContent = data.title;
+        caseModalBody.innerHTML = data.render();
+
+        if (caseKey === 'case3') {
+          initCase3Simulator();
+        }
+
+        caseModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
       document.querySelectorAll('.open-case-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          const caseKey = btn.dataset.case;
-          const data = casesData[caseKey];
-          if (!data) return;
+          openCaseModal(btn.dataset.case);
+        });
+      });
 
-          caseModalTag.textContent = data.tag;
-          caseModalTitle.textContent = data.title;
-          caseModalBody.innerHTML = data.render();
-
-          if (caseKey === 'case3') {
-            initCase3Simulator();
+      // Links from "Core Solutions" cards -> scroll to case, highlight & open modal
+      document.querySelectorAll('.solution-example-link').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetCase = btn.dataset.targetCase;
+          const cardEl = document.getElementById(`case-card-${targetCase}`);
+          if (cardEl) {
+            cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            cardEl.classList.add('case-highlight');
+            setTimeout(() => {
+              openCaseModal(targetCase);
+            }, 450);
+            setTimeout(() => {
+              cardEl.classList.remove('case-highlight');
+            }, 2600);
+          } else {
+            openCaseModal(targetCase);
           }
-
-          caseModal.classList.remove('hidden');
-          document.body.style.overflow = 'hidden';
         });
       });
 
