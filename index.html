@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>SKOV TECHNOLOGIES — Digital Automation & Web Studio</title>
-  <meta name="description" content="Автоматизируем запись клиентов, учет и продажи для малого бизнеса: Telegram-боты, Google Таблицы и сайты под ключ." />
+  <title>SKOV TECHNOLOGIES — Telegram-боты, учет и сайты для бизнеса</title>
+  <meta name="description" content="Делаем Telegram-ботов для записи клиентов, учет в Google Таблицах и сайты под ключ для малого бизнеса и частных мастеров." />
 
   <!-- Fonts: Unbounded & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,14 +160,12 @@
   <div id="spotlight" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500" style="background: radial-gradient(600px circle at 50% 20%, rgba(255,255,255,0.045), transparent 70%);"></div>
 
   <!-- 1. HEADER -->
-  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/80 backdrop-blur-xl">
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/85 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo + Graphic Logo Container -->
-      <a href="#" class="flex items-center gap-3 group focus:outline-none">
-        <div id="brand-logo-slot" class="h-9 sm:h-10 min-w-[2.25rem] px-1.5 rounded-xl border border-white/15 bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center shrink-0 group-hover:border-white/35 transition-colors overflow-hidden">
-          <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-8 w-auto object-contain">
-        </div>
+      <!-- Brand Logo (Clean, blend mode removes black bg) -->
+      <a href="#" class="flex items-center gap-2.5 group focus:outline-none">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten shrink-0">
         <div class="flex flex-col">
           <span class="font-display font-extrabold text-base sm:text-lg tracking-wider text-white leading-none">SKOV</span>
           <span class="text-[9px] sm:text-[10px] font-medium tracking-[0.28em] text-zinc-400 uppercase mt-1 leading-none">TECHNOLOGIES</span>
@@ -176,16 +174,16 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-        <a href="#solutions" class="hover:text-white transition-colors">Solutions</a>
-        <a href="#cases" class="hover:text-white transition-colors">Cases</a>
-        <a href="#calculator" class="hover:text-white transition-colors">Calculator</a>
-        <a href="#contacts" class="hover:text-white transition-colors">Contacts</a>
+        <a href="#solutions" class="hover:text-white transition-colors">Услуги</a>
+        <a href="#calculator" class="hover:text-white transition-colors">Калькулятор</a>
+        <a href="#cases" class="hover:text-white transition-colors">Проекты</a>
+        <a href="#contacts" class="hover:text-white transition-colors">Контакты</a>
       </nav>
 
       <!-- CTA Button & Mobile Menu Trigger -->
       <div class="flex items-center gap-2.5">
         <a href="#calculator" class="btn-metallic px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm tracking-tight whitespace-nowrap">
-          Рассчитать стоимость
+          Рассчитать цену
         </a>
         <button id="mobile-menu-btn" aria-label="Открыть меню" class="md:hidden p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300 hover:text-white">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -197,10 +195,10 @@
 
     <!-- Mobile Dropdown Navigation -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.08] bg-[#09090B]/95 backdrop-blur-2xl px-4 py-4 space-y-2">
-      <a href="#solutions" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Solutions — Направления</a>
-      <a href="#cases" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Cases — Реализованные проекты</a>
-      <a href="#calculator" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Calculator — Калькулятор сметы</a>
-      <a href="#contacts" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Contacts — Связь</a>
+      <a href="#solutions" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Услуги</a>
+      <a href="#calculator" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Калькулятор цены</a>
+      <a href="#cases" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Реализованные проекты</a>
+      <a href="#contacts" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Контакты</a>
     </div>
   </header>
 
@@ -214,33 +212,33 @@
         <!-- Studio Badge -->
         <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md mb-6 sm:mb-8">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-[11px] sm:text-xs font-semibold tracking-[0.18em] text-zinc-200 uppercase">DIGITAL AUTOMATION &amp; WEB STUDIO</span>
+          <span class="text-[11px] sm:text-xs font-semibold tracking-[0.14em] text-zinc-200 uppercase">Боты, сайты и учет для малого бизнеса</span>
         </div>
 
         <!-- Main Headline -->
-        <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-[56px] leading-[1.12] tracking-tight text-metallic mb-6">
-          Автоматизируем запись клиентов, учет и продажи для вашего бизнеса
+        <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-[54px] leading-[1.12] tracking-tight text-metallic mb-6">
+          Запись клиентов, учет и сайты под ключ — без лишних переплат
         </h1>
 
         <!-- Subtitle -->
         <p class="text-base sm:text-lg lg:text-xl text-zinc-400 leading-relaxed max-w-2xl mb-8 sm:mb-10">
-          Внедряем умных Telegram-ботов, синхронизацию с Google Таблицами и современные сайты под ключ. Экономим до <span class="text-white font-medium">15 часов работы администратора в неделю</span>.
+          Делаем понятных Telegram-ботов, связываем их с Google Таблицами и собираем быстрые сайты. Чтобы заявки не терялись в переписках, а вы не тратили по <span class="text-white font-medium">2–3 часа в день на ручную запись</span>.
         </p>
 
         <!-- Primary & Secondary CTA -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
           <a href="#calculator" class="btn-metallic px-7 py-4 rounded-2xl text-center text-sm sm:text-base flex items-center justify-center gap-2.5">
-            <span>Собрать смету в калькуляторе</span>
+            <span>Посчитать стоимость</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>
           </a>
           <a href="#cases" class="px-7 py-4 rounded-2xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/30 text-white font-medium text-center text-sm sm:text-base transition-all">
-            Смотреть живые проекты
+            Посмотреть работы
           </a>
         </div>
 
-        <!-- Key Metrics Strip for Live Meetings -->
+        <!-- Key Metrics Strip -->
         <div class="grid grid-cols-3 gap-3 sm:gap-6 mt-12 sm:mt-16 pt-8 border-t border-white/[0.08] max-w-2xl">
           <div>
             <div class="font-display font-bold text-xl sm:text-2xl text-white">1–7 дн.</div>
@@ -248,11 +246,11 @@
           </div>
           <div>
             <div class="font-display font-bold text-xl sm:text-2xl text-white">24 / 7</div>
-            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Прием заявок без потерь</div>
+            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Запись без выходных</div>
           </div>
           <div>
-            <div class="font-display font-bold text-xl sm:text-2xl text-white">0 ₽</div>
-            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Переплата за громоздкие CRM</div>
+            <div class="font-display font-bold text-xl sm:text-2xl text-white">0 ₽/мес</div>
+            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Без абонентки за CRM</div>
           </div>
         </div>
       </div>
@@ -264,19 +262,19 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
         <div>
-          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Core Solutions</span>
+          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Что делаем</span>
           <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-            Инструменты, которые заменяют рутину
+            Три рабочие задачи, которые закрываем
           </h2>
         </div>
         <p class="text-sm text-zinc-400 max-w-md">
-          Каждый модуль проектируется под реальные процессы владельца бизнеса и его команды — без сложных инструкций.
+          Без перегруженных админок и долгих обучений персонала — всё работает в привычном Telegram и Google Таблицах.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
         
-        <!-- Card 1: Popular for SMB -->
+        <!-- Card 1 -->
         <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between border-white/20">
           <div class="absolute top-0 right-0 px-3.5 py-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase rounded-bl-2xl">
             ХИТ ДЛЯ ИП
@@ -287,15 +285,15 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
               </svg>
             </div>
-            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Telegram Bots &amp; CRM</div>
-            <h3 class="font-display font-bold text-xl text-white mb-3">Автозапись и учет в Telegram</h3>
+            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Telegram-боты и учет</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Онлайн-запись в Telegram</h3>
             <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Боты для онлайн-записи 24/7, автоматические напоминания клиентам перед визитом и мгновенное занесение всех заявок, записей и финансов в Google Таблицы.
+              Клиент сам выбирает услугу, мастера и свободное время. Вы получаете уведомление в Telegram, а запись и сумма сразу падают в Google Таблицу.
             </p>
           </div>
           <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
             <div class="flex items-center justify-between text-xs text-zinc-300">
-              <span>Синхронизация в реальном времени</span>
+              <span>Запись + таблица учета</span>
               <span class="font-semibold text-white">от 4 900 ₽</span>
             </div>
             <button type="button" data-target-case="case3" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
@@ -313,15 +311,15 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
             </div>
-            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Web &amp; Mini Apps</div>
-            <h3 class="font-display font-bold text-xl text-white mb-3">Сайты и Mini Apps с управлением</h3>
+            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Сайты под ключ</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Сайты с правками с телефона</h3>
             <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Продающие сайты с высокой конверсией и веб-приложения внутри Telegram с собственной удобной панелью управления контентом прямо со смартфона.
+              Быстрые сайты для частных специалистов, клиник и студий. Можно менять цены, акции и тексты прямо через закрытого бота в Telegram — без программиста.
             </p>
           </div>
           <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
             <div class="flex items-center justify-between text-xs text-zinc-300">
-              <span>Редактирование цен и акций за 10 сек</span>
+              <span>Обновление контента за 10 сек</span>
               <span class="font-semibold text-white">от 9 900 ₽</span>
             </div>
             <button type="button" data-target-case="case1" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
@@ -339,15 +337,15 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
               </svg>
             </div>
-            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">AI &amp; API Integrations</div>
-            <h3 class="font-display font-bold text-xl text-white mb-3">Интеграции, оплаты и ИИ</h3>
+            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Интеграции и API</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Подключение оплат и сервисов</h3>
             <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Подключение внешних сервисов бронирования, онлайн-эквайринга и умных ИИ-ассистентов для мгновенных ответов клиентам на первой линии поддержки.
+              Связываем ваш сайт или бот с внешними базами, системами бронирования, онлайн-оплатой (СБП, карты) и автоответчиками на частые вопросы клиентов.
             </p>
           </div>
           <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
             <div class="flex items-center justify-between text-xs text-zinc-300">
-              <span>Снижение нагрузки на менеджеров до 70%</span>
+              <span>Индивидуальная связка систем</span>
               <span class="font-semibold text-white">от 19 900 ₽</span>
             </div>
             <button type="button" data-target-case="case2" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
@@ -365,12 +363,12 @@
   <section id="calculator" class="py-16 sm:py-24 border-b border-white/[0.06] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-10 sm:mb-12">
-        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Project Estimator</span>
+        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Калькулятор</span>
         <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-          Конфигуратор стоимости и сроков
+          Сколько стоит и за сколько сделаем
         </h2>
         <p class="text-sm sm:text-base text-zinc-400 mt-2 max-w-2xl">
-          Отметьте нужные компоненты для вашего бизнеса — смета и точный срок запуска в рабочих днях пересчитаются автоматически.
+          Отметьте только то, что реально нужно сейчас — итоговая цена и сроки в рабочих днях посчитаются сразу.
         </p>
       </div>
 
@@ -399,7 +397,7 @@
                   </div>
                   <div>
                     <div class="font-medium text-sm sm:text-base text-white">Telegram-бот для записи и учета клиентов</div>
-                    <div class="text-xs text-zinc-400 mt-1">Онлайн-запись 24/7, выбор услуги, мастера и времени</div>
+                    <div class="text-xs text-zinc-400 mt-1">Онлайн-запись 24/7: выбор услуги, мастера и свободного окна</div>
                   </div>
                 </div>
                 <div class="text-right shrink-0">
@@ -417,7 +415,7 @@
                   </div>
                   <div>
                     <div class="font-medium text-sm sm:text-base text-white">Синхронизация и авто-отчеты в Google Таблицах</div>
-                    <div class="text-xs text-zinc-400 mt-1">База клиентов, выручка, загрузка мастеров в реальном времени</div>
+                    <div class="text-xs text-zinc-400 mt-1">Список клиентов, выручка и загрузка в одной таблице</div>
                   </div>
                 </div>
                 <div class="text-right shrink-0">
@@ -435,7 +433,7 @@
                   </div>
                   <div>
                     <div class="font-medium text-sm sm:text-base text-white">Лендинг / Имиджевый сайт под ключ</div>
-                    <div class="text-xs text-zinc-400 mt-1">Премиальный дизайн, высокая конверсия и адаптация под мобильные</div>
+                    <div class="text-xs text-zinc-400 mt-1">Аккуратный дизайн, быстрая загрузка и полная адаптация под телефоны</div>
                   </div>
                 </div>
                 <div class="text-right shrink-0">
@@ -453,7 +451,7 @@
                   </div>
                   <div>
                     <div class="font-medium text-sm sm:text-base text-white">Сложный веб-сервис / интеграция с внешним API</div>
-                    <div class="text-xs text-zinc-400 mt-1">Агрегаторы, внешние базы бронирования, ИИ-ассистенты</div>
+                    <div class="text-xs text-zinc-400 mt-1">Агрегаторы, внешние системы бронирования, ИИ-ответчики</div>
                   </div>
                 </div>
                 <div class="text-right shrink-0">
@@ -471,7 +469,7 @@
                 <span class="w-7 h-7 rounded-lg bg-white text-black font-display font-bold text-xs flex items-center justify-center">2</span>
                 <h3 class="font-display font-semibold text-base sm:text-lg text-white">Дополнительные модули</h3>
               </div>
-              <span class="text-xs text-zinc-400">Опционально</span>
+              <span class="text-xs text-zinc-400">По желанию</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="step-2-options">
@@ -484,7 +482,7 @@
                   </div>
                   <div>
                     <div class="font-medium text-sm sm:text-base text-white">Базовая комплектация (без доп. модулей)</div>
-                    <div class="text-xs text-zinc-400 mt-0.5">Стартовый запуск без лишних расходов — модули можно подключить позже</div>
+                    <div class="text-xs text-zinc-400 mt-0.5">Стартуем с основного — остальное можно докупить позже</div>
                   </div>
                 </div>
                 <div class="font-display font-semibold text-sm text-emerald-400 shrink-0 whitespace-nowrap">0 ₽</div>
@@ -565,7 +563,7 @@
                 class="calc-option is-selected w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3 transition-all active:scale-[0.99]">
                 <div>
                   <div class="font-medium text-sm sm:text-base text-white">Разовая передача «под ключ»</div>
-                  <div class="text-xs text-zinc-400 mt-1">Полная передача прав, доступов и видео-инструкций</div>
+                  <div class="text-xs text-zinc-400 mt-1">Отдаем все доступы и короткую видео-инструкцию</div>
                 </div>
                 <div class="font-display font-semibold text-sm text-white shrink-0">0 ₽/мес</div>
               </button>
@@ -575,7 +573,7 @@
                 class="calc-option w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3 transition-all active:scale-[0.99]">
                 <div>
                   <div class="font-medium text-sm sm:text-base text-white">Техподдержка, хостинг и мелкие правки</div>
-                  <div class="text-xs text-zinc-400 mt-1">Мониторинг серверов, защита от сбоев и оперативные правки</div>
+                  <div class="text-xs text-zinc-400 mt-1">Следим, чтобы бот и сайт не падали, вносим правки</div>
                 </div>
                 <div class="font-display font-semibold text-sm text-white shrink-0">+990 ₽/мес</div>
               </button>
@@ -590,7 +588,7 @@
             <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
 
             <div class="flex items-center justify-between mb-6">
-              <span class="text-xs font-semibold tracking-[0.18em] text-zinc-400 uppercase">Итоговая смета</span>
+              <span class="text-xs font-semibold tracking-[0.18em] text-zinc-400 uppercase">Ваш расчет</span>
               <span id="selected-count-badge" class="px-2.5 py-1 rounded-full bg-white/10 text-xs font-medium text-white">2 модуля</span>
             </div>
 
@@ -602,13 +600,13 @@
             <div class="border-t border-white/10 pt-5 space-y-4">
               <!-- Total Implementation Cost -->
               <div class="flex items-baseline justify-between gap-2">
-                <span class="text-sm text-zinc-400">Стоимость внедрения:</span>
+                <span class="text-sm text-zinc-400">Итого за запуск:</span>
                 <span id="total-price" class="font-display font-bold text-2xl sm:text-3xl text-white">7 400 ₽</span>
               </div>
 
               <!-- Monthly Fee -->
               <div class="flex items-center justify-between gap-2">
-                <span class="text-sm text-zinc-400">Обслуживание:</span>
+                <span class="text-sm text-zinc-400">Сопровождение:</span>
                 <span id="monthly-price" class="font-display font-semibold text-base text-zinc-200">0 ₽ / мес</span>
               </div>
 
@@ -626,11 +624,11 @@
 
             <!-- Action Button -->
             <button type="button" id="open-lead-modal-btn" class="btn-metallic w-full mt-6 py-4 px-6 rounded-2xl text-sm sm:text-base flex items-center justify-center gap-2">
-              <span>Зафиксировать расчет и оставить заявку</span>
+              <span>Оставить заявку по этому расчету</span>
             </button>
 
             <p class="text-[11px] text-zinc-500 text-center mt-3.5 leading-relaxed">
-              Расчет фиксируется за вами на 14 дней. Поэтапная оплата по договору.
+              Цена фиксируется на 14 дней. Оплата частями: предоплата и остаток после сдачи.
             </p>
           </div>
         </div>
@@ -644,63 +642,67 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
         <div>
-          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Selected Works</span>
+          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Портфолио</span>
           <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-            Реализованные системы
+            Реализованные проекты
           </h2>
         </div>
         <p class="text-sm text-zinc-400 max-w-md">
-          Нажмите на любой кейс, чтобы посмотреть архитектуру решения или протестировать интерактивный симулятор бота.
+          Реальные проекты, которые уже работают, плюс живой симулятор бота записи — можно покликать прямо здесь.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- CASE 1 -->
+        <!-- CASE 1 (With Live Site Link) -->
         <article id="case-card-case1" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
           <div>
             <!-- Visual Preview Header -->
             <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/80 via-zinc-900 to-black border border-white/10 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md bg-white/10 text-[10px] font-semibold tracking-wider text-zinc-200 uppercase">Private Practice</span>
-                <span class="text-xs text-zinc-400">Web + TG Admin</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/10 text-[10px] font-semibold tracking-wider text-zinc-200 uppercase">Частная практика</span>
+                <span class="text-xs text-emerald-400 font-medium">Запущен</span>
               </div>
               <div class="space-y-1.5">
                 <div class="h-2 w-2/3 rounded bg-white/25"></div>
                 <div class="h-2 w-1/2 rounded bg-white/10"></div>
                 <div class="flex gap-2 pt-2">
-                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px]">Google Sheets Sync</span>
-                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">CMS в Telegram</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px]">Google Таблицы</span>
+                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Правки из Telegram</span>
                 </div>
               </div>
             </div>
 
             <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3 leading-snug">
-              Цифровая экосистема для частной практики (Психология и право)
+              Сайт и бот записи для психолога и юриста
             </h3>
             <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-              Имиджевый сайт + собственный Telegram-бот для редактирования контента с телефона + бот записи клиентов в Google Таблицы.
+              Личный сайт специалиста, бот для быстрого редактирования цен и текстов с телефона, плюс запись клиентов сразу в Google Таблицу.
             </p>
           </div>
 
-          <button type="button" data-case="case1" class="open-case-btn w-full py-3.5 px-5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white font-medium text-sm transition-all flex items-center justify-center gap-2">
-            <span>Подробнее о решении</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+          <div class="space-y-2.5">
+            <a href="https://svetlanasokovikova.ru/" target="_blank" rel="noopener noreferrer" class="btn-metallic w-full py-3.5 px-5 rounded-xl text-sm flex items-center justify-center gap-2">
+              <span>Открыть живой сайт ↗</span>
+            </a>
+            <button type="button" data-case="case1" class="open-case-btn w-full py-3 px-5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white font-medium text-sm transition-all flex items-center justify-center gap-2">
+              <span>Подробнее о решении</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
         </article>
 
-        <!-- CASE 2 -->
+        <!-- CASE 2 (No External Link, Private Demo Badge) -->
         <article id="case-card-case2" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
           <div>
             <!-- Visual Preview Header -->
             <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/80 via-zinc-900 to-black border border-white/10 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md bg-white/10 text-[10px] font-semibold tracking-wider text-zinc-200 uppercase">Travel Tech</span>
-                <span class="text-xs text-zinc-400">API Integration</span>
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 border border-amber-400/25 text-[10px] font-semibold tracking-wider text-amber-300 uppercase">Закрытое демо / Внедрение</span>
               </div>
               <div class="space-y-1.5">
                 <div class="flex items-center justify-between text-xs text-zinc-300 font-medium">
-                  <span>Tourvisor API Engine</span>
+                  <span>Поиск туров Tourvisor API</span>
                   <span class="text-white font-display">80+ операторов</span>
                 </div>
                 <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
@@ -708,16 +710,16 @@
                 </div>
                 <div class="flex gap-2 pt-2">
                   <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Горящие туры</span>
-                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Мультиканальные заявки</span>
+                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Заявки в Telegram</span>
                 </div>
               </div>
             </div>
 
             <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3 leading-snug">
-              Веб-платформа для турагентства Withiv
+              Сайт и админ-бот для турагентства Withiv
             </h3>
             <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-              Интеграция живого поиска туров по 80 туроператорам (Tourvisor API), кастомная админ-панель для публикации горящих туров и отзывов, мультиканальные заявки.
+              Живой поиск туров по 80 туроператорам через Tourvisor API, публикация горящих туров и отзывов из Telegram, сбор заявок менеджерам.
             </p>
           </div>
 
@@ -727,16 +729,16 @@
           </button>
         </article>
 
-        <!-- CASE 3 (With Interactive Simulator Trigger) -->
+        <!-- CASE 3 (Interactive Simulator) -->
         <article id="case-card-case3" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-white/20 relative group">
           <div>
             <!-- Visual Preview Header -->
             <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/90 via-zinc-900 to-black border border-white/15 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md bg-white text-black text-[10px] font-bold tracking-wider uppercase">Live Demo Inside</span>
+                <span class="px-2.5 py-1 rounded-md bg-white text-black text-[10px] font-bold tracking-wider uppercase">Живое демо</span>
                 <span class="text-xs text-emerald-400 font-medium flex items-center gap-1.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                  Interactive
+                  Можно покликать
                 </span>
               </div>
               <div class="space-y-1.5">
@@ -750,15 +752,15 @@
             </div>
 
             <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3 leading-snug">
-              Система автозаписи для клиник и студий красоты
+              Бот автозаписи для клиник и салонов красоты
             </h3>
             <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-              Готовое коробочное решение: клиент сам выбирает услугу, мастера и свободное окно в Telegram, а владелец видит всю загрузку и выручку в реальном времени в Google Таблице.
+              Готовое решение: клиент выбирает услугу, мастера и время в Telegram, админу сразу приходит уведомление, а запись попадает в Google Таблицу.
             </p>
           </div>
 
           <button type="button" data-case="case3" class="open-case-btn btn-metallic w-full py-3.5 px-5 rounded-xl text-sm flex items-center justify-center gap-2">
-            <span>Запустить демо-симулятор бота</span>
+            <span>Потестировать бота</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </button>
         </article>
@@ -772,11 +774,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-white/[0.08]">
         
-        <!-- Logo -->
-        <div class="flex items-center gap-3">
-          <div class="h-9 min-w-[2.25rem] px-1.5 rounded-xl border border-white/15 bg-white/[0.04] flex items-center justify-center shrink-0 overflow-hidden">
-            <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-8 w-auto object-contain">
-          </div>
+        <!-- Logo (Clean, no frame, blend mode) -->
+        <div class="flex items-center gap-2.5">
+          <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten shrink-0">
           <div class="flex flex-col">
             <span class="font-display font-extrabold text-base tracking-wider text-white leading-none">SKOV</span>
             <span class="text-[9px] font-medium tracking-[0.28em] text-zinc-400 uppercase mt-1 leading-none">TECHNOLOGIES</span>
@@ -793,13 +793,13 @@
       </div>
 
       <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-zinc-500">
-        <p>© 2026 SKOV TECHNOLOGIES. Engineered for Business Growth.</p>
-        <p class="text-zinc-600">Digital Automation • Custom Bots • Web Architecture</p>
+        <p>© 2026 SKOV TECHNOLOGIES</p>
+        <p class="text-zinc-600">Telegram-боты • Google Таблицы • Сайты под ключ</p>
       </div>
     </div>
   </footer>
 
-  <!-- MOBILE FLOATING ESTIMATE BAR (Always visible on mobile meetings) -->
+  <!-- MOBILE FLOATING ESTIMATE BAR -->
   <div id="mobile-sticky-bar" class="lg:hidden fixed bottom-0 inset-x-0 z-30 border-t border-white/15 bg-[#0A0A0C]/95 backdrop-blur-2xl px-4 py-3 shadow-2xl">
     <div class="max-w-xl mx-auto flex items-center justify-between gap-3">
       <div>
@@ -807,7 +807,7 @@
         <div id="mobile-bar-price" class="font-display font-bold text-lg text-white leading-tight">7 400 ₽</div>
       </div>
       <button type="button" id="mobile-bar-cta" class="btn-metallic px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap">
-        Оформить расчет
+        Оставить заявку
       </button>
     </div>
   </div>
@@ -818,8 +818,8 @@
       
       <div class="flex items-center justify-between mb-5">
         <div>
-          <span class="text-[11px] font-semibold tracking-widest text-zinc-400 uppercase">Project Proposal</span>
-          <h3 class="font-display font-bold text-xl text-white mt-0.5">Фиксация сметы</h3>
+          <span class="text-[11px] font-semibold tracking-widest text-zinc-400 uppercase">Заявка</span>
+          <h3 class="font-display font-bold text-xl text-white mt-0.5">Отправить расчет</h3>
         </div>
         <button type="button" id="close-lead-modal" class="p-2 rounded-xl bg-white/[0.06] hover:bg-white/15 text-zinc-300 hover:text-white transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -828,15 +828,15 @@
 
       <!-- Compact Estimate Receipt -->
       <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-4 mb-6">
-        <div class="text-xs text-zinc-400 mb-2">Выбранная конфигурация:</div>
+        <div class="text-xs text-zinc-400 mb-2">Что вошло в расчет:</div>
         <ul id="modal-summary-items" class="space-y-1.5 text-xs sm:text-sm text-zinc-200 mb-3"></ul>
         <div class="pt-3 border-t border-white/10 flex items-center justify-between">
           <div>
-            <div class="text-[11px] text-zinc-400">Запуск: <span id="modal-days" class="text-white font-medium">3 раб. дн.</span></div>
+            <div class="text-[11px] text-zinc-400">Срок: <span id="modal-days" class="text-white font-medium">3 раб. дн.</span></div>
             <div class="text-[11px] text-zinc-400">Поддержка: <span id="modal-monthly" class="text-white font-medium">0 ₽/мес</span></div>
           </div>
           <div class="text-right">
-            <div class="text-[11px] text-zinc-400">Итого внедрение</div>
+            <div class="text-[11px] text-zinc-400">Итого</div>
             <div id="modal-total" class="font-display font-bold text-xl text-white">7 400 ₽</div>
           </div>
         </div>
@@ -857,13 +857,13 @@
         </div>
 
         <div>
-          <label for="client-niche" class="block text-xs font-medium text-zinc-300 mb-1.5">Ниша бизнеса</label>
-          <input type="text" id="client-niche" required placeholder="Клиника, косметология, салон, услуги..."
+          <label for="client-niche" class="block text-xs font-medium text-zinc-300 mb-1.5">Чем занимаетесь</label>
+          <input type="text" id="client-niche" required placeholder="Клиника, салон, частный мастер, услуги..."
             class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50 transition-colors" />
         </div>
 
         <button type="submit" id="submit-lead-btn" class="btn-metallic w-full py-4 rounded-2xl text-sm sm:text-base mt-2">
-          Отправить расчет и забронировать условия
+          Отправить заявку
         </button>
       </form>
 
@@ -872,12 +872,12 @@
         <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
           <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         </div>
-        <h4 class="font-display font-bold text-lg text-white">Расчет зафиксирован!</h4>
+        <h4 class="font-display font-bold text-lg text-white">Заявка отправлена!</h4>
         <p class="text-sm text-zinc-400 leading-relaxed">
-          Данные переданы команде SKOV TECHNOLOGIES. Мы подготовим прототип структуры под вашу нишу и свяжемся в ближайшее время.
+          Получили ваш расчет. Напишем в ближайшее время, чтобы уточнить детали и показать, как это будет работать именно у вас.
         </p>
         <button type="button" id="copy-estimate-btn" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.05] text-xs font-medium text-zinc-200 hover:bg-white/10 transition-colors">
-          Скопировать смету текстом
+          Скопировать расчет текстом
         </button>
       </div>
     </div>
@@ -885,11 +885,11 @@
 
   <!-- MODAL 2: CASE STUDY DETAILS & INTERACTIVE BOT SIMULATOR -->
   <div id="case-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/85 backdrop-blur-md">
-    <div class="glass-panel w-full sm:max-w-2xl rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative">
+    <div class="glass-panel w-full sm:max-w-3xl rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative">
       
       <div class="flex items-start justify-between gap-4 mb-5">
         <div>
-          <span id="case-modal-tag" class="text-[11px] font-semibold tracking-widest text-zinc-400 uppercase">CASE STUDY</span>
+          <span id="case-modal-tag" class="text-[11px] font-semibold tracking-widest text-zinc-400 uppercase">ПРОЕКТ</span>
           <h3 id="case-modal-title" class="font-display font-bold text-lg sm:text-2xl text-white mt-1 leading-snug"></h3>
         </div>
         <button type="button" id="close-case-modal" class="p-2 rounded-xl bg-white/[0.06] hover:bg-white/15 text-zinc-300 hover:text-white transition-colors shrink-0">
@@ -902,9 +902,9 @@
 
       <!-- Bottom Action -->
       <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <span class="text-xs text-zinc-400">Хотите внедрить аналогичную систему в свой бизнес?</span>
+        <span class="text-xs text-zinc-400">Нужно что-то похожее для вашего бизнеса?</span>
         <button type="button" id="case-to-calc-btn" class="btn-metallic w-full sm:w-auto px-5 py-3 rounded-xl text-xs sm:text-sm">
-          Рассчитать под мой проект
+          Посчитать под свой проект
         </button>
       </div>
     </div>
@@ -913,6 +913,74 @@
   <!-- JAVASCRIPT ENGINE -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      /* =====================================================================
+      0. GOOGLE APPS SCRIPT WEBHOOK & ANALYTICS TRACKING
+      ===================================================================== */
+      // Вставьте сюда URL вашего развернутого веб-приложения Google Apps Script
+      const GAS_WEBHOOK_URL = 'YOUR_GAS_WEBAPP_URL';
+
+      const VISITOR_KEY = 'skov_visitor_seen';
+      const CALC_USED_SESSION_KEY = 'skov_calc_used_session';
+
+      function sendAnalyticsEvent(payload) {
+        if (!GAS_WEBHOOK_URL || GAS_WEBHOOK_URL === 'YOUR_GAS_WEBAPP_URL') {
+          console.log('[SKOV Analytics - Demo Mode]', payload);
+          return Promise.resolve();
+        }
+
+        return fetch(GAS_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        }).catch(err => {
+          console.warn('Analytics send error:', err);
+        });
+      }
+
+      // 1) Track Page View (with unique visitor detection via localStorage)
+      (function trackPageView() {
+        let isUnique = false;
+        try {
+          if (!localStorage.getItem(VISITOR_KEY)) {
+            isUnique = true;
+            localStorage.setItem(VISITOR_KEY, new Date().toISOString());
+          }
+        } catch (e) {
+          isUnique = false;
+        }
+
+        sendAnalyticsEvent({
+          event: 'page_view',
+          is_unique: isUnique,
+          page: window.location.href,
+          referrer: document.referrer || 'direct'
+        });
+      })();
+
+      // 2) Track first calculator interaction per session
+      let calcUsedThisSession = false;
+      try {
+        calcUsedThisSession = sessionStorage.getItem(CALC_USED_SESSION_KEY) === '1';
+      } catch (e) {
+        calcUsedThisSession = false;
+      }
+
+      function trackCalcInteraction(actionId) {
+        if (calcUsedThisSession) return;
+        calcUsedThisSession = true;
+        try {
+          sessionStorage.setItem(CALC_USED_SESSION_KEY, '1');
+        } catch (e) {}
+
+        sendAnalyticsEvent({
+          event: 'calc_use',
+          action: actionId || 'click'
+        });
+      }
+
       /* =====================================================================
       1. AMBIENT SPOTLIGHT & MOBILE NAVIGATION
       ===================================================================== */
@@ -1012,7 +1080,6 @@
           }
         });
 
-        // Parallelization efficiency: slight timeline compression for 3+ modules, honest 1-day minimum
         const finalDays = items.length === 0
           ? 0
           : (items.length > 2 ? Math.max(2, Math.round(rawDays * 0.85)) : Math.max(1, rawDays));
@@ -1029,7 +1096,7 @@
         // Render Summary List
         summaryListEl.innerHTML = '';
         if (items.length === 0) {
-          summaryListEl.innerHTML = '<div class="text-xs text-zinc-500 py-2">Выберите хотя бы один модуль слева для расчета стоимости.</div>';
+          summaryListEl.innerHTML = '<div class="text-xs text-zinc-500 py-2">Выберите хотя бы один пункт слева, чтобы увидеть цену.</div>';
         } else {
           items.forEach(item => {
             const row = document.createElement('div');
@@ -1059,12 +1126,13 @@
 
         // Sync Mobile Bottom Bar
         mobileBarPrice.textContent = formatRub(total);
-        mobileBarDays.textContent = items.length === 0 ? 'выберите модули' : `${finalDays} раб. дн.`;
+        mobileBarDays.textContent = items.length === 0 ? 'выберите пункты' : `${finalDays} раб. дн.`;
       }
 
       // Multi-select handler (Step 1)
       baseButtons.forEach(btn => {
         btn.addEventListener('click', () => {
+          trackCalcInteraction(btn.dataset.id);
           btn.classList.toggle('is-selected');
           recalculateEstimate();
         });
@@ -1072,6 +1140,7 @@
 
       // Step 2: Free default vs Paid addons mutual logic
       addonNoneBtn.addEventListener('click', () => {
+        trackCalcInteraction('base_only');
         addonButtons.forEach(b => b.classList.remove('is-selected'));
         addonNoneBtn.classList.add('is-selected');
         recalculateEstimate();
@@ -1079,6 +1148,7 @@
 
       addonButtons.forEach(btn => {
         btn.addEventListener('click', () => {
+          trackCalcInteraction(btn.dataset.id);
           btn.classList.toggle('is-selected');
           const anyPaidSelected = Array.from(addonButtons).some(b => b.classList.contains('is-selected'));
           if (anyPaidSelected) {
@@ -1093,6 +1163,7 @@
       // Single-select handler (Step 3)
       supportButtons.forEach(btn => {
         btn.addEventListener('click', () => {
+          trackCalcInteraction('support_' + btn.dataset.monthly);
           supportButtons.forEach(b => b.classList.remove('is-selected'));
           btn.classList.add('is-selected');
           recalculateEstimate();
@@ -1102,7 +1173,7 @@
       recalculateEstimate();
 
       /* =====================================================================
-      3. LEAD MODAL & TELEGRAM BOT API INTEGRATION
+      3. LEAD MODAL & GAS WEBHOOK SUBMISSION
       ===================================================================== */
       const leadModal = document.getElementById('lead-modal');
       const openLeadBtn = document.getElementById('open-lead-modal-btn');
@@ -1158,7 +1229,7 @@
       function buildEstimateText(clientName = '', clientContact = '', clientNiche = '') {
         let modulesList = currentEstimate.items.length
           ? currentEstimate.items.map(i => `— ${i.name} (${formatRub(i.price)})`).join('\n')
-          : '— Индивидуальная конфигурация';
+          : '— Индивидуальный запрос';
 
         if (currentEstimate.items.length && !currentEstimate.hasPaidAddons) {
           modulesList += '\n— Базовая комплектация (без доп. модулей) (0 ₽)';
@@ -1166,14 +1237,14 @@
 
         return [
           `🔥 НОВАЯ ЗАЯВКА | SKOV TECHNOLOGIES`,
-          clientName ? `👤 Клиент: ${clientName}` : '',
+          clientName ? `👤 Имя: ${clientName}` : '',
           clientContact ? `📞 Контакт: ${clientContact}` : '',
           clientNiche ? `🏢 Ниша: ${clientNiche}` : '',
-          `\n📋 Выбранные модули:\n${modulesList}`,
+          `\n📋 Выбрано в калькуляторе:\n${modulesList}`,
           `🛠 Сопровождение: ${currentEstimate.supportName}`,
-          `\n💰 Итого внедрение: ${formatRub(currentEstimate.totalPrice)}`,
-          `🔄 Ежемесячно: ${formatRub(currentEstimate.monthlyPrice)}/мес`,
-          `⏱ Оценка срока: ${currentEstimate.days > 0 ? pluralizeDays(currentEstimate.days) : 'Уточняется'}`
+          `\n💰 Итого запуск: ${formatRub(currentEstimate.totalPrice)}`,
+          `🔄 Поддержка: ${formatRub(currentEstimate.monthlyPrice)}/мес`,
+          `⏱ Срок: ${currentEstimate.days > 0 ? pluralizeDays(currentEstimate.days) : 'Уточняется'}`
         ].filter(Boolean).join('\n');
       }
 
@@ -1181,41 +1252,38 @@
         e.preventDefault();
         const submitBtn = document.getElementById('submit-lead-btn');
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Отправка сметы...';
+        submitBtn.textContent = 'Отправляем...';
         submitBtn.disabled = true;
 
         const name = document.getElementById('client-name').value.trim();
         const contact = document.getElementById('client-contact').value.trim();
         const niche = document.getElementById('client-niche').value.trim();
 
-        const messageText = buildEstimateText(name, contact, niche);
+        const modulesSummary = currentEstimate.items.length
+          ? currentEstimate.items.map(i => `${i.name} (${formatRub(i.price)})`).join('; ')
+          : 'Индивидуальный запрос';
 
-        // =========================================================================
-        // НАСТРОЙКА ОТПРАВКИ В TELEGRAM:
-        // Вставьте токен вашего бота от @BotFather и ваш личный/групповой CHAT_ID
-        // =========================================================================
-        const TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN';
-        const TELEGRAM_CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID';
+        const leadPayload = {
+          event: 'lead',
+          name,
+          contact,
+          niche,
+          modules: modulesSummary + (!currentEstimate.hasPaidAddons && currentEstimate.items.length ? '; Базовая комплектация (0 ₽)' : ''),
+          support: currentEstimate.supportName,
+          total_price: currentEstimate.totalPrice,
+          monthly_price: currentEstimate.monthlyPrice,
+          days: currentEstimate.days > 0 ? pluralizeDays(currentEstimate.days) : 'Уточняется',
+          formatted_text: buildEstimateText(name, contact, niche)
+        };
 
         try {
-          if (TELEGRAM_BOT_TOKEN !== 'YOUR_TELEGRAM_BOT_TOKEN' && TELEGRAM_CHAT_ID !== 'YOUR_TELEGRAM_CHAT_ID') {
-            await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: messageText
-              })
-            });
-          } else {
-            // Имитация сетевой задержки до подключения боевого токена
-            await new Promise(resolve => setTimeout(resolve, 450));
+          await sendAnalyticsEvent(leadPayload);
+          if (!GAS_WEBHOOK_URL || GAS_WEBHOOK_URL === 'YOUR_GAS_WEBAPP_URL') {
+            await new Promise(resolve => setTimeout(resolve, 400));
           }
-
           leadForm.classList.add('hidden');
           leadSuccessBox.classList.remove('hidden');
         } catch (err) {
-          alert('Не удалось отправить автоматически. Вы можете скопировать смету кнопкой ниже.');
           leadForm.classList.add('hidden');
           leadSuccessBox.classList.remove('hidden');
         } finally {
@@ -1231,9 +1299,9 @@
           document.getElementById('client-niche').value.trim()
         );
         navigator.clipboard.writeText(text).then(() => {
-          copyEstimateBtn.textContent = 'Скопировано в буфер обмена ✓';
+          copyEstimateBtn.textContent = 'Скопировано в буфер ✓';
           setTimeout(() => {
-            copyEstimateBtn.textContent = 'Скопировать смету текстом';
+            copyEstimateBtn.textContent = 'Скопировать расчет текстом';
           }, 2500);
         });
       });
@@ -1250,13 +1318,13 @@
 
       const casesData = {
         case1: {
-          tag: 'CASE 01 • PRIVATE PRACTICE & LEGAL',
-          title: 'Цифровая экосистема для частной практики (Психология и право)',
+          tag: 'ПРОЕКТ 01 • ЧАСТНАЯ ПРАКТИКА',
+          title: 'Сайт и бот записи для психолога и юриста',
           render() {
             return `
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Скорость правки сайта</div>
+                  <div class="text-xs text-zinc-400">Правки на сайте</div>
                   <div class="font-display font-bold text-lg text-white mt-1">15 секунд</div>
                 </div>
                 <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
@@ -1264,59 +1332,65 @@
                   <div class="font-display font-bold text-lg text-emerald-400 mt-1">0%</div>
                 </div>
                 <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Учет расписания</div>
-                  <div class="font-display font-bold text-lg text-white mt-1">Авто-таблица</div>
+                  <div class="text-xs text-zinc-400">Учет клиентов</div>
+                  <div class="font-display font-bold text-lg text-white mt-1">Google Таблица</div>
                 </div>
               </div>
 
               <div class="space-y-3 text-sm text-zinc-300 leading-relaxed">
                 <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Задача бизнеса:</strong>
-                  Специалисту требовался статусный сайт, вызывающий доверие клиентов, но без сложной админки. Важно было менять стоимость консультаций, расписание и статьи прямо со смартфона между сессиями.
+                  <strong class="text-white block mb-1">Что было нужно:</strong>
+                  Простой и аккуратный сайт для частного специалиста, без сложных админок. Важно было менять цены, расписание и заметки прямо с телефона между консультациями.
                 </div>
                 <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Архитектура SKOV TECHNOLOGIES:</strong>
+                  <strong class="text-white block mb-1">Что сделали:</strong>
                   <ul class="list-disc list-inside space-y-1 text-zinc-400 mt-1">
-                    <li>Разработан быстрый сайт с акцентом на экспертность и конверсию в запись.</li>
-                    <li>Подключен закрытый Telegram-бот администратора: специалист отправляет текст или фото в бот — сайт обновляется мгновенно.</li>
-                    <li>Заявки клиентов автоматически улетают в Telegram и записываются в Google Таблицу с фиксацией источника.</li>
+                    <li>Собрали быстрый сайт с понятной подачей услуг и кнопками записи.</li>
+                    <li>Подключили закрытого бота-админа: отправляете новый текст или фото в Telegram — сайт обновляется сам.</li>
+                    <li>Все заявки прилетают в Telegram и сразу фиксируются в Google Таблице.</li>
                   </ul>
                 </div>
+              </div>
+
+              <div>
+                <a href="https://svetlanasokovikova.ru/" target="_blank" rel="noopener noreferrer" class="btn-metallic inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm">
+                  <span>Открыть живой сайт ↗</span>
+                </a>
               </div>
             `;
           }
         },
         case2: {
-          tag: 'CASE 02 • TRAVEL TECH & API',
-          title: 'Веб-платформа для турагентства Withiv',
+          tag: 'ПРОЕКТ 02 • ЗАКРЫТОЕ ДЕМО / ВНЕДРЕНИЕ',
+          title: 'Сайт и админ-бот для турагентства Withiv',
           render() {
             return `
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">База предложений</div>
+                  <div class="text-xs text-zinc-400">База туров</div>
                   <div class="font-display font-bold text-lg text-white mt-1">80 операторов</div>
                 </div>
                 <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Публикация горящего тура</div>
+                  <div class="text-xs text-zinc-400">Выложить горящий тур</div>
                   <div class="font-display font-bold text-lg text-white mt-1">1 минута</div>
                 </div>
                 <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Обработка лидов</div>
-                  <div class="font-display font-bold text-lg text-emerald-400 mt-1">Мгновенно</div>
+                  <div class="text-xs text-zinc-400">Статус</div>
+                  <div class="font-display font-bold text-sm text-amber-300 mt-1.5">Закрытое демо / Внедрение</div>
                 </div>
               </div>
 
               <div class="space-y-3 text-sm text-zinc-300 leading-relaxed">
                 <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Задача бизнеса:</strong>
-                  Уйти от ручного подбора вариантов в мессенджерах. Дать клиентам удобный поиск актуальных туров с живыми ценами прямо на сайте, а менеджерам — единый пульт управления витриной горящих предложений.
+                  <strong class="text-white block mb-1">Что было нужно:</strong>
+                  Убрать ручной подбор туров в мессенджерах. Дать клиентам живой поиск с актуальными ценами прямо на сайте, а менеджерам — быструю публикацию горящих предложений с телефона.
                 </div>
                 <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Архитектура SKOV TECHNOLOGIES:</strong>
+                  <strong class="text-white block mb-1">Что сделали:</strong>
                   <ul class="list-disc list-inside space-y-1 text-zinc-400 mt-1">
-                    <li>Интегрирован модуль поиска по 80 туроператорам через Tourvisor API с актуальными ценами и фильтрами.</li>
-                    <li>Создана закрытая админ-панель управления контентом: публикация горящих туров, акций и отзывов без участия программиста.</li>
-                    <li>Все заявки с карточек туров и квизов распределяются между менеджерами агентства в Telegram.</li>
+                    <li>Подключили поиск туров по 80 туроператорам через Tourvisor API.</li>
+                    <li>Сделали закрытого Telegram-бота для менеджеров: публикация горящих туров, акций и отзывов без участия разработчика.</li>
+                    <li>Настроили мгновенную пересылку всех заявок с сайта в рабочий чат менеджеров.</li>
                   </ul>
                 </div>
               </div>
@@ -1324,35 +1398,35 @@
           }
         },
         case3: {
-          tag: 'INTERACTIVE DEMO • CLINICS & BEAUTY',
-          title: 'Симулятор системы автозаписи и Google Таблиц',
+          tag: 'ЖИВОЕ ДЕМО • КЛИНИКИ И САЛОНЫ',
+          title: 'Симулятор бота записи и уведомлений админу',
           render() {
             return `
               <p class="text-xs sm:text-sm text-zinc-400">
-                Нажимайте на кнопки внутри экрана смартфона ниже, чтобы пройти путь клиента и увидеть, как запись мгновенно попадает в управленческую таблицу владельца:
+                Покликайте кнопки в окне клиента слева — и посмотрите, что в ту же секунду приходит администратору в Telegram и в Google Таблицу справа:
               </p>
 
-              <!-- Interactive Split Simulator: Phone Bot + Live Google Sheet Row -->
+              <!-- Interactive Split Simulator: Client Bot + Admin Notification & Google Sheet -->
               <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
                 
-                <!-- Left: Simulated Telegram Bot -->
-                <div class="md:col-span-7 rounded-2xl border border-white/15 bg-[#09090B] overflow-hidden flex flex-col">
+                <!-- Left: Client Telegram Bot -->
+                <div class="md:col-span-6 rounded-2xl border border-white/15 bg-[#09090B] overflow-hidden flex flex-col">
                   <!-- TG Top Bar -->
                   <div class="px-4 py-3 bg-white/[0.04] border-b border-white/10 flex items-center justify-between">
                     <div class="flex items-center gap-2.5">
                       <div class="w-8 h-8 rounded-full bg-white text-black font-display font-bold text-xs flex items-center justify-center">A</div>
                       <div>
-                        <div class="text-xs font-semibold text-white">AURA Clinic &amp; Beauty Bot</div>
-                        <div class="text-[10px] text-emerald-400">bot • онлайн-запись 24/7</div>
+                        <div class="text-xs font-semibold text-white">Чат клиента (AURA Bot)</div>
+                        <div class="text-[10px] text-emerald-400">онлайн-запись 24/7</div>
                       </div>
                     </div>
                     <button type="button" id="sim-reset-btn" class="text-[11px] text-zinc-400 hover:text-white underline">Сбросить</button>
                   </div>
 
                   <!-- Chat Messages Area -->
-                  <div id="sim-chat-log" class="p-4 space-y-3 text-xs min-h-[210px] max-h-[250px] overflow-y-auto">
-                    <div class="bg-white/[0.07] text-zinc-100 p-3 rounded-2xl rounded-tl-sm max-w-[88%] leading-relaxed">
-                      Здравствуйте! Выберите направление для онлайн-записи:
+                  <div id="sim-chat-log" class="p-4 space-y-3 text-xs min-h-[210px] max-h-[250px] overflow-y-auto flex-1">
+                    <div class="bg-white/[0.07] text-zinc-100 p-3 rounded-2xl rounded-tl-sm max-w-[90%] leading-relaxed">
+                      Здравствуйте! Выберите услугу для записи:
                     </div>
                   </div>
 
@@ -1369,19 +1443,34 @@
                   </div>
                 </div>
 
-                <!-- Right: Live Google Sheet Sync Preview -->
-                <div class="md:col-span-5 rounded-2xl border border-white/15 bg-[#09090B] p-4 flex flex-col justify-between">
+                <!-- Right: Admin Telegram Chat + Live Google Sheet Row -->
+                <div class="md:col-span-6 rounded-2xl border border-white/15 bg-[#09090B] p-4 flex flex-col justify-between gap-4">
                   <div>
-                    <div class="flex items-center justify-between mb-3">
-                      <span class="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        Google Sheets Live
-                      </span>
-                      <span class="text-[10px] text-zinc-500">Авто-учет</span>
+                    <!-- Clear Prominent Header -->
+                    <div class="pb-3 mb-3 border-b border-white/10">
+                      <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+                        <h4 class="font-display font-bold text-xs sm:text-sm text-white leading-snug">
+                          Чат администратора (уведомление в Telegram)
+                        </h4>
+                      </div>
+                      <p class="text-[11px] text-zinc-400 mt-1 leading-snug">
+                        Заявка мгновенно дублируется сюда и в Google Таблицу.
+                      </p>
                     </div>
 
+                    <!-- Admin Telegram Incoming Message Preview -->
+                    <div id="sim-admin-msg" class="rounded-2xl border border-white/10 bg-white/[0.03] p-3 text-xs text-zinc-400 leading-relaxed transition-all duration-300 mb-3">
+                      Ожидание новой записи от клиента...
+                    </div>
+
+                    <!-- Live Google Sheet Row Preview -->
                     <div class="rounded-xl border border-white/10 overflow-hidden text-[11px]">
-                      <div class="grid grid-cols-3 bg-white/[0.06] text-zinc-400 font-medium p-2 border-b border-white/10">
+                      <div class="flex items-center justify-between px-2.5 py-1.5 bg-emerald-500/10 border-b border-white/10 text-[10px] font-semibold text-emerald-300">
+                        <span>Google Таблица (авто-запись)</span>
+                        <span>Live</span>
+                      </div>
+                      <div class="grid grid-cols-3 bg-white/[0.05] text-zinc-400 font-medium p-2 border-b border-white/10">
                         <span>Услуга</span>
                         <span>Мастер / Время</span>
                         <span class="text-right">Сумма</span>
@@ -1400,10 +1489,6 @@
                       </div>
                     </div>
                   </div>
-
-                  <div class="mt-4 p-3 rounded-xl bg-white/[0.03] border border-white/[0.07] text-[11px] text-zinc-400 leading-relaxed">
-                    Владелец видит выручку за день в реальном времени, а клиент получает авто-напоминание за 24 часа и за 2 часа до визита.
-                  </div>
                 </div>
 
               </div>
@@ -1417,6 +1502,7 @@
         const keyboard = document.getElementById('sim-keyboard');
         const resetBtn = document.getElementById('sim-reset-btn');
 
+        const adminMsg = document.getElementById('sim-admin-msg');
         const cellService = document.getElementById('sim-cell-service');
         const cellSlot = document.getElementById('sim-cell-slot');
         const cellPrice = document.getElementById('sim-cell-price');
@@ -1428,7 +1514,7 @@
           const msg = document.createElement('div');
           msg.className = isUser
             ? 'bg-white text-black font-medium p-2.5 px-3.5 rounded-2xl rounded-tr-sm max-w-[82%] ml-auto'
-            : 'bg-white/[0.07] text-zinc-100 p-3 rounded-2xl rounded-tl-sm max-w-[88%] leading-relaxed';
+            : 'bg-white/[0.07] text-zinc-100 p-3 rounded-2xl rounded-tl-sm max-w-[90%] leading-relaxed';
           msg.innerHTML = text;
           chatLog.appendChild(msg);
           chatLog.scrollTop = chatLog.scrollHeight;
@@ -1448,9 +1534,10 @@
                 cellPrice.textContent = simState.price;
                 newRow.classList.remove('text-zinc-500', 'italic');
                 newRow.classList.add('text-white', 'bg-emerald-500/10');
+                adminMsg.innerHTML = `<span class="text-zinc-300">Клиент выбирает мастера для: <b>${simState.service}</b>...</span>`;
 
                 setTimeout(() => {
-                  appendMsg('Отлично! Выберите специалиста:');
+                  appendMsg('Отлично! Выберите мастера:');
                   keyboard.innerHTML = `
                     <button type="button" data-step="master" data-val="Елена (Топ-мастер)" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors">Елена (Топ-мастер)</button>
                     <button type="button" data-step="master" data-val="Мария (Врач)" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors">Мария (Врач)</button>
@@ -1461,6 +1548,7 @@
                 simState.master = val.split(' ')[0];
                 appendMsg(val, true);
                 cellSlot.textContent = `${simState.master} • ...`;
+                adminMsg.innerHTML = `<span class="text-zinc-300">Мастер: <b>${simState.master}</b>. Клиент выбирает время...</span>`;
 
                 setTimeout(() => {
                   appendMsg('Свободные окна на завтра:');
@@ -1477,11 +1565,20 @@
                 newRow.classList.remove('bg-emerald-500/10');
                 newRow.classList.add('bg-emerald-500/20', 'font-medium');
 
+                adminMsg.classList.remove('bg-white/[0.03]', 'border-white/10', 'text-zinc-400');
+                adminMsg.classList.add('bg-emerald-500/10', 'border-emerald-500/30', 'text-zinc-100');
+                adminMsg.innerHTML = `
+                  <div class="font-semibold text-emerald-300 mb-1">🔔 Новая запись!</div>
+                  <div>Услуга: <b>${simState.service}</b> (${simState.price})</div>
+                  <div>Мастер: <b>${simState.master}</b> • ${simState.time}</div>
+                  <div class="text-[11px] text-zinc-400 mt-1">✓ Добавлено в Google Таблицу</div>
+                `;
+
                 setTimeout(() => {
-                  appendMsg(`✅ <b>Вы успешно записаны!</b><br>Услуга: ${simState.service}<br>Время: ${simState.time}<br><span class="text-emerald-400">Строка добавлена в Google Таблицу владельца.</span>`);
+                  appendMsg(`✅ <b>Вы записаны!</b><br>Услуга: ${simState.service}<br>Время: ${simState.time}<br><span class="text-emerald-400">Напоминание придет за 2 часа до визита.</span>`);
                   keyboard.innerHTML = `
                     <div class="col-span-2 text-center text-[11px] text-emerald-400 py-1.5 font-medium">
-                      ✓ Синхронизация с Google Sheets выполнена
+                      ✓ Уведомление отправлено админу и в таблицу
                     </div>
                   `;
                 }, 250);
