@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>О студии — SKOV TECHNOLOGIES</title>
-  <meta name="description" content="Инженерная студия SKOV TECHNOLOGIES. Запускаем сайты, Telegram-ботов и учет в Google Таблицах по всей РФ." />
+  <title>О студии и гарантии — SKOV TECHNOLOGIES</title>
+  <meta name="description" content="Инженерная студия SKOV TECHNOLOGIES. г. Ижевск • Работаем по всей РФ. Сайты, Telegram-боты и учёт в Google Таблицах." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,11 @@
     body { background: #050505; color: #F4F4F5; font-family: 'Inter', sans-serif; overflow-x: hidden; }
     .text-metallic {
       background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 45%, #71717A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-metallic-subtle {
+      background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -45,29 +50,32 @@
 </head>
 <body class="antialiased selection:bg-white selection:text-black">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/85 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten">
+  <!-- SHARED HEADER -->
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3.5 shrink-0 group">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-9 sm:h-10 w-auto object-contain mix-blend-lighten">
         <div class="flex flex-col">
-          <span class="font-display font-extrabold text-base sm:text-lg tracking-wider text-white leading-none">SKOV</span>
-          <span class="text-[9px] sm:text-[10px] font-medium tracking-[0.28em] text-zinc-400 uppercase mt-1 leading-none">TECHNOLOGIES</span>
+          <div class="flex items-center gap-1.5">
+            <span class="font-display font-extrabold text-lg sm:text-xl tracking-wider text-white leading-none">SKOV</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-semibold tracking-[0.26em] text-zinc-300 uppercase mt-1.5 leading-none">TECHNOLOGIES</span>
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-400">
-        <a href="index.html" class="hover:text-white transition-colors">Главная</a>
-        <a href="cases.html" class="hover:text-white transition-colors">Кейсы</a>
-        <a href="services.html" class="hover:text-white transition-colors">Услуги и цены</a>
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-zinc-400 hover:text-white transition-colors">Главная</a>
+        <a href="cases.html" class="text-zinc-400 hover:text-white transition-colors">Кейсы</a>
+        <a href="services.html" class="text-zinc-400 hover:text-white transition-colors">Услуги и цены</a>
         <a href="about.html" class="text-white transition-colors">О студии</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <a href="tel:+79124446783" class="hidden sm:inline-flex items-center text-xs sm:text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+      <div class="flex items-center gap-4">
+        <a href="tel:+79124446783" class="hidden sm:inline-flex items-center text-xs sm:text-sm font-medium text-zinc-300 hover:text-white transition-colors whitespace-nowrap">
           +7 (912) 444-67-83
         </a>
-        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-4 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap inline-flex items-center gap-2">
+        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-4 py-2.5 sm:px-5 rounded-xl text-xs sm:text-sm whitespace-nowrap inline-flex items-center gap-2">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
           <span>Telegram</span>
         </a>
@@ -78,70 +86,70 @@
     </div>
 
     <div id="mobile-menu" class="hidden lg:hidden border-t border-white/[0.08] bg-[#09090B]/95 px-4 py-4 space-y-2">
-      <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Главная</a>
-      <a href="cases.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Кейсы</a>
-      <a href="services.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Услуги и цены</a>
+      <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300 hover:bg-white/[0.06] hover:text-white">Главная</a>
+      <a href="cases.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300 hover:bg-white/[0.06] hover:text-white">Кейсы</a>
+      <a href="services.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300 hover:bg-white/[0.06] hover:text-white">Услуги и цены</a>
       <a href="about.html" class="block px-4 py-3 rounded-xl text-sm text-white bg-white/[0.06]">О студии</a>
-      <div class="pt-2 border-t border-white/10 flex items-center justify-between px-4 py-2">
-        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white">Telegram: @skov_tech</a>
-        <a href="tel:+79124446783" class="text-xs text-zinc-400">+7 (912) 444-67-83</a>
+      <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 px-4 py-2">
+        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white whitespace-nowrap">Telegram: @skov_tech</a>
+        <a href="tel:+79124446783" class="text-xs font-medium text-zinc-300 whitespace-nowrap">+7 (912) 444-67-83</a>
       </div>
     </div>
   </header>
 
-  <main class="pt-28 pb-20 sm:pt-36 sm:pb-28">
+  <main class="pt-36 pb-24 sm:pt-44 sm:pb-32">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- STUDIO POSITIONING -->
-      <section class="mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] mb-6">
+      <section class="mb-24 sm:mb-28">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] mb-7">
           <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span class="text-xs font-medium text-zinc-200">Работаем по всей РФ (Москва и регионы)</span>
+          <span class="text-xs font-medium text-zinc-200">г. Ижевск • Работаем по всей РФ</span>
         </div>
 
-        <h1 class="font-display font-bold text-3xl sm:text-5xl text-metallic mb-6 leading-[1.12]">
+        <h1 class="font-display font-bold text-3xl sm:text-5xl text-metallic mb-6 leading-[1.12] tracking-tight">
           Инженерная студия SKOV TECHNOLOGIES
         </h1>
 
-        <p class="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-10">
-          Молодая и быстрая команда разработки. Мы не тратим время на лишние созвоны и длинные презентации: берем задачу бизнеса и за 2–5 дней собираем рабочий сайт, Telegram-бота и учет в Google Таблицах.
+        <p class="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-14">
+          Молодая и быстрая команда разработки. Берём задачу бизнеса и за 2–5 дней собираем рабочий сайт, Telegram-бота и учёт в Google Таблицах без лишних прослоек.
         </p>
 
-        <!-- 2 Core Competencies (No personal names) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="glass-panel rounded-3xl p-7 border-white/15">
-            <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">Разработка и архитектура</div>
+        <!-- 2 Core Competencies -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="glass-panel rounded-3xl p-8 border-white/15">
+            <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-3">Разработка и архитектура</div>
             <h2 class="font-display font-bold text-xl text-white mb-3">Сайты, боты и Mini Apps</h2>
             <p class="text-sm text-zinc-400 leading-relaxed">
-              Проектируем логику записи, пишем чистый код и связываем интерфейсы с Google Таблицами так, чтобы система работала без сбоев и ежемесячных платежей.
+              Проектируем логику записи и связываем интерфейсы с Google Таблицами так, чтобы система работала без сбоев и ежемесячных платежей.
             </p>
           </div>
 
-          <div class="glass-panel rounded-3xl p-7 border-white/15">
-            <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">Внедрение и учет</div>
+          <div class="glass-panel rounded-3xl p-8 border-white/15">
+            <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-3">Внедрение и учёт</div>
             <h2 class="font-display font-bold text-xl text-white mb-3">Настройка под процессы бизнеса</h2>
             <p class="text-sm text-zinc-400 leading-relaxed">
-              Адаптируем таблицы и сценарии бота под реальную работу владельца, администраторов и бухгалтерии — чтобы цифры сходились с первого дня.
+              Выезжаем на объекты в Ижевске и дистанционно внедряем системы по всей РФ, адаптируя таблицы под работу владельца, админов и бухгалтерии.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- DIRECT CONTACTS BLOCK (TELEGRAM PRIMARY) -->
-      <section class="mb-20">
-        <div class="glass-panel rounded-3xl p-7 sm:p-10 border-white/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <!-- DIRECT CONTACTS BLOCK -->
+      <section class="mb-24 sm:mb-32">
+        <div class="glass-panel rounded-3xl p-8 sm:p-11 border-white/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <span class="text-xs font-semibold tracking-widest text-zinc-400 uppercase">Прямая связь</span>
-            <h2 class="font-display font-bold text-xl sm:text-2xl text-white mt-1">Напишите нам в Telegram</h2>
-            <p class="text-sm text-zinc-400 mt-1">Основной канал связи — отвечаем за 5–10 минут. При необходимости можно созвониться.</p>
+            <h2 class="font-display font-bold text-xl sm:text-2xl text-white mt-1.5">Напишите нам в Telegram</h2>
+            <p class="text-sm text-zinc-400 mt-1.5">Основной канал связи — отвечаем за 5–10 минут.</p>
           </div>
 
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
-            <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-6 py-4 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full md:w-auto">
+            <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-6 py-4 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2 whitespace-nowrap">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               <span>Telegram @skov_tech</span>
             </a>
-            <a href="tel:+79124446783" class="px-6 py-4 rounded-2xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.1] text-white font-display font-semibold text-sm text-center transition-all">
+            <a href="tel:+79124446783" class="px-6 py-4 rounded-2xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.1] text-white font-display font-semibold text-sm text-center transition-all whitespace-nowrap">
               +7 (912) 444-67-83
             </a>
           </div>
@@ -149,48 +157,50 @@
       </section>
 
       <!-- FAQ ACCORDION -->
-      <section class="pt-14 border-t border-white/[0.08]">
+      <section class="pt-20 border-t border-white/[0.08]">
         <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Вопросы и гарантии</span>
-        <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic mt-2 mb-8">Частые вопросы перед стартом</h2>
+        <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle leading-[1.18] mt-2 mb-10">
+          Частые вопросы перед стартом
+        </h2>
 
-        <div class="space-y-3">
+        <div class="space-y-4">
           <div class="glass-panel rounded-2xl overflow-hidden">
-            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+            <button type="button" class="faq-btn w-full text-left p-6 flex items-center justify-between gap-4">
               <span class="font-display font-semibold text-sm sm:text-base text-white">Где работает бот и сколько стоит его содержание?</span>
               <span class="faq-icon text-zinc-400 text-xl">+</span>
             </button>
-            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
-              Система разворачивается на ваших аккаунтах. Содержание стоит от <b class="text-white">0 до 300 ₽/мес</b> напрямую хостингу — студия не берет ежемесячную абонентскую плату.
+            <div class="faq-content hidden px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+              Система разворачивается на ваших аккаунтах. Первый месяц техподдержки и хостинга — <b class="text-white">0 ₽</b>. Далее вы можете вести проект бесплатно самостоятельно или подключить полное сопровождение и сервер за <b class="text-white">990 ₽/мес</b>.
             </div>
           </div>
 
           <div class="glass-panel rounded-2xl overflow-hidden">
-            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+            <button type="button" class="faq-btn w-full text-left p-6 flex items-center justify-between gap-4">
               <span class="font-display font-semibold text-sm sm:text-base text-white">Что будет, если сотрудник случайно удалит данные в таблице?</span>
               <span class="faq-icon text-zinc-400 text-xl">+</span>
             </button>
-            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+            <div class="faq-content hidden px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
               Мы закрываем формулы и служебные столбцы защитой от редактирования, а в Google Таблицах всегда сохраняется история изменений — любую строку можно вернуть за пару кликов.
             </div>
           </div>
 
           <div class="glass-panel rounded-2xl overflow-hidden">
-            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+            <button type="button" class="faq-btn w-full text-left p-6 flex items-center justify-between gap-4">
               <span class="font-display font-semibold text-sm sm:text-base text-white">Есть ли гарантия после сдачи?</span>
               <span class="faq-icon text-zinc-400 text-xl">+</span>
             </button>
-            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
-              Да, после запуска у вас есть <b class="text-white">30 дней бесплатной поддержки</b>: если нужно поправить текст, кнопку или логику — сделаем без доплат.
+            <div class="faq-content hidden px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+              Да, первый месяц после запуска у вас действует <b class="text-white">бесплатная техподдержка</b>: если нужно поправить текст, кнопку или логику — сделаем без доплат.
             </div>
           </div>
 
           <div class="glass-panel rounded-2xl overflow-hidden">
-            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+            <button type="button" class="faq-btn w-full text-left p-6 flex items-center justify-between gap-4">
               <span class="font-display font-semibold text-sm sm:text-base text-white">Как проходит оплата?</span>
               <span class="faq-icon text-zinc-400 text-xl">+</span>
             </button>
-            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
-              Берем небольшую предоплату для старта, а остаток вы оплачиваете после того, как мы покажем работающий проект на вашем телефоне.
+            <div class="faq-content hidden px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+              Берём небольшую предоплату для старта, а остаток вы оплачиваете после того, как мы покажем работающий проект на вашем телефоне.
             </div>
           </div>
         </div>
@@ -199,22 +209,64 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="py-12 border-t border-white/[0.08] bg-[#050505]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-      <a href="index.html" class="flex items-center gap-2.5">
-        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 w-auto object-contain mix-blend-lighten">
-        <span class="font-display font-bold text-sm text-white tracking-wider">SKOV TECHNOLOGIES</span>
-      </a>
-      <nav class="flex flex-wrap gap-6 text-xs sm:text-sm text-zinc-400">
-        <a href="index.html" class="hover:text-white">Главная</a>
-        <a href="cases.html" class="hover:text-white">Кейсы</a>
-        <a href="services.html" class="hover:text-white">Услуги и цены</a>
-        <a href="about.html" class="text-white">О студии</a>
-      </nav>
-      <div class="flex items-center gap-4">
-        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-white text-black text-xs font-semibold hover:bg-zinc-200 transition-all">Telegram @skov_tech</a>
-        <a href="tel:+79124446783" class="text-xs sm:text-sm text-zinc-400 hover:text-white">+7 (912) 444-67-83</a>
+  <!-- SHARED 3-COLUMN FOOTER -->
+  <footer class="pt-20 pb-14 border-t border-white/[0.08] bg-[#050505]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-white/[0.08]">
+        
+        <div class="md:col-span-5 space-y-4">
+          <a href="index.html" class="inline-flex items-center gap-3.5">
+            <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-10 sm:h-11 w-auto object-contain mix-blend-lighten">
+            <div class="flex flex-col">
+              <div class="flex items-center gap-1.5">
+                <span class="font-display font-extrabold text-xl sm:text-2xl tracking-wider text-white leading-none">SKOV</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              </div>
+              <span class="text-[11px] font-semibold tracking-[0.26em] text-zinc-300 uppercase mt-1.5 leading-none">TECHNOLOGIES</span>
+            </div>
+          </a>
+
+          <p class="text-sm text-zinc-400 leading-relaxed max-w-sm">
+            Автоматизация записи клиентов, учёт финансов в Google Таблицах и сайты под ключ для бизнеса без ежемесячной абонентки.
+          </p>
+
+          <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-medium text-zinc-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span>г. Ижевск • Работаем по всей РФ</span>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-4">
+          <div class="font-display font-semibold text-xs uppercase tracking-[0.2em] text-zinc-500">Навигация</div>
+          <nav class="flex flex-col space-y-3 text-sm text-zinc-300">
+            <a href="index.html" class="hover:text-white transition-colors">Главная</a>
+            <a href="cases.html" class="hover:text-white transition-colors">Кейсы и живые демо</a>
+            <a href="services.html" class="hover:text-white transition-colors">Услуги и калькулятор</a>
+            <a href="about.html" class="hover:text-white transition-colors">О студии и гарантии</a>
+          </nav>
+        </div>
+
+        <div class="md:col-span-4 space-y-4">
+          <div class="font-display font-semibold text-xs uppercase tracking-[0.2em] text-zinc-500">Контакты</div>
+          <div class="flex flex-col items-start gap-3">
+            <a href="tel:+79124446783" class="font-display font-bold text-lg sm:text-xl text-white hover:text-zinc-300 transition-colors whitespace-nowrap">
+              +7 (912) 444-67-83
+            </a>
+            <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-5 py-3 rounded-xl text-xs sm:text-sm inline-flex items-center gap-2 whitespace-nowrap">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              <span>Написать в Telegram (@skov_tech)</span>
+            </a>
+            <p class="text-xs text-zinc-500 pt-1">
+              Ежедневно с 09:00 до 21:00 (МСК+1 / Ижевск)
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-zinc-500">
+        <p>© 2026 SKOV TECHNOLOGIES. Все права защищены.</p>
+        <p class="text-zinc-600">г. Ижевск • Работаем по всей РФ</p>
       </div>
     </div>
   </footer>
@@ -223,10 +275,21 @@
     document.addEventListener('DOMContentLoaded', () => {
       const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec';
       function sendToGAS(payload) {
-        return fetch(GAS_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) }).catch(() => {});
+        return fetch(GAS_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
       }
+
       let isUnique = false;
-      try { if (!localStorage.getItem('skov_visitor_seen')) { isUnique = true; localStorage.setItem('skov_visitor_seen', new Date().toISOString()); } } catch (e) {}
+      try {
+        if (!localStorage.getItem('skov_visitor_seen')) {
+          isUnique = true;
+          localStorage.setItem('skov_visitor_seen', new Date().toISOString());
+        }
+      } catch (e) {}
       sendToGAS({ event: 'page_view', is_unique: isUnique, page: 'about.html', referrer: document.referrer || 'direct' });
 
       document.getElementById('mobile-menu-btn').addEventListener('click', () => {
