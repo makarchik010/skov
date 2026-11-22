@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>О студии и гарантии — SKOV TECHNOLOGIES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { display: ['Unbounded', 'sans-serif'], sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { background: #050505; color: #F4F4F5; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .text-metallic { background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 45%, #71717A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .glass-panel { background: rgba(17,17,17,0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+    .btn-metallic { background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 100%); color: #050505; font-weight: 600; transition: all 0.25s ease; }
+    .btn-metallic:hover { transform: translateY(-1px); box-shadow: 0 10px 30px -8px rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten shrink-0">
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-base sm:text-lg tracking-wider text-white leading-none">SKOV</span>
+          <span class="text-[9px] sm:text-[10px] font-medium tracking-[0.28em] text-zinc-400 uppercase mt-1 leading-none">TECHNOLOGIES</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="index.html" class="hover:text-white transition-colors">Главная</a>
+        <a href="cases.html" class="hover:text-white transition-colors">Кейсы</a>
+        <a href="services.html" class="hover:text-white transition-colors">Услуги и цены</a>
+        <a href="about.html" class="text-white transition-colors">О студии</a>
+      </nav>
+      <div class="flex items-center gap-2.5">
+        <button type="button" data-open-discuss class="btn-metallic px-4 py-2.5 sm:px-5 rounded-xl text-xs sm:text-sm whitespace-nowrap">Обсудить проект</button>
+        <button id="mobile-menu-btn" aria-label="Меню" class="md:hidden p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.08] bg-[#09090B]/95 px-4 py-4 space-y-2">
+      <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Главная</a>
+      <a href="cases.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Кейсы</a>
+      <a href="services.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Услуги и цены</a>
+      <a href="about.html" class="block px-4 py-3 rounded-xl text-sm text-white bg-white/[0.06]">О студии</a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-24 sm:pt-40 sm:pb-32">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- TEAM -->
+      <section class="mb-24">
+        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">О студии</span>
+        <h1 class="font-display font-bold text-3xl sm:text-5xl text-metallic mt-3 mb-5">Кто делает ваш проект</h1>
+        <p class="text-base text-zinc-400 max-w-2xl mb-12">
+          Работаем напрямую без менеджеров-посредников. Базируемся в <span class="text-white font-medium">Ижевске</span> (возможны личные встречи и выезды), запускаем проекты по всей РФ.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Founder 1: Makar -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border-white/15">
+            <!-- Плейсхолдер под фото: замени div на <img src="makar.jpg" class="w-full h-56 object-cover rounded-2xl mb-6"> -->
+            <div class="w-full h-52 rounded-2xl bg-gradient-to-br from-zinc-800/80 to-black border border-white/10 mb-6 flex items-center justify-center text-zinc-500 text-xs uppercase tracking-widest">
+              Фото основателя (makar.jpg)
+            </div>
+            <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Сооснователь • Tech Lead</div>
+            <h2 class="font-display font-bold text-2xl text-white mb-2">Макар</h2>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Архитектура систем, разработка Telegram-ботов, Mini Apps, сайтов и связок с Google Таблицами.
+            </p>
+          </div>
+
+          <!-- Founder 2: Egor -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border-white/15">
+            <!-- Плейсхолдер под фото: замени div на <img src="egor.jpg" class="w-full h-56 object-cover rounded-2xl mb-6"> -->
+            <div class="w-full h-52 rounded-2xl bg-gradient-to-br from-zinc-800/80 to-black border border-white/10 mb-6 flex items-center justify-center text-zinc-500 text-xs uppercase tracking-widest">
+              Фото основателя (egor.jpg)
+            </div>
+            <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Сооснователь • Внедрение</div>
+            <h2 class="font-display font-bold text-2xl text-white mb-2">Егор</h2>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Аудит процессов, выезды на объекты в Ижевске, настройка логики под реальную работу сотрудников.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ ACCORDION -->
+      <section class="pt-16 border-t border-white/[0.08]">
+        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Гарантии и частые вопросы</span>
+        <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic mt-2 mb-10">Ответы без мелкого шрифта</h2>
+
+        <div class="space-y-3" id="faq-list">
+          <div class="glass-panel rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+              <span class="font-display font-semibold text-sm sm:text-base text-white">Где физически работает бот и сколько стоит обслуживание?</span>
+              <span class="faq-icon text-zinc-400 text-xl transition-transform">+</span>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+              Бот и база работают на вашем аккаунте (Google / облачный хостинг). Обслуживание обходится в <b class="text-white">0–300 ₽/мес</b> напрямую провайдеру, без скрытых комиссий студии.
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+              <span class="font-display font-semibold text-sm sm:text-base text-white">Что будет, если сотрудник случайно удалит строку в Google Таблице?</span>
+              <span class="faq-icon text-zinc-400 text-xl transition-transform">+</span>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+              Мы ставим защиту на критические диапазоны и формулы, а Google Таблицы автоматически хранят полную историю версий — любую правку можно откатить за 10 секунд.
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+              <span class="font-display font-semibold text-sm sm:text-base text-white">Есть ли гарантия после сдачи проекта?</span>
+              <span class="faq-icon text-zinc-400 text-xl transition-transform">+</span>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+              Да, на каждый проект действует <b class="text-white">30 дней бесплатной техподдержки</b> и мелких корректировок после запуска.
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-2xl overflow-hidden">
+            <button type="button" class="faq-btn w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4">
+              <span class="font-display font-semibold text-sm sm:text-base text-white">Как проходит оплата?</span>
+              <span class="faq-icon text-zinc-400 text-xl transition-transform">+</span>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-zinc-400 leading-relaxed">
+              Без рисков: небольшая предоплата на старт, а основную часть вы переводите только после демонстрации работающего прототипа на вашем телефоне.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/[0.08] bg-[#050505]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 w-auto object-contain mix-blend-lighten">
+        <span class="font-display font-bold text-sm text-white tracking-wider">SKOV TECHNOLOGIES</span>
+      </a>
+      <nav class="flex flex-wrap gap-6 text-xs sm:text-sm text-zinc-400">
+        <a href="index.html" class="hover:text-white">Главная</a>
+        <a href="cases.html" class="hover:text-white">Кейсы</a>
+        <a href="services.html" class="hover:text-white">Услуги и цены</a>
+        <a href="about.html" class="text-white">О студии</a>
+      </nav>
+      <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white text-xs font-medium transition-all">Написать в Telegram</a>
+    </div>
+  </footer>
+
+  <!-- DISCUSS MODAL -->
+  <div id="discuss-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-panel w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="font-display font-bold text-xl text-white">Обсудить проект</h3>
+        <button type="button" id="close-discuss-modal" class="p-2 rounded-xl bg-white/[0.06] text-zinc-300">✕</button>
+      </div>
+      <form id="modal-discuss-form" class="space-y-4">
+        <input type="text" name="name" required placeholder="Ваше имя" class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <input type="text" name="contact" required placeholder="Телефон или @Telegram" class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <button type="submit" class="btn-metallic w-full py-4 rounded-2xl text-sm">Отправить заявку</button>
+      </form>
+      <div id="modal-discuss-success" class="hidden text-center py-6 space-y-2">
+        <div class="text-emerald-400 text-2xl">✓</div>
+        <div class="font-display font-bold text-white">Заявка принята!</div>
+        <p class="text-xs text-zinc-400">Свяжемся в ближайшее время.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec';
+      function sendToGAS(payload) {
+        return fetch(GAS_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) }).catch(() => {});
+      }
+      let isUnique = false;
+      try { if (!localStorage.getItem('skov_visitor_seen')) { isUnique = true; localStorage.setItem('skov_visitor_seen', new Date().toISOString()); } } catch (e) {}
+      sendToGAS({ event: 'page_view', is_unique: isUnique, page: 'about.html', referrer: document.referrer || 'direct' });
+
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+      // FAQ Accordion
+      document.querySelectorAll('.faq-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const content = btn.nextElementSibling;
+          const icon = btn.querySelector('.faq-icon');
+          const isOpen = !content.classList.contains('hidden');
+          content.classList.toggle('hidden', isOpen);
+          icon.textContent = isOpen ? '+' : '−';
+        });
+      });
+
+      const modal = document.getElementById('discuss-modal');
+      const form = document.getElementById('modal-discuss-form');
+      const success = document.getElementById('modal-discuss-success');
+      document.querySelectorAll('[data-open-discuss]').forEach(btn => btn.addEventListener('click', () => {
+        form.classList.remove('hidden'); success.classList.add('hidden'); modal.classList.remove('hidden'); document.body.style.overflow = 'hidden';
+      }));
+      function closeModal() { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+      document.getElementById('close-discuss-modal').addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const name = form.querySelector('[name="name"]').value.trim();
+        const contact = form.querySelector('[name="contact"]').value.trim();
+        await sendToGAS({
+          event: 'lead', name, contact, niche: 'Страница О студии', modules: 'Обсудить проект', support: '—', total_price: 0, monthly_price: 0, days: 'Уточняется',
+          formatted_text: `🔥 ЗАЯВКА (О СТУДИИ) | SKOV\n👤 Имя: ${name}\n📞 Контакт: ${contact}`
+        });
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
