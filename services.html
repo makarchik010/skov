@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Услуги и калькулятор — SKOV TECHNOLOGIES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { display: ['Unbounded', 'sans-serif'], sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { background: #050505; color: #F4F4F5; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .text-metallic { background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 45%, #71717A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .glass-panel { background: rgba(17,17,17,0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+    .calc-option.is-selected { border-color: rgba(255,255,255,0.5); background: linear-gradient(145deg, rgba(255,255,255,0.09) 0%, rgba(17,17,17,0.92) 100%); }
+    .calc-option.is-selected .check-box { background: #fff; border-color: #fff; color: #050505; }
+    .btn-metallic { background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 100%); color: #050505; font-weight: 600; transition: all 0.25s ease; }
+    .btn-metallic:hover { transform: translateY(-1px); box-shadow: 0 10px 30px -8px rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black pb-24 lg:pb-0">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten shrink-0">
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-base sm:text-lg tracking-wider text-white leading-none">SKOV</span>
+          <span class="text-[9px] sm:text-[10px] font-medium tracking-[0.28em] text-zinc-400 uppercase mt-1 leading-none">TECHNOLOGIES</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="index.html" class="hover:text-white transition-colors">Главная</a>
+        <a href="cases.html" class="hover:text-white transition-colors">Кейсы</a>
+        <a href="services.html" class="text-white transition-colors">Услуги и цены</a>
+        <a href="about.html" class="hover:text-white transition-colors">О студии</a>
+      </nav>
+      <div class="flex items-center gap-2.5">
+        <button type="button" id="header-order-btn" class="btn-metallic px-4 py-2.5 sm:px-5 rounded-xl text-xs sm:text-sm whitespace-nowrap">Обсудить проект</button>
+        <button id="mobile-menu-btn" aria-label="Меню" class="md:hidden p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.08] bg-[#09090B]/95 px-4 py-4 space-y-2">
+      <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Главная</a>
+      <a href="cases.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Кейсы</a>
+      <a href="services.html" class="block px-4 py-3 rounded-xl text-sm text-white bg-white/[0.06]">Услуги и цены</a>
+      <a href="about.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">О студии</a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-24 sm:pt-40 sm:pb-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14">
+        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Калькулятор</span>
+        <h1 class="font-display font-bold text-3xl sm:text-5xl text-metallic mt-3 mb-4">Услуги и точный расчет</h1>
+        <p class="text-base text-zinc-400">Выберите основу и нужные модули — смета и срок запуска пересчитаются сразу.</p>
+      </div>
+
+      <!-- CALCULATOR GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-28">
+        <div class="lg:col-span-7 space-y-6">
+
+          <!-- STEP 1: PACKAGES -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-7">
+            <h2 class="font-display font-semibold text-base sm:text-lg text-white mb-4">1. Базовое решение</h2>
+            <div class="space-y-3">
+              <button type="button" data-group="base" data-id="mvp" data-price="4900" data-days="2" data-name="Базовый старт MVP (простой бот)"
+                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all">
+                <div class="flex items-center gap-3.5">
+                  <div class="check-box w-5 h-5 rounded-md border border-white/25 flex items-center justify-center text-xs shrink-0">✓</div>
+                  <div>
+                    <div class="font-medium text-sm sm:text-base text-white">Базовый старт MVP</div>
+                    <div class="text-xs text-zinc-400">Простой бот сбора заявок в Telegram</div>
+                  </div>
+                </div>
+                <div class="text-right shrink-0">
+                  <div class="font-display font-semibold text-sm text-white">4 900 ₽</div>
+                  <div class="text-[11px] text-zinc-500">2 дн.</div>
+                </div>
+              </button>
+
+              <button type="button" data-group="base" data-id="crm" data-price="9900" data-days="3" data-name="Система записи + Google Таблица"
+                class="calc-option is-selected w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all">
+                <div class="flex items-center gap-3.5">
+                  <div class="check-box w-5 h-5 rounded-md border border-white/25 flex items-center justify-center text-xs shrink-0">✓</div>
+                  <div>
+                    <div class="font-medium text-sm sm:text-base text-white">Система записи + Таблица</div>
+                    <div class="text-xs text-zinc-400">Онлайн-запись 24/7 + авто-учет клиентов и выручки</div>
+                  </div>
+                </div>
+                <div class="text-right shrink-0">
+                  <div class="font-display font-semibold text-sm text-white">9 900 ₽</div>
+                  <div class="text-[11px] text-zinc-500">3 дн.</div>
+                </div>
+              </button>
+
+              <button type="button" data-group="base" data-id="site" data-price="14900" data-days="4" data-name="Сайт под ключ"
+                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all">
+                <div class="flex items-center gap-3.5">
+                  <div class="check-box w-5 h-5 rounded-md border border-white/25 flex items-center justify-center text-xs shrink-0">✓</div>
+                  <div>
+                    <div class="font-medium text-sm sm:text-base text-white">Сайт под ключ</div>
+                    <div class="text-xs text-zinc-400">Современный дизайн, адаптив и заявки в Telegram</div>
+                  </div>
+                </div>
+                <div class="text-right shrink-0">
+                  <div class="font-display font-semibold text-sm text-white">14 900 ₽</div>
+                  <div class="text-[11px] text-zinc-500">4 дн.</div>
+                </div>
+              </button>
+
+              <button type="button" data-group="base" data-id="miniapp" data-price="19900" data-days="7" data-name="Telegram Mini App"
+                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all">
+                <div class="flex items-center gap-3.5">
+                  <div class="check-box w-5 h-5 rounded-md border border-white/25 flex items-center justify-center text-xs shrink-0">✓</div>
+                  <div>
+                    <div class="font-medium text-sm sm:text-base text-white">Telegram Mini App</div>
+                    <div class="text-xs text-zinc-400">Полноценное приложение внутри Telegram с каталогом и корзиной</div>
+                  </div>
+                </div>
+                <div class="text-right shrink-0">
+                  <div class="font-display font-semibold text-sm text-white">19 900 ₽</div>
+                  <div class="text-[11px] text-zinc-500">7 дн.</div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: ADDONS -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-7">
+            <h2 class="font-display font-semibold text-base sm:text-lg text-white mb-4">2. Дополнительные модули</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button type="button" id="addon-none" class="calc-option is-selected sm:col-span-2 text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between">
+                <span class="text-sm font-medium text-white">Базовая комплектация (без доп. модулей)</span>
+                <span class="font-display font-semibold text-sm text-emerald-400">0 ₽</span>
+              </button>
+
+              <button type="button" data-group="addon" data-price="2500" data-days="1" data-name="Админка в Telegram"
+                class="calc-option text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3">
+                <span class="text-sm text-white">Админка в Telegram</span>
+                <span class="font-display font-semibold text-sm text-white shrink-0">+2 500 ₽</span>
+              </button>
+
+              <button type="button" data-group="addon" data-price="1500" data-days="1" data-name="Напоминания клиентам"
+                class="calc-option text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3">
+                <span class="text-sm text-white">Напоминания клиентам</span>
+                <span class="font-display font-semibold text-sm text-white shrink-0">+1 500 ₽</span>
+              </button>
+
+              <button type="button" data-group="addon" data-price="2000" data-days="1" data-name="Онлайн-оплата (СБП / карты)"
+                class="calc-option sm:col-span-2 text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3">
+                <span class="text-sm text-white">Онлайн-оплата (СБП / карты)</span>
+                <span class="font-display font-semibold text-sm text-white shrink-0">+2 000 ₽</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: SUPPORT -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-7">
+            <h2 class="font-display font-semibold text-base sm:text-lg text-white mb-4">3. Сопровождение</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button type="button" data-group="support" data-monthly="0" data-name="Разовая передача «под ключ»"
+                class="calc-option is-selected text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between">
+                <span class="text-sm text-white">Разовая передача</span>
+                <span class="font-display font-semibold text-sm text-emerald-400">0 ₽/мес</span>
+              </button>
+              <button type="button" data-group="support" data-monthly="990" data-name="Техподдержка и правки"
+                class="calc-option text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between">
+                <span class="text-sm text-white">Поддержка и правки</span>
+                <span class="font-display font-semibold text-sm text-white">+990 ₽/мес</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STICKY SUMMARY -->
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border-white/15">
+            <div class="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-5">Итоговая смета</div>
+            <div id="summary-list" class="space-y-2.5 mb-6 text-sm"></div>
+            <div class="border-t border-white/10 pt-5 space-y-3">
+              <div class="flex items-baseline justify-between">
+                <span class="text-sm text-zinc-400">Запуск:</span>
+                <span id="total-price" class="font-display font-bold text-2xl sm:text-3xl text-white">9 900 ₽</span>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-zinc-400">Абонентка:</span>
+                <span id="monthly-price" class="font-semibold text-emerald-400">0 ₽ / мес</span>
+              </div>
+              <div class="flex items-center justify-between text-sm bg-white/[0.04] p-3.5 rounded-xl">
+                <span class="text-zinc-300">Срок запуска:</span>
+                <span id="total-days" class="font-display font-bold text-white">3 раб. дн.</span>
+              </div>
+            </div>
+            <button type="button" id="open-order-btn" class="btn-metallic w-full mt-6 py-4 rounded-2xl text-sm">Зафиксировать расчет</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARISON TABLE -->
+      <section class="pt-16 border-t border-white/[0.08]">
+        <div class="mb-10">
+          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Экономика</span>
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic mt-2">Почему выгоднее, чем арендные CRM</h2>
+        </div>
+
+        <div class="glass-panel rounded-3xl overflow-hidden border-white/15">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b border-white/10 bg-white/[0.03]">
+                  <th class="p-5 font-display text-zinc-400 font-semibold">Параметр</th>
+                  <th class="p-5 font-display text-white font-bold">SKOV TECHNOLOGIES</th>
+                  <th class="p-5 font-display text-zinc-400 font-semibold">Арендные CRM (YCLIENTS и др.)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/[0.06]">
+                <tr>
+                  <td class="p-5 text-zinc-400">Оплата</td>
+                  <td class="p-5 text-emerald-400 font-semibold">Разовый платёж (0 ₽/мес)</td>
+                  <td class="p-5 text-zinc-300">1 500–2 500 ₽ каждый месяц</td>
+                </tr>
+                <tr>
+                  <td class="p-5 text-zinc-400">Затраты за 1 год</td>
+                  <td class="p-5 text-white font-semibold">от 9 900 ₽ (один раз)</td>
+                  <td class="p-5 text-rose-400 font-semibold">30 000+ ₽ в год (и тарифы растут)</td>
+                </tr>
+                <tr>
+                  <td class="p-5 text-zinc-400">Владение базой</td>
+                  <td class="p-5 text-white">100% на вашем Google-аккаунте</td>
+                  <td class="p-5 text-zinc-400">Доступ блокируется при неоплате</td>
+                </tr>
+                <tr>
+                  <td class="p-5 text-zinc-400">Удобство для клиента</td>
+                  <td class="p-5 text-white">Запись в 3 клика прямо в Telegram</td>
+                  <td class="p-5 text-zinc-400">Сторонние виджеты и SMS-коды</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/[0.08] bg-[#050505]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 w-auto object-contain mix-blend-lighten">
+        <span class="font-display font-bold text-sm text-white tracking-wider">SKOV TECHNOLOGIES</span>
+      </a>
+      <nav class="flex flex-wrap gap-6 text-xs sm:text-sm text-zinc-400">
+        <a href="index.html" class="hover:text-white">Главная</a>
+        <a href="cases.html" class="hover:text-white">Кейсы</a>
+        <a href="services.html" class="text-white">Услуги и цены</a>
+        <a href="about.html" class="hover:text-white">О студии</a>
+      </nav>
+      <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white text-xs font-medium transition-all">Написать в Telegram</a>
+    </div>
+  </footer>
+
+  <!-- ORDER MODAL -->
+  <div id="order-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-panel w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="font-display font-bold text-xl text-white">Фиксация расчета</h3>
+        <button type="button" id="close-order-modal" class="p-2 rounded-xl bg-white/[0.06] text-zinc-300">✕</button>
+      </div>
+      <form id="calc-lead-form" class="space-y-4">
+        <input type="text" name="name" required placeholder="Ваше имя" class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <input type="text" name="contact" required placeholder="Телефон или @Telegram" class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <input type="text" name="niche" required placeholder="Ниша бизнеса" class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <button type="submit" class="btn-metallic w-full py-4 rounded-2xl text-sm">Отправить смету</button>
+      </form>
+      <div id="calc-lead-success" class="hidden text-center py-6 space-y-2">
+        <div class="text-emerald-400 text-2xl">✓</div>
+        <div class="font-display font-bold text-white">Смета отправлена!</div>
+        <p class="text-xs text-zinc-400">Свяжемся с вами в ближайшее время.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec';
+      function sendToGAS(payload) {
+        return fetch(GAS_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) }).catch(() => {});
+      }
+      let isUnique = false;
+      try { if (!localStorage.getItem('skov_visitor_seen')) { isUnique = true; localStorage.setItem('skov_visitor_seen', new Date().toISOString()); } } catch (e) {}
+      sendToGAS({ event: 'page_view', is_unique: isUnique, page: 'services.html', referrer: document.referrer || 'direct' });
+
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+      const baseBtns = document.querySelectorAll('[data-group="base"]');
+      const addonNone = document.getElementById('addon-none');
+      const addonBtns = document.querySelectorAll('[data-group="addon"]');
+      const supportBtns = document.querySelectorAll('[data-group="support"]');
+
+      // Apply preset from URL (?preset=site / miniapp / crm)
+      const preset = new URLSearchParams(window.location.search).get('preset');
+      if (preset) {
+        baseBtns.forEach(b => b.classList.toggle('is-selected', b.dataset.id === preset));
+      }
+
+      let state = { items: [], total: 0, monthly: 0, days: 0, support: '' };
+      const fmt = n => n.toLocaleString('ru-RU') + ' ₽';
+
+      function recalc() {
+        let items = [], total = 0, days = 0, monthly = 0, support = 'Разовая передача «под ключ»';
+        baseBtns.forEach(b => { if (b.classList.contains('is-selected')) { items.push({ n: b.dataset.name, p: +b.dataset.price }); total += +b.dataset.price; days += +b.dataset.days; } });
+        addonBtns.forEach(b => { if (b.classList.contains('is-selected')) { items.push({ n: b.dataset.name, p: +b.dataset.price }); total += +b.dataset.price; days += +b.dataset.days; } });
+        supportBtns.forEach(b => { if (b.classList.contains('is-selected')) { monthly = +b.dataset.monthly; support = b.dataset.name; } });
+        state = { items, total, monthly, days: items.length ? Math.max(1, days) : 0, support };
+
+        const list = document.getElementById('summary-list');
+        list.innerHTML = items.length
+          ? items.map(i => `<div class="flex justify-between gap-2"><span class="text-zinc-300">${i.n}</span><span class="text-white font-medium shrink-0">${fmt(i.p)}</span></div>`).join('')
+          : '<div class="text-xs text-zinc-500">Выберите решение слева</div>';
+
+        document.getElementById('total-price').textContent = fmt(total);
+        document.getElementById('monthly-price').textContent = monthly ? fmt(monthly) + ' / мес' : '0 ₽ / мес';
+        document.getElementById('total-days').textContent = state.days ? `${state.days} раб. дн.` : '—';
+      }
+
+      let calcTracked = false;
+      function trackCalc() { if (!calcTracked) { calcTracked = true; sendToGAS({ event: 'calc_use', action: 'services_calc' }); } }
+
+      baseBtns.forEach(b => b.addEventListener('click', () => { trackCalc(); b.classList.toggle('is-selected'); recalc(); }));
+      addonNone.addEventListener('click', () => { trackCalc(); addonBtns.forEach(b => b.classList.remove('is-selected')); addonNone.classList.add('is-selected'); recalc(); });
+      addonBtns.forEach(b => b.addEventListener('click', () => {
+        trackCalc(); b.classList.toggle('is-selected');
+        const any = Array.from(addonBtns).some(x => x.classList.contains('is-selected'));
+        addonNone.classList.toggle('is-selected', !any);
+        recalc();
+      }));
+      supportBtns.forEach(b => b.addEventListener('click', () => { trackCalc(); supportBtns.forEach(x => x.classList.remove('is-selected')); b.classList.add('is-selected'); recalc(); }));
+      recalc();
+
+      const modal = document.getElementById('order-modal');
+      const form = document.getElementById('calc-lead-form');
+      const success = document.getElementById('calc-lead-success');
+      function openModal() { form.classList.remove('hidden'); success.classList.add('hidden'); modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+      function closeModal() { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+
+      document.getElementById('open-order-btn').addEventListener('click', openModal);
+      document.getElementById('header-order-btn').addEventListener('click', openModal);
+      document.getElementById('close-order-modal').addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const name = form.querySelector('[name="name"]').value.trim();
+        const contact = form.querySelector('[name="contact"]').value.trim();
+        const niche = form.querySelector('[name="niche"]').value.trim();
+        const mods = state.items.map(i => `${i.n} (${fmt(i.p)})`).join('; ') || 'Индивидуальный запрос';
+        await sendToGAS({
+          event: 'lead', name, contact, niche, modules: mods, support: state.support, total_price: state.total, monthly_price: state.monthly, days: `${state.days} раб. дн.`,
+          formatted_text: `🔥 РАСЧЕТ ИЗ КАЛЬКУЛЯТОРА | SKOV\n👤 ${name}\n📞 ${contact}\n🏢 ${niche}\n📋 ${mods}\n💰 Итого: ${fmt(state.total)} (${fmt(state.monthly)}/мес)`
+        });
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
