@@ -34,6 +34,59 @@
       transition: opacity 0.2s ease;
     }
     .btn-main:hover { opacity: 0.9; }
+
+    /* Interactive Demo Tabs */
+    .demo-tab {
+      background: #0E0E11;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #A1A1AA;
+      transition: all 0.2s ease;
+    }
+    .demo-tab:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      color: #FFFFFF;
+    }
+    .demo-tab.is-active {
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #050505;
+      font-weight: 600;
+    }
+
+    /* iPhone Mockup Frame */
+    .iphone-frame {
+      width: 100%;
+      max-width: 372px;
+      height: 720px;
+      border-radius: 50px;
+      background: #09090B;
+      border: 3px solid #27272A;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 30px 70px -15px rgba(0,0,0,0.95);
+      position: relative;
+      overflow: hidden;
+    }
+    .iphone-island {
+      width: 112px;
+      height: 28px;
+      background: #000000;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      pointer-events: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 2.5px solid rgba(255,255,255,0.15);
+      border-top-color: #FFFFFF;
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
   </style>
 </head>
 <body class="selection:bg-white selection:text-black">
@@ -81,64 +134,25 @@
   </header>
 
   <main>
-    <!-- 1. HERO + AUTO-DETAILING SIMULATOR -->
+    <!-- 1. HERO -->
     <section class="py-20 sm:py-28 border-b border-white/[0.06]">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-6">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl">
           <p class="text-xs font-semibold tracking-[0.18em] text-zinc-400 uppercase mb-5">г. Ижевск • Работаем по всей РФ</p>
-          <h1 class="h-title font-bold text-4xl sm:text-5xl leading-[1.08] mb-5">
+          <h1 class="h-title font-bold text-4xl sm:text-6xl leading-[1.06] mb-6">
             Онлайн-запись, учёт финансов и сайты под ключ
           </h1>
-          <p class="text-base sm:text-lg text-zinc-400 leading-relaxed mb-8 max-w-lg">
-            Запускаем Telegram-ботов и сайты со связкой с Google Таблицами за 2–5 дней. Платите один раз — 0 ₽/мес абонентки.
+          <p class="text-base sm:text-xl text-zinc-400 leading-relaxed mb-9 max-w-2xl">
+            Запускаем Telegram-ботов, Mini Apps и сайты со связкой с Google Таблицами за 2–5 дней. Платите один раз — 0 ₽/мес абонентки.
           </p>
           <div class="flex flex-col sm:flex-row gap-3.5">
-            <a href="services.html" class="btn-main px-7 py-4 rounded-2xl text-sm sm:text-base text-center whitespace-nowrap">Рассчитать стоимость</a>
-            <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-2xl border border-white/15 hover:border-white/35 text-white font-medium text-sm sm:text-base text-center whitespace-nowrap">Обсудить в Telegram</a>
+            <a href="services.html" class="btn-main px-8 py-4 rounded-2xl text-sm sm:text-base text-center whitespace-nowrap">Рассчитать стоимость</a>
+            <a href="#live-testdrive" class="px-8 py-4 rounded-2xl border border-white/15 hover:border-white/35 text-white font-medium text-sm sm:text-base text-center whitespace-nowrap">Тест-драйв решений ↓</a>
           </div>
         </div>
 
-        <!-- Compact Simulator: Auto Tinting Studio -->
-        <div class="lg:col-span-6">
-          <div class="card rounded-3xl p-6 sm:p-7">
-            <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-              <div>
-                <div class="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">Живой тест</div>
-                <div class="font-bold text-base text-white mt-0.5">Студия тонировки и автоуслуг</div>
-              </div>
-              <button type="button" id="sim-reset" class="text-xs text-zinc-400 hover:text-white underline">Сбросить</button>
-            </div>
-
-            <div class="rounded-2xl bg-[#050505] border border-white/10 p-4 mb-4">
-              <div id="sim-msg" class="text-xs sm:text-sm text-zinc-200 mb-3">1. Клиент выбирает услугу в боте:</div>
-              <div id="sim-btns" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <button type="button" data-srv="Тонировка полусферы" data-sum="4 500 ₽" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium text-left">Тонировка • 4 500 ₽</button>
-                <button type="button" data-srv="Броня фар пленкой" data-sum="3 500 ₽" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium text-left">Броня фар • 3 500 ₽</button>
-              </div>
-            </div>
-
-            <div class="rounded-2xl bg-[#050505] border border-white/10 p-4 text-xs">
-              <div class="text-emerald-400 font-semibold mb-2">2. Таблица учёта для админа и бухгалтера</div>
-              <div class="grid grid-cols-3 text-zinc-500 pb-2 border-b border-white/10">
-                <span>Услуга</span><span>Запись</span><span class="text-right">Касса</span>
-              </div>
-              <div id="sim-row" class="grid grid-cols-3 pt-2.5 text-zinc-500">
-                <span id="c-srv" class="truncate">Ожидание...</span>
-                <span id="c-dt">—</span>
-                <span id="c-sum" class="text-right">—</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. KEY NUMBERS + 3 PACKAGES -->
-    <section class="py-24 sm:py-32 border-b border-white/[0.06]">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
         <!-- 3 Hard Facts -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pb-20 mb-20 border-b border-white/[0.08]">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-16 mt-16 border-t border-white/[0.08]">
           <div>
             <div class="font-bold text-3xl text-white">0 ₽/мес</div>
             <p class="text-sm text-zinc-400 mt-1.5">Разовый платёж вместо 2 500 ₽/мес за аренду CRM.</p>
@@ -152,8 +166,93 @@
             <p class="text-sm text-zinc-400 mt-1.5">Прозрачная база и финансы для админа и бухгалтера.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- 3 Tools -->
+    <!-- 2. INTERACTIVE LIVE TEST-DRIVE (IPHONE MOCKUP + TABS) -->
+    <section id="live-testdrive" class="py-24 sm:py-32 border-b border-white/[0.06]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="mb-10">
+          <p class="text-xs font-semibold tracking-[0.18em] text-zinc-500 uppercase mb-3">Интерактив</p>
+          <h2 class="h-title font-bold text-3xl sm:text-5xl leading-[1.1] mb-8">
+            Живой тест-драйв наших решений
+          </h2>
+
+          <!-- Niche Tabs -->
+          <div class="flex flex-wrap gap-3" id="testdrive-tabs">
+            <button type="button" data-niche="auto" class="demo-tab is-active px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">
+              Тонировка и детейлинг
+            </button>
+            <button type="button" data-niche="beauty" class="demo-tab px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">
+              Бьюти и мастера
+            </button>
+            <button type="button" data-niche="food" class="demo-tab px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">
+              Ресторан и доставка
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column: Niche Description -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="card rounded-3xl p-7 sm:p-9 border-white/15">
+              <div class="flex flex-wrap items-center gap-2.5 mb-5">
+                <span id="td-tag-days" class="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/10 text-xs font-medium text-zinc-200">
+                  Запуск: 2–3 дня
+                </span>
+                <span id="td-tag-price" class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/25 text-xs font-semibold text-emerald-300">
+                  Под ключ: от 6 900 ₽
+                </span>
+              </div>
+
+              <h3 id="td-title" class="font-bold text-2xl sm:text-3xl text-white leading-tight mb-4">
+                Запись в бокс без звонков и учёт загрузки для админа
+              </h3>
+
+              <p id="td-desc" class="text-sm sm:text-base text-zinc-400 leading-relaxed mb-8">
+                Автовладелец выбирает услугу и свободное окно прямо в смартфоне, а заявка и сумма сразу фиксируются в Google Таблице.
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a id="td-calc-link" href="services.html?base=bot" class="btn-main px-6 py-4 rounded-xl text-sm text-center whitespace-nowrap">
+                  Хочу такое же решение
+                </a>
+                <a id="td-ext-link" href="https://auto.skovtech.ru/" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-xl border border-white/15 hover:border-white/35 text-white text-sm font-medium text-center whitespace-nowrap">
+                  Открыть на весь экран ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive iPhone Mockup -->
+          <div class="lg:col-span-6 flex flex-col items-center">
+            <div class="iphone-frame">
+              <div class="iphone-island"></div>
+
+              <!-- Loading Overlay -->
+              <div id="iphone-loader" class="hidden absolute inset-0 z-10 bg-[#09090B]/90 flex flex-col items-center justify-center gap-3">
+                <div class="spinner"></div>
+                <span class="text-xs text-zinc-400">Загружаем демо...</span>
+              </div>
+
+              <iframe id="iphone-iframe" src="https://auto.skovtech.ru/" title="Живое демо SKOV TECHNOLOGIES"
+                class="w-full h-full border-0 bg-[#050505]" loading="lazy"></iframe>
+            </div>
+
+            <p class="text-xs text-zinc-400 text-center mt-4">
+              Покликайте прямо внутри экрана — это живые рабочие системы
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SOLUTIONS & PRICES -->
+    <section class="py-24 sm:py-32 border-b border-white/[0.06]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex items-end justify-between gap-4 mb-10">
           <h2 class="h-title font-bold text-2xl sm:text-4xl">Решения и цены</h2>
           <a href="services.html" class="text-sm text-zinc-300 hover:text-white whitespace-nowrap">Калькулятор →</a>
@@ -196,29 +295,29 @@
       </div>
     </section>
 
-    <!-- 3. CASES PREVIEW (STRICTLY 3 LINES PER CASE) -->
+    <!-- 4. ALL 5 PROJECTS PREVIEW (STRICTLY 3 LINES PER CASE) -->
     <section class="py-24 sm:py-32">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex items-end justify-between gap-4 mb-10">
-          <h2 class="h-title font-bold text-2xl sm:text-4xl">Живые проекты</h2>
-          <a href="cases.html" class="text-sm text-zinc-300 hover:text-white whitespace-nowrap">Все кейсы →</a>
+          <h2 class="h-title font-bold text-2xl sm:text-4xl">Все проекты в работе</h2>
+          <a href="cases.html" class="text-sm text-zinc-300 hover:text-white whitespace-nowrap">Подробнее →</a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="card rounded-3xl p-7 flex flex-col justify-between">
             <div>
-              <h3 class="font-bold text-lg text-white mb-2">Частная практика (юрист / психолог)</h3>
-              <p class="text-sm text-zinc-400 mb-6">Ручная запись в чатах → сайт с правками из TG и автозапись в таблицу.</p>
+              <h3 class="font-bold text-lg text-white mb-2">Студия тонировки и автоуслуг</h3>
+              <p class="text-sm text-zinc-400 mb-6">Звонки в бокс → онлайн-запись на услуги и учёт загрузки в таблице.</p>
             </div>
-            <a href="https://svetlanasokovikova.ru" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
+            <a href="https://auto.skovtech.ru/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
           </div>
 
           <div class="card rounded-3xl p-7 flex flex-col justify-between">
             <div>
-              <h3 class="font-bold text-lg text-white mb-2">Турагентство Withiv</h3>
-              <p class="text-sm text-zinc-400 mb-6">Долгий подбор туров → поиск по 80+ операторам (Tourvisor API) и лиды в TG.</p>
+              <h3 class="font-bold text-lg text-white mb-2">Бьюти-студия и частные мастера</h3>
+              <p class="text-sm text-zinc-400 mb-6">Долгая переписка в директе → онлайн-запись из соцсетей за 3 касания.</p>
             </div>
-            <a href="https://travel.skovtech.ru" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
+            <a href="https://beauty.skovtech.ru/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
           </div>
 
           <div class="card rounded-3xl p-7 flex flex-col justify-between">
@@ -226,7 +325,23 @@
               <h3 class="font-bold text-lg text-white mb-2">Ресторан L'Atelier Bistro</h3>
               <p class="text-sm text-zinc-400 mb-6">Комиссия агрегаторов 30% → свой Telegram Mini App с меню и корзиной.</p>
             </div>
-            <a href="https://food.skovtech.ru" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
+            <a href="https://food.skovtech.ru/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
+          </div>
+
+          <div class="card rounded-3xl p-7 flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-lg text-white mb-2">Частная практика (юрист / психолог)</h3>
+              <p class="text-sm text-zinc-400 mb-6">Ручная запись в чатах → сайт со сменой цен из TG и автозапись в таблицу.</p>
+            </div>
+            <a href="https://svetlanasokovikova.ru" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
+          </div>
+
+          <div class="card rounded-3xl p-7 flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-lg text-white mb-2">Турагентство Withiv</h3>
+              <p class="text-sm text-zinc-400 mb-6">Ручной подбор туров → поиск по 80+ операторам (Tourvisor API) и лиды в TG.</p>
+            </div>
+            <a href="https://travel.skovtech.ru" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:underline">Открыть демо ↗</a>
           </div>
         </div>
       </div>
@@ -283,36 +398,67 @@
 
     document.getElementById('menu-btn').onclick = () => document.getElementById('mobile-nav').classList.toggle('hidden');
 
-    const msg = document.getElementById('sim-msg'), btns = document.getElementById('sim-btns'), row = document.getElementById('sim-row');
-    let srv = '', sum = '';
-    function bindSim() {
-      btns.querySelectorAll('.sim-btn').forEach(b => b.onclick = () => {
-        if (b.dataset.srv) {
-          srv = b.dataset.srv; sum = b.dataset.sum;
-          msg.textContent = `Услуга: ${srv}. Выберите время:`;
-          document.getElementById('c-srv').textContent = srv;
-          document.getElementById('c-sum').textContent = sum;
-          row.className = 'grid grid-cols-3 pt-2.5 text-white';
-          btns.innerHTML = `<button type="button" data-dt="Завтра, 11:00" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium">Завтра, 11:00</button><button type="button" data-dt="Завтра, 16:00" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium">Завтра, 16:00</button>`;
-          bindSim();
-        } else {
-          msg.textContent = `✓ Записано (${b.dataset.dt}). Строка добавлена в таблицу.`;
-          document.getElementById('c-dt').textContent = b.dataset.dt;
-          row.className = 'grid grid-cols-3 pt-2.5 text-emerald-400 font-semibold';
-          btns.innerHTML = `<div class="sm:col-span-2 text-center text-xs text-emerald-400 py-1">Учёт обновлён</div>`;
+    // Interactive iPhone Test-Drive Switcher
+    const niches = {
+      auto: {
+        days: 'Запуск: 2–3 дня',
+        price: 'Под ключ: от 6 900 ₽',
+        title: 'Запись в бокс без звонков и учёт загрузки для админа',
+        desc: 'Автовладелец выбирает услугу и свободное окно прямо в смартфоне, а заявка и сумма сразу фиксируются в Google Таблице.',
+        calc: 'services.html?base=bot',
+        url: 'https://auto.skovtech.ru/'
+      },
+      beauty: {
+        days: 'Запуск: 2–3 дня',
+        price: 'Под ключ: от 6 900 ₽',
+        title: 'Онлайн-запись из соцсетей за 3 касания вместо переписки в директе',
+        desc: 'Клиент сам выбирает мастера, процедуру и время 24/7 — администратор получает готовое уведомление и чистую кассу.',
+        calc: 'services.html?base=bot',
+        url: 'https://beauty.skovtech.ru/'
+      },
+      food: {
+        days: 'Запуск: 4–5 дней',
+        price: 'Под ключ: от 16 900 ₽',
+        title: 'Заказы прямо в Telegram без комиссии агрегаторов 30%',
+        desc: 'Полноценное приложение внутри мессенджера: витрина блюд, корзина, оформление доставки и передача заказа на кухню.',
+        calc: 'services.html?base=miniapp',
+        url: 'https://food.skovtech.ru/'
+      }
+    };
+
+    const iframe = document.getElementById('iphone-iframe');
+    const loader = document.getElementById('iphone-loader');
+    let loaderTimer = null;
+
+    iframe.addEventListener('load', () => {
+      clearTimeout(loaderTimer);
+      loader.classList.add('hidden');
+    });
+
+    document.querySelectorAll('#testdrive-tabs .demo-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.niche;
+        const item = niches[key];
+        if (!item) return;
+
+        document.querySelectorAll('#testdrive-tabs .demo-tab').forEach(t => t.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        document.getElementById('td-tag-days').textContent = item.days;
+        document.getElementById('td-tag-price').textContent = item.price;
+        document.getElementById('td-title').textContent = item.title;
+        document.getElementById('td-desc').textContent = item.desc;
+        document.getElementById('td-calc-link').href = item.calc;
+        document.getElementById('td-ext-link').href = item.url;
+
+        if (iframe.src !== item.url) {
+          loader.classList.remove('hidden');
+          iframe.src = item.url;
+          clearTimeout(loaderTimer);
+          loaderTimer = setTimeout(() => loader.classList.add('hidden'), 1800);
         }
       });
-    }
-    document.getElementById('sim-reset').onclick = () => {
-      msg.textContent = '1. Клиент выбирает услугу в боте:';
-      document.getElementById('c-srv').textContent = 'Ожидание...';
-      document.getElementById('c-dt').textContent = '—';
-      document.getElementById('c-sum').textContent = '—';
-      row.className = 'grid grid-cols-3 pt-2.5 text-zinc-500';
-      btns.innerHTML = `<button type="button" data-srv="Тонировка полусферы" data-sum="4 500 ₽" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium text-left">Тонировка • 4 500 ₽</button><button type="button" data-srv="Броня фар пленкой" data-sum="3 500 ₽" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium text-left">Броня фар • 3 500 ₽</button>`;
-      bindSim();
-    };
-    bindSim();
+    });
   </script>
 </body>
 </html>
