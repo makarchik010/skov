@@ -89,11 +89,12 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="tel:+79124446783" class="hidden sm:inline-flex items-center text-xs sm:text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+        <a href="tel:+79124446783" class="hidden sm:inline-flex items-center text-xs sm:text-sm font-medium text-zinc-400 hover:text-white transition-colors">
           +7 (912) 444-67-83
         </a>
-        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-4 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap">
-          Написать в TG
+        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-4 py-2.5 rounded-xl text-xs sm:text-sm whitespace-nowrap inline-flex items-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          <span>Telegram</span>
         </a>
         <button id="mobile-menu-btn" aria-label="Меню" class="lg:hidden p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -106,38 +107,42 @@
       <a href="cases.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Кейсы</a>
       <a href="services.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Услуги и цены</a>
       <a href="about.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">О студии</a>
-      <a href="tel:+79124446783" class="block px-4 py-3 rounded-xl text-sm font-medium text-emerald-400">Позвонить: +7 (912) 444-67-83</a>
+      <div class="pt-2 border-t border-white/10 flex items-center justify-between px-4 py-2">
+        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white">Telegram: @skov_tech</a>
+        <a href="tel:+79124446783" class="text-xs text-zinc-400">+7 (912) 444-67-83</a>
+      </div>
     </div>
   </header>
 
   <!-- 1. HERO + INTERACTIVE AUTO-DETAILING DEMO -->
-  <section class="relative pt-32 pb-24 sm:pt-40 sm:pb-32 bg-grid-pattern border-b border-white/[0.06] overflow-hidden">
+  <section class="relative pt-28 pb-20 sm:pt-36 sm:pb-28 bg-grid-pattern border-b border-white/[0.06] overflow-hidden">
     <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[540px] sm:w-[860px] h-[340px] sm:h-[460px] rounded-full bg-gradient-to-b from-white/[0.08] via-zinc-400/[0.02] to-transparent blur-3xl"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         
-        <!-- Left: Clear Offer -->
+        <!-- Left: Offer -->
         <div class="lg:col-span-6">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] mb-7">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] mb-6">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span class="text-[11px] sm:text-xs font-semibold tracking-[0.14em] text-zinc-200 uppercase">Боты, учет и сайты без абонентки</span>
           </div>
 
-          <h1 class="font-display font-bold text-3xl sm:text-5xl leading-[1.12] tracking-tight text-metallic mb-6">
+          <h1 class="font-display font-bold text-3xl sm:text-5xl leading-[1.12] tracking-tight text-metallic mb-5">
             Запись клиентов, учет финансов и сайты под ключ
           </h1>
 
-          <p class="text-base sm:text-lg text-zinc-400 leading-relaxed mb-9">
+          <p class="text-base sm:text-lg text-zinc-400 leading-relaxed mb-8">
             Собираем Telegram-ботов и быстрые сайты со встроенным учетом в Google Таблицах. Удобно клиентам для записи, а администратору и бухгалтеру — для контроля заявок и кассы.
           </p>
 
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-            <a href="services.html" class="btn-metallic px-7 py-4 rounded-2xl text-center text-sm sm:text-base">
-              Рассчитать стоимость
+            <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-7 py-4 rounded-2xl text-center text-sm sm:text-base inline-flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              <span>Обсудить в Telegram</span>
             </a>
-            <a href="cases.html" class="px-7 py-4 rounded-2xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-white font-medium text-center text-sm sm:text-base transition-all">
-              Живые проекты
+            <a href="services.html" class="px-7 py-4 rounded-2xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-white font-medium text-center text-sm sm:text-base transition-all">
+              Калькулятор цен
             </a>
           </div>
         </div>
@@ -205,133 +210,121 @@
     </div>
   </section>
 
-  <!-- 2. WHY WE ARE DIFFERENT (4 HARD FACTS) -->
-  <section class="py-24 sm:py-32 border-b border-white/[0.06]">
+  <!-- 2. COMPACT ADVANTAGES + TOOLS -->
+  <section class="py-20 sm:py-28 border-b border-white/[0.06]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-14">
-        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Факты</span>
-        <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-          Чем мы отличаемся от других студий
-        </h2>
+      
+      <!-- 4 Hard Facts Strip -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-20">
+        <div class="glass-panel rounded-3xl p-5 sm:p-6">
+          <div class="font-display font-extrabold text-xl sm:text-2xl text-white mb-2">0 ₽/мес</div>
+          <div class="font-semibold text-sm text-white mb-1">Без абонентки</div>
+          <p class="text-xs text-zinc-400 leading-relaxed">Разовый платеж вместо 2 500 ₽/мес за аренду CRM.</p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-5 sm:p-6">
+          <div class="font-display font-extrabold text-xl sm:text-2xl text-white mb-2">2–4 дня</div>
+          <div class="font-semibold text-sm text-white mb-1">Быстрый запуск</div>
+          <p class="text-xs text-zinc-400 leading-relaxed">Готовая система за пару дней без долгих согласований.</p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-5 sm:p-6">
+          <div class="font-display font-extrabold text-xl sm:text-2xl text-white mb-2">Напрямую</div>
+          <div class="font-semibold text-sm text-white mb-1">Без посредников</div>
+          <p class="text-xs text-zinc-400 leading-relaxed">Общаетесь сразу с разработчиками, которые делают проект.</p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-5 sm:p-6">
+          <div class="font-display font-extrabold text-xl sm:text-2xl text-white mb-2">Таблицы</div>
+          <div class="font-semibold text-sm text-white mb-1">Простой учет</div>
+          <p class="text-xs text-zinc-400 leading-relaxed">База и касса в Google Таблицах — понятно админу и бухгалтеру.</p>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="glass-panel rounded-3xl p-6 sm:p-7">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white mb-3">0 ₽/мес</div>
-          <h3 class="font-display font-semibold text-base text-white mb-2">Никакой абонентки</h3>
-          <p class="text-sm text-zinc-400 leading-relaxed">
-            Платите один раз за запуск вместо 2 500 ₽ каждый месяц за аренду CRM.
-          </p>
-        </div>
-
-        <div class="glass-panel rounded-3xl p-6 sm:p-7">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white mb-3">2–4 дня</div>
-          <h3 class="font-display font-semibold text-base text-white mb-2">Быстрый старт</h3>
-          <p class="text-sm text-zinc-400 leading-relaxed">
-            Запускаем рабочую систему за пару дней, а не растягиваем разработку на месяцы.
-          </p>
-        </div>
-
-        <div class="glass-panel rounded-3xl p-6 sm:p-7">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white mb-3">Напрямую</div>
-          <h3 class="font-display font-semibold text-base text-white mb-2">Без лишних менеджеров</h3>
-          <p class="text-sm text-zinc-400 leading-relaxed">
-            Общаетесь сразу с инженерами, которые собирают ваш проект — без испорченного телефона.
-          </p>
-        </div>
-
-        <div class="glass-panel rounded-3xl p-6 sm:p-7">
-          <div class="font-display font-extrabold text-2xl sm:text-3xl text-white mb-3">Google Таблицы</div>
-          <h3 class="font-display font-semibold text-base text-white mb-2">Понятный учет</h3>
-          <p class="text-sm text-zinc-400 leading-relaxed">
-            База клиентов и финансы в привычных таблицах — разберется любой админ и бухгалтер.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. TOOLS (LOW ENTRY THRESHOLD -> CALCULATOR) -->
-  <section class="py-24 sm:py-32 border-b border-white/[0.06]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+      <!-- 3 Tools Cards -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
         <div>
           <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Инструменты</span>
           <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-            Выберите задачу — посчитаем за 30 секунд
+            Соберите решение под задачу
           </h2>
         </div>
         <a href="services.html" class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-          Открыть полный калькулятор →
+          Открыть калькулятор →
         </a>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Tool 1: Sites -->
-        <a href="services.html?base=site" class="glass-panel glass-panel-interactive rounded-3xl p-7 sm:p-8 flex flex-col justify-between group">
+        <a href="services.html?base=site" class="glass-panel glass-panel-interactive rounded-3xl p-7 flex flex-col justify-between group">
           <div>
             <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Сайты под ключ</div>
-            <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-3">Одностраничные и многостраничные сайты</h3>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Одностраничные и многостраничные сайты</h3>
             <p class="text-sm text-zinc-400 leading-relaxed">
               Упаковка услуг, прайс и заявки в Telegram. Можно подключить управление ценами прямо с телефона.
             </p>
           </div>
           <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between">
             <span class="font-display font-bold text-lg text-white">от 4 900 ₽</span>
-            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">Собрать в калькуляторе →</span>
+            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">В калькулятор →</span>
           </div>
         </a>
 
-        <!-- Tool 2: Bots + Accounting -->
-        <a href="services.html?base=bot" class="glass-panel glass-panel-interactive rounded-3xl p-7 sm:p-8 border-white/20 flex flex-col justify-between group">
+        <a href="services.html?base=bot" class="glass-panel glass-panel-interactive rounded-3xl p-7 border-white/20 flex flex-col justify-between group">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Telegram-боты</span>
               <span class="px-2.5 py-0.5 rounded bg-white text-black text-[10px] font-bold uppercase">Популярное</span>
             </div>
-            <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-3">Боты записи и учета выручки</h3>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Боты записи и учета выручки</h3>
             <p class="text-sm text-zinc-400 leading-relaxed">
               Онлайн-запись клиентов 24/7, напоминания о визите и автоматическая таблица доходов для админа и бухгалтера.
             </p>
           </div>
           <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between">
             <span class="font-display font-bold text-lg text-white">от 4 900 ₽</span>
-            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">Собрать в калькуляторе →</span>
+            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">В калькулятор →</span>
           </div>
         </a>
 
-        <!-- Tool 3: Mini Apps -->
-        <a href="services.html?base=miniapp" class="glass-panel glass-panel-interactive rounded-3xl p-7 sm:p-8 flex flex-col justify-between group">
+        <a href="services.html?base=miniapp" class="glass-panel glass-panel-interactive rounded-3xl p-7 flex flex-col justify-between group">
           <div>
             <div class="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Приложения в TG</div>
-            <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-3">Telegram Mini Apps для бизнеса</h3>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Telegram Mini Apps для бизнеса</h3>
             <p class="text-sm text-zinc-400 leading-relaxed">
               Каталог услуг или меню, корзина, запись и прием оплаты прямо внутри Telegram без скачивания приложений.
             </p>
           </div>
           <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between">
             <span class="font-display font-bold text-lg text-white">от 14 900 ₽</span>
-            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">Собрать в калькуляторе →</span>
+            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">В калькулятор →</span>
           </div>
         </a>
-
       </div>
     </div>
   </section>
 
-  <!-- 4. QUICK LEAD FORM -->
-  <section class="py-24 sm:py-32">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- 3. CONTACT & QUICK LEAD SECTION (TELEGRAM PRIMARY + PHONE) -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="glass-panel rounded-3xl p-7 sm:p-12 border-white/15">
-        <div class="max-w-xl mb-8">
-          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-400 uppercase">Консультация</span>
-          <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-2">
-            Не знаете, с чего начать?
-          </h2>
-          <p class="text-sm text-zinc-400 mt-2">
-            Оставьте контакт — подскажем, что окупится быстрее именно в вашей нише.
-          </p>
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 mb-8 border-b border-white/10">
+          <div>
+            <span class="text-xs font-semibold tracking-[0.2em] text-zinc-400 uppercase">Связь со студией</span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-2">
+              Быстрее всего отвечаем в Telegram
+            </h2>
+            <p class="text-sm text-zinc-400 mt-1">Напишите напрямую или оставьте контакт в форме ниже.</p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="btn-metallic px-6 py-4 rounded-2xl text-sm text-center inline-flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              <span>Написать в @skov_tech</span>
+            </a>
+            <a href="tel:+79124446783" class="px-5 py-4 rounded-2xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] text-white text-sm font-medium text-center transition-all">
+              +7 (912) 444-67-83
+            </a>
+          </div>
         </div>
 
         <form id="home-lead-form" class="grid grid-cols-1 sm:grid-cols-12 gap-3.5">
@@ -340,18 +333,18 @@
               class="w-full px-4 py-4 rounded-2xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
           </div>
           <div class="sm:col-span-5">
-            <input type="text" name="contact" required placeholder="Телефон или @Telegram"
+            <input type="text" name="contact" required placeholder="Ваш @Telegram или телефон"
               class="w-full px-4 py-4 rounded-2xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
           </div>
           <div class="sm:col-span-3">
-            <button type="submit" class="btn-metallic w-full h-full py-4 px-5 rounded-2xl text-sm">
-              Отправить
+            <button type="submit" class="w-full h-full py-4 px-5 rounded-2xl border border-white/20 bg-white/10 hover:bg-white hover:text-black text-white font-semibold text-sm transition-all">
+              Оставить заявку
             </button>
           </div>
         </form>
 
         <div id="home-lead-success" class="hidden mt-5 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-sm text-emerald-300">
-          ✓ Заявка отправлена. Свяжемся с вами в ближайшее время.
+          ✓ Заявка отправлена. Напишем вам в Telegram в ближайшее время.
         </div>
       </div>
     </div>
@@ -371,8 +364,8 @@
         <a href="about.html" class="hover:text-white">О студии</a>
       </nav>
       <div class="flex items-center gap-4">
-        <a href="tel:+79124446783" class="text-xs sm:text-sm text-zinc-300 hover:text-white">+7 (912) 444-67-83</a>
-        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white text-xs font-medium transition-all">Telegram</a>
+        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-white text-black text-xs font-semibold hover:bg-zinc-200 transition-all">Telegram @skov_tech</a>
+        <a href="tel:+79124446783" class="text-xs sm:text-sm text-zinc-400 hover:text-white">+7 (912) 444-67-83</a>
       </div>
     </div>
   </footer>
@@ -457,7 +450,6 @@
 
       bindDemo();
 
-      // Quick Lead Form
       const leadForm = document.getElementById('home-lead-form');
       leadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
