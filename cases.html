@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Кейсы и живые демо — SKOV TECHNOLOGIES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ['Unbounded', 'sans-serif'], sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { background: #050505; color: #F4F4F5; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .text-metallic { background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 45%, #71717A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .glass-panel { background: rgba(17,17,17,0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.25s ease; }
+    .btn-metallic { background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 100%); color: #050505; font-weight: 600; transition: all 0.25s ease; }
+    .btn-metallic:hover { transform: translateY(-1px); box-shadow: 0 10px 30px -8px rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten shrink-0">
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-base sm:text-lg tracking-wider text-white leading-none">SKOV</span>
+          <span class="text-[9px] sm:text-[10px] font-medium tracking-[0.28em] text-zinc-400 uppercase mt-1 leading-none">TECHNOLOGIES</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="index.html" class="hover:text-white transition-colors">Главная</a>
+        <a href="cases.html" class="text-white transition-colors">Кейсы</a>
+        <a href="services.html" class="hover:text-white transition-colors">Услуги и цены</a>
+        <a href="about.html" class="hover:text-white transition-colors">О студии</a>
+      </nav>
+      <div class="flex items-center gap-2.5">
+        <button type="button" data-open-discuss data-source="Кейсы (шапка)" class="btn-metallic px-4 py-2.5 sm:px-5 rounded-xl text-xs sm:text-sm whitespace-nowrap">Обсудить проект</button>
+        <button id="mobile-menu-btn" aria-label="Меню" class="md:hidden p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.08] bg-[#09090B]/95 px-4 py-4 space-y-2">
+      <a href="index.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Главная</a>
+      <a href="cases.html" class="block px-4 py-3 rounded-xl text-sm text-white bg-white/[0.06]">Кейсы</a>
+      <a href="services.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">Услуги и цены</a>
+      <a href="about.html" class="block px-4 py-3 rounded-xl text-sm text-zinc-300">О студии</a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-24 sm:pt-40 sm:pb-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Портфолио</span>
+        <h1 class="font-display font-bold text-3xl sm:text-5xl text-metallic mt-3 mb-5">Кейсы и живые демо</h1>
+        <p class="text-base text-zinc-400">Каждый проект можно открыть и покликать прямо сейчас — без макетов и презентаций.</p>
+      </div>
+
+      <div class="space-y-10">
+
+        <!-- CASE 1 -->
+        <article id="case-practice" class="glass-panel rounded-3xl p-6 sm:p-10 border-white/15">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-white/10 text-[11px] font-semibold text-zinc-200 uppercase tracking-wider">Частная практика • Сайт + Боты</span>
+              <h2 class="font-display font-bold text-xl sm:text-3xl text-white mt-3">Сайт и система ботов для психолога и юриста</h2>
+            </div>
+            <span class="text-xs font-medium text-emerald-400">● Работает в продакшене</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+              <div class="text-xs font-semibold text-zinc-500 uppercase mb-2">Было</div>
+              <p class="text-sm text-zinc-300 leading-relaxed">Запись велась вручную в мессенджерах, правки цен и текстов на сайте требовали программиста.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+              <div class="text-xs font-semibold text-zinc-500 uppercase mb-2">Стало</div>
+              <p class="text-sm text-zinc-300 leading-relaxed">Быстрый сайт, бот-админка для правок с телефона и автозапись клиентов в Google Таблицу.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-emerald-500/[0.06] border border-emerald-500/20">
+              <div class="text-xs font-semibold text-emerald-400 uppercase mb-2">Результат в цифрах</div>
+              <ul class="text-sm text-white space-y-1 font-medium">
+                <li>• 10 сек — обновление цен с телефона</li>
+                <li>• 0% потерянных заявок</li>
+                <li>• 0 ₽/мес за CRM</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://svetlanasokovikova.ru" target="_blank" rel="noopener noreferrer" class="btn-metallic px-6 py-3.5 rounded-xl text-sm text-center">Открыть живой проект ↗</a>
+            <button type="button" data-open-discuss data-source="Кейс: Частная практика" class="px-6 py-3.5 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-white text-sm font-medium transition-all">Хочу такую же систему</button>
+          </div>
+        </article>
+
+        <!-- CASE 2 -->
+        <article id="case-withiv" class="glass-panel rounded-3xl p-6 sm:p-10 border-white/15">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-white/10 text-[11px] font-semibold text-zinc-200 uppercase tracking-wider">Travel Tech • API интеграция</span>
+              <h2 class="font-display font-bold text-xl sm:text-3xl text-white mt-3">Платформа поиска туров Withiv</h2>
+            </div>
+            <span class="text-xs font-medium text-emerald-400">● Живое демо</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+              <div class="text-xs font-semibold text-zinc-500 uppercase mb-2">Было</div>
+              <p class="text-sm text-zinc-300 leading-relaxed">Менеджеры тратили часы на ручной подбор туров в переписках, горящие предложения устаревали.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+              <div class="text-xs font-semibold text-zinc-500 uppercase mb-2">Стало</div>
+              <p class="text-sm text-zinc-300 leading-relaxed">Поиск туров через Tourvisor API по 80+ операторам, витрина горящих туров и перехват заявок в TG.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-emerald-500/[0.06] border border-emerald-500/20">
+              <div class="text-xs font-semibold text-emerald-400 uppercase mb-2">Результат в цифрах</div>
+              <ul class="text-sm text-white space-y-1 font-medium">
+                <li>• 80+ туроператоров в одном окне</li>
+                <li>• 1 мин — публикация горящего тура</li>
+                <li>• Мгновенная доставка лида менеджеру</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://travel.skovtech.ru" target="_blank" rel="noopener noreferrer" class="btn-metallic px-6 py-3.5 rounded-xl text-sm text-center">Открыть живой проект ↗</a>
+            <button type="button" data-open-discuss data-source="Кейс: Withiv Travel" class="px-6 py-3.5 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-white text-sm font-medium transition-all">Хочу такую же систему</button>
+          </div>
+        </article>
+
+        <!-- CASE 3 -->
+        <article id="case-bistro" class="glass-panel rounded-3xl p-6 sm:p-10 border-white/15">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-white text-black text-[11px] font-bold uppercase tracking-wider">Telegram Mini App • HoReCa</span>
+              <h2 class="font-display font-bold text-xl sm:text-3xl text-white mt-3">Меню и доставка для ресторана L'Atelier Bistro</h2>
+            </div>
+            <span class="text-xs font-medium text-emerald-400">● Живое демо</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+              <div class="text-xs font-semibold text-zinc-500 uppercase mb-2">Было</div>
+              <p class="text-sm text-zinc-300 leading-relaxed">Комиссия агрегаторов доставки съедала до 30% маржи, а свое мобильное приложение стоило от 300 000 ₽.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+              <div class="text-xs font-semibold text-zinc-500 uppercase mb-2">Стало</div>
+              <p class="text-sm text-zinc-300 leading-relaxed">Telegram Mini App с фото-меню, корзиной и мгновенной отправкой заказа администратору и в таблицу.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-emerald-500/[0.06] border border-emerald-500/20">
+              <div class="text-xs font-semibold text-emerald-400 uppercase mb-2">Результат в цифрах</div>
+              <ul class="text-sm text-white space-y-1 font-medium">
+                <li>• 0% комиссии агрегаторам</li>
+                <li>• 20 сек — оформление заказа гостем</li>
+                <li>• Запуск за 5 рабочих дней</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://food.skovtech.ru" target="_blank" rel="noopener noreferrer" class="btn-metallic px-6 py-3.5 rounded-xl text-sm text-center">Открыть живой проект ↗</a>
+            <button type="button" data-open-discuss data-source="Кейс: L'Atelier Bistro Mini App" class="px-6 py-3.5 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-white text-sm font-medium transition-all">Хочу такую же систему</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/[0.08] bg-[#050505]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 w-auto object-contain mix-blend-lighten">
+        <span class="font-display font-bold text-sm text-white tracking-wider">SKOV TECHNOLOGIES</span>
+      </a>
+      <nav class="flex flex-wrap gap-6 text-xs sm:text-sm text-zinc-400">
+        <a href="index.html" class="hover:text-white">Главная</a>
+        <a href="cases.html" class="text-white">Кейсы</a>
+        <a href="services.html" class="hover:text-white">Услуги и цены</a>
+        <a href="about.html" class="hover:text-white">О студии</a>
+      </nav>
+      <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white text-xs font-medium transition-all">Написать в Telegram</a>
+    </div>
+  </footer>
+
+  <!-- DISCUSS MODAL -->
+  <div id="discuss-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-panel w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="font-display font-bold text-xl text-white">Обсудить проект</h3>
+        <button type="button" id="close-discuss-modal" class="p-2 rounded-xl bg-white/[0.06] text-zinc-300">✕</button>
+      </div>
+      <form id="modal-discuss-form" class="space-y-4">
+        <input type="text" name="name" required placeholder="Ваше имя" class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <input type="text" name="contact" required placeholder="Телефон или @Telegram" class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <button type="submit" class="btn-metallic w-full py-4 rounded-2xl text-sm">Отправить заявку</button>
+      </form>
+      <div id="modal-discuss-success" class="hidden text-center py-6 space-y-2">
+        <div class="text-emerald-400 text-2xl">✓</div>
+        <div class="font-display font-bold text-white">Заявка принята!</div>
+        <p class="text-xs text-zinc-400">Свяжемся в ближайшее время.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec';
+      function sendToGAS(payload) {
+        return fetch(GAS_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) }).catch(() => {});
+      }
+      let isUnique = false;
+      try { if (!localStorage.getItem('skov_visitor_seen')) { isUnique = true; localStorage.setItem('skov_visitor_seen', new Date().toISOString()); } } catch (e) {}
+      sendToGAS({ event: 'page_view', is_unique: isUnique, page: 'cases.html', referrer: document.referrer || 'direct' });
+
+      document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+      const modal = document.getElementById('discuss-modal');
+      const form = document.getElementById('modal-discuss-form');
+      const success = document.getElementById('modal-discuss-success');
+      let currentSource = 'Страница Кейсы';
+
+      document.querySelectorAll('[data-open-discuss]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentSource = btn.dataset.source || 'Страница Кейсы';
+          form.classList.remove('hidden');
+          success.classList.add('hidden');
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function closeModal() { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+      document.getElementById('close-discuss-modal').addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = form.querySelector('[name="name"]').value.trim();
+        const contact = form.querySelector('[name="contact"]').value.trim();
+        await sendToGAS({
+          event: 'lead', name, contact, niche: currentSource, modules: currentSource, support: '—', total_price: 0, monthly_price: 0, days: 'Уточняется',
+          formatted_text: `🔥 ЗАЯВКА С КЕЙСОВ | SKOV\n👤 Имя: ${name}\n📞 Контакт: ${contact}\n📍 Интерес: ${currentSource}`
+        });
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
