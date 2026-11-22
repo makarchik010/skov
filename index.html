@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>SKOV TECHNOLOGIES — Telegram-боты, учет и сайты для бизнеса</title>
-  <meta name="description" content="Делаем Telegram-ботов для записи клиентов, учет в Google Таблицах и сайты под ключ для малого бизнеса и частных мастеров." />
+  <title>SKOV TECHNOLOGIES — Автоматизация записи, боты и сайты под ключ</title>
+  <meta name="description" content="Автоматизируем запись клиентов, учет в Google Таблицах и разработку сайтов под ключ без ежемесячной абонентской платы." />
 
   <!-- Fonts: Unbounded & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
           },
           boxShadow: {
             'glow': '0 0 40px -10px rgba(255, 255, 255, 0.12)',
-            'card': '0 20px 40px -20px rgba(0, 0, 0, 0.85)',
+            'card': '0 24px 48px -20px rgba(0, 0, 0, 0.9)',
           }
         }
       }
@@ -55,7 +55,6 @@
       overflow-x: hidden;
     }
 
-    /* Metallic Text Gradient */
     .text-metallic {
       background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 45%, #71717A 100%);
       -webkit-background-clip: text;
@@ -68,49 +67,27 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Architectural Grid Background */
     .bg-grid-pattern {
-      background-size: 44px 44px;
+      background-size: 48px 48px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
     }
 
-    /* Glassmorphism Cards */
     .glass-panel {
       background: var(--bg-glass);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-glass);
-      transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease, box-shadow 0.35s ease;
+      transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
     }
 
     .glass-panel-interactive:hover {
       border-color: var(--border-glass-hover);
       background: rgba(24, 24, 27, 0.85);
-    }
-
-    /* Highlighted Case Card */
-    .case-highlight {
-      border-color: rgba(255, 255, 255, 0.65) !important;
-      box-shadow: 0 0 36px -6px rgba(255, 255, 255, 0.25);
       transform: translateY(-2px);
     }
 
-    /* Selected Calculator Option */
-    .calc-option.is-selected {
-      border-color: rgba(255, 255, 255, 0.48);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.09) 0%, rgba(17, 17, 17, 0.92) 100%);
-      box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.12);
-    }
-
-    .calc-option.is-selected .check-indicator {
-      background-color: #FFFFFF;
-      border-color: #FFFFFF;
-      color: #050505;
-    }
-
-    /* Primary Metallic Button */
     .btn-metallic {
       background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 100%);
       color: #050505;
@@ -127,44 +104,31 @@
       transform: scale(0.98);
     }
 
-    /* Animated Ambient Glow */
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.45; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.06); }
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.65; transform: scale(1.05); }
     }
 
     .ambient-orb {
-      animation: pulseGlow 8s ease-in-out infinite;
+      animation: pulseGlow 9s ease-in-out infinite;
     }
 
-    /* Custom Scrollbar for Modals */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #050505;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #27272A;
-      border-radius: 999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3F3F46;
-    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb { background: #27272A; border-radius: 999px; }
   </style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black pb-24 lg:pb-0">
+<body class="antialiased selection:bg-white selection:text-black">
 
-  <!-- Ambient Interactive Spotlight -->
-  <div id="spotlight" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500" style="background: radial-gradient(600px circle at 50% 20%, rgba(255,255,255,0.045), transparent 70%);"></div>
+  <!-- Ambient Spotlight -->
+  <div id="spotlight" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500" style="background: radial-gradient(650px circle at 50% 20%, rgba(255,255,255,0.04), transparent 70%);"></div>
 
-  <!-- 1. HEADER -->
+  <!-- SHARED HEADER -->
   <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.08] bg-[#050505]/85 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo (Clean, blend mode removes black bg) -->
-      <a href="#" class="flex items-center gap-2.5 group focus:outline-none">
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group focus:outline-none">
         <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten shrink-0">
         <div class="flex flex-col">
           <span class="font-display font-extrabold text-base sm:text-lg tracking-wider text-white leading-none">SKOV</span>
@@ -174,17 +138,17 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-        <a href="#solutions" class="hover:text-white transition-colors">Услуги</a>
-        <a href="#calculator" class="hover:text-white transition-colors">Калькулятор</a>
-        <a href="#cases" class="hover:text-white transition-colors">Проекты</a>
-        <a href="#contacts" class="hover:text-white transition-colors">Контакты</a>
+        <a href="index.html" class="text-white transition-colors">Главная</a>
+        <a href="cases.html" class="hover:text-white transition-colors">Кейсы</a>
+        <a href="services.html" class="hover:text-white transition-colors">Услуги и цены</a>
+        <a href="about.html" class="hover:text-white transition-colors">О студии</a>
       </nav>
 
       <!-- CTA Button & Mobile Menu Trigger -->
       <div class="flex items-center gap-2.5">
-        <a href="#calculator" class="btn-metallic px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm tracking-tight whitespace-nowrap">
-          Рассчитать цену
-        </a>
+        <button type="button" data-open-discuss class="btn-metallic px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm tracking-tight whitespace-nowrap">
+          Обсудить проект
+        </button>
         <button id="mobile-menu-btn" aria-label="Открыть меню" class="md:hidden p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300 hover:text-white">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
@@ -193,754 +157,465 @@
       </div>
     </div>
 
-    <!-- Mobile Dropdown Navigation -->
+    <!-- Mobile Navigation -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.08] bg-[#09090B]/95 backdrop-blur-2xl px-4 py-4 space-y-2">
-      <a href="#solutions" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Услуги</a>
-      <a href="#calculator" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Калькулятор цены</a>
-      <a href="#cases" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Реализованные проекты</a>
-      <a href="#contacts" class="mobile-nav-link block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Контакты</a>
+      <a href="index.html" class="block px-4 py-3 rounded-xl text-sm font-medium text-white bg-white/[0.06]">Главная</a>
+      <a href="cases.html" class="block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Кейсы</a>
+      <a href="services.html" class="block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">Услуги и цены</a>
+      <a href="about.html" class="block px-4 py-3 rounded-xl text-sm font-medium text-zinc-300 hover:bg-white/[0.06] hover:text-white">О студии</a>
     </div>
   </header>
 
-  <!-- 2. HERO SECTION -->
-  <section class="relative pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-44 lg:pb-32 bg-grid-pattern border-b border-white/[0.06] overflow-hidden">
-    <!-- Radial Ambient Glows -->
-    <div class="ambient-orb pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[540px] sm:w-[820px] h-[340px] sm:h-[440px] rounded-full bg-gradient-to-b from-white/[0.09] via-zinc-400/[0.03] to-transparent blur-3xl"></div>
+  <!-- 1. HERO SECTION -->
+  <section class="relative pt-32 pb-24 sm:pt-40 sm:pb-32 bg-grid-pattern border-b border-white/[0.06] overflow-hidden">
+    <div class="ambient-orb pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[540px] sm:w-[860px] h-[340px] sm:h-[460px] rounded-full bg-gradient-to-b from-white/[0.09] via-zinc-400/[0.03] to-transparent blur-3xl"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl">
-        <!-- Studio Badge -->
-        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md mb-6 sm:mb-8">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-[11px] sm:text-xs font-semibold tracking-[0.14em] text-zinc-200 uppercase">Боты, сайты и учет для малого бизнеса</span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        <!-- Left: Offer -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md mb-7">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[11px] sm:text-xs font-semibold tracking-[0.14em] text-zinc-200 uppercase">Telegram-системы и сайты под ключ</span>
+          </div>
+
+          <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-[52px] leading-[1.12] tracking-tight text-metallic mb-6">
+            Автоматизация записи и сайты без абонентки
+          </h1>
+
+          <p class="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-xl mb-9">
+            Связываем Telegram-ботов, Mini Apps и Google Таблицы в единую систему. Платите один раз за запуск — владеете кодом и базой клиентов навсегда.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
+            <a href="services.html" class="btn-metallic px-7 py-4 rounded-2xl text-center text-sm sm:text-base flex items-center justify-center gap-2.5">
+              <span>Рассчитать стоимость</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+            <a href="cases.html" class="px-7 py-4 rounded-2xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/30 text-white font-medium text-center text-sm sm:text-base transition-all">
+              Смотреть демо
+            </a>
+          </div>
+
+          <!-- Key Numbers -->
+          <div class="grid grid-cols-3 gap-4 sm:gap-8 mt-12 pt-8 border-t border-white/[0.08] max-w-lg">
+            <div>
+              <div class="font-display font-bold text-xl sm:text-2xl text-white">1–7 дн.</div>
+              <div class="text-xs text-zinc-400 mt-1">Запуск проекта</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-xl sm:text-2xl text-white">0 ₽/мес</div>
+              <div class="text-xs text-zinc-400 mt-1">Абонентка студии</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-xl sm:text-2xl text-white">100%</div>
+              <div class="text-xs text-zinc-400 mt-1">Права на систему</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Main Headline -->
-        <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-[54px] leading-[1.12] tracking-tight text-metallic mb-6">
-          Запись клиентов, учет и сайты под ключ — без лишних переплат
-        </h1>
+        <!-- Right: Interactive Visual Mockup (Telegram Bot -> Google Sheets) -->
+        <div class="lg:col-span-5">
+          <div class="glass-panel rounded-3xl p-5 sm:p-6 border-white/15 shadow-card relative">
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                <span class="text-xs font-semibold tracking-wider text-zinc-300 uppercase">Живая связка</span>
+              </div>
+              <button type="button" id="hero-sim-trigger" class="px-3 py-1 rounded-lg bg-white text-black text-xs font-semibold hover:bg-zinc-200 transition-colors">
+                Тест заявки ▶
+              </button>
+            </div>
 
-        <!-- Subtitle -->
-        <p class="text-base sm:text-lg lg:text-xl text-zinc-400 leading-relaxed max-w-2xl mb-8 sm:mb-10">
-          Делаем понятных Telegram-ботов, связываем их с Google Таблицами и собираем быстрые сайты. Чтобы заявки не терялись в переписках, а вы не тратили по <span class="text-white font-medium">2–3 часа в день на ручную запись</span>.
-        </p>
+            <!-- Step A: Telegram Bot -->
+            <div class="rounded-2xl bg-[#09090B] border border-white/10 p-4 mb-3">
+              <div class="flex items-center justify-between text-[11px] text-zinc-400 mb-2">
+                <span class="font-medium text-white">1. Telegram-бот клиента</span>
+                <span id="hero-tg-status" class="text-emerald-400">Онлайн 24/7</span>
+              </div>
+              <div id="hero-tg-bubble" class="p-3 rounded-xl bg-white/[0.06] text-xs text-zinc-200 leading-relaxed">
+                Клиент: <b>Анна К.</b> • Консультация (Завтра, 15:00) • <b>3 500 ₽</b>
+              </div>
+            </div>
 
-        <!-- Primary & Secondary CTA -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
-          <a href="#calculator" class="btn-metallic px-7 py-4 rounded-2xl text-center text-sm sm:text-base flex items-center justify-center gap-2.5">
-            <span>Посчитать стоимость</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-            </svg>
-          </a>
-          <a href="#cases" class="px-7 py-4 rounded-2xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/30 text-white font-medium text-center text-sm sm:text-base transition-all">
-            Посмотреть работы
-          </a>
+            <!-- Connector Arrow -->
+            <div class="flex items-center justify-center my-1 text-zinc-500">
+              <div class="flex items-center gap-2 text-[10px] uppercase tracking-widest text-zinc-400">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+                <span>Синхронизация 0.4 сек</span>
+              </div>
+            </div>
+
+            <!-- Step B: Google Sheets -->
+            <div class="rounded-2xl bg-[#09090B] border border-white/10 p-4 mt-2">
+              <div class="flex items-center justify-between text-[11px] text-zinc-400 mb-2.5">
+                <span class="font-medium text-emerald-300">2. Google Таблица владельца</span>
+                <span>Авто-учет</span>
+              </div>
+              <div class="rounded-xl border border-white/10 overflow-hidden text-[11px]">
+                <div class="grid grid-cols-3 bg-white/[0.05] text-zinc-400 p-2 font-medium">
+                  <span>Клиент</span>
+                  <span>Время</span>
+                  <span class="text-right">Сумма</span>
+                </div>
+                <div id="hero-sheet-row" class="grid grid-cols-3 p-2.5 text-white bg-emerald-500/10 transition-all duration-300">
+                  <span id="hero-cell-name">Анна К.</span>
+                  <span id="hero-cell-time">Завтра, 15:00</span>
+                  <span id="hero-cell-sum" class="text-right font-semibold">3 500 ₽</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Key Metrics Strip -->
-        <div class="grid grid-cols-3 gap-3 sm:gap-6 mt-12 sm:mt-16 pt-8 border-t border-white/[0.08] max-w-2xl">
-          <div>
-            <div class="font-display font-bold text-xl sm:text-2xl text-white">1–7 дн.</div>
-            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Быстрый запуск</div>
-          </div>
-          <div>
-            <div class="font-display font-bold text-xl sm:text-2xl text-white">24 / 7</div>
-            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Запись без выходных</div>
-          </div>
-          <div>
-            <div class="font-display font-bold text-xl sm:text-2xl text-white">0 ₽/мес</div>
-            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Без абонентки за CRM</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. CORE SOLUTIONS -->
-  <section id="solutions" class="py-16 sm:py-24 border-b border-white/[0.06]">
+  <!-- 2. DIRECTIONS (3 LACONIC CARDS) -->
+  <section class="py-24 sm:py-32 border-b border-white/[0.06]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
         <div>
-          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Что делаем</span>
+          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Направления</span>
           <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-            Три рабочие задачи, которые закрываем
+            Три инструмента для роста
           </h2>
         </div>
-        <p class="text-sm text-zinc-400 max-w-md">
-          Без перегруженных админок и долгих обучений персонала — всё работает в привычном Telegram и Google Таблицах.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
-        
-        <!-- Card 1 -->
-        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between border-white/20">
-          <div class="absolute top-0 right-0 px-3.5 py-1.5 bg-white text-black text-[10px] font-bold tracking-widest uppercase rounded-bl-2xl">
-            ХИТ ДЛЯ ИП
-          </div>
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-white/[0.08] border border-white/15 flex items-center justify-center mb-6 text-white">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
-              </svg>
-            </div>
-            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Telegram-боты и учет</div>
-            <h3 class="font-display font-bold text-xl text-white mb-3">Онлайн-запись в Telegram</h3>
-            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Клиент сам выбирает услугу, мастера и свободное время. Вы получаете уведомление в Telegram, а запись и сумма сразу падают в Google Таблицу.
-            </p>
-          </div>
-          <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
-            <div class="flex items-center justify-between text-xs text-zinc-300">
-              <span>Запись + таблица учета</span>
-              <span class="font-semibold text-white">от 4 900 ₽</span>
-            </div>
-            <button type="button" data-target-case="case3" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
-              <span>Смотреть пример</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </button>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center mb-6 text-white">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Сайты под ключ</div>
-            <h3 class="font-display font-bold text-xl text-white mb-3">Сайты с правками с телефона</h3>
-            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Быстрые сайты для частных специалистов, клиник и студий. Можно менять цены, акции и тексты прямо через закрытого бота в Telegram — без программиста.
-            </p>
-          </div>
-          <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
-            <div class="flex items-center justify-between text-xs text-zinc-300">
-              <span>Обновление контента за 10 сек</span>
-              <span class="font-semibold text-white">от 9 900 ₽</span>
-            </div>
-            <button type="button" data-target-case="case1" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
-              <span>Смотреть пример</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </button>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center mb-6 text-white">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-            </div>
-            <div class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-2">Интеграции и API</div>
-            <h3 class="font-display font-bold text-xl text-white mb-3">Подключение оплат и сервисов</h3>
-            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              Связываем ваш сайт или бот с внешними базами, системами бронирования, онлайн-оплатой (СБП, карты) и автоответчиками на частые вопросы клиентов.
-            </p>
-          </div>
-          <div class="mt-8 pt-5 border-t border-white/[0.08] space-y-3">
-            <div class="flex items-center justify-between text-xs text-zinc-300">
-              <span>Индивидуальная связка систем</span>
-              <span class="font-semibold text-white">от 19 900 ₽</span>
-            </div>
-            <button type="button" data-target-case="case2" class="solution-example-link inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-white transition-colors group">
-              <span>Смотреть пример</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </button>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. INTERACTIVE PROJECT ESTIMATOR (CALCULATOR) -->
-  <section id="calculator" class="py-16 sm:py-24 border-b border-white/[0.06] relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-10 sm:mb-12">
-        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Калькулятор</span>
-        <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-          Сколько стоит и за сколько сделаем
-        </h2>
-        <p class="text-sm sm:text-base text-zinc-400 mt-2 max-w-2xl">
-          Отметьте только то, что реально нужно сейчас — итоговая цена и сроки в рабочих днях посчитаются сразу.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        <!-- Left Column: Steps 1, 2, 3 -->
-        <div class="lg:col-span-7 space-y-8">
-          
-          <!-- STEP 1 -->
-          <div class="glass-panel rounded-3xl p-5 sm:p-7">
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <span class="w-7 h-7 rounded-lg bg-white text-black font-display font-bold text-xs flex items-center justify-center">1</span>
-                <h3 class="font-display font-semibold text-base sm:text-lg text-white">Что внедряем</h3>
-              </div>
-              <span class="text-xs text-zinc-400">Можно выбрать несколько</span>
-            </div>
-
-            <div class="space-y-3" id="step-1-options">
-              <!-- Item 1 -->
-              <button type="button" data-group="base" data-id="tg_booking" data-price="4900" data-days="2" data-name="Telegram-бот для записи и учета клиентов"
-                class="calc-option is-selected w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
-                <div class="flex items-start gap-3.5">
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                  <div>
-                    <div class="font-medium text-sm sm:text-base text-white">Telegram-бот для записи и учета клиентов</div>
-                    <div class="text-xs text-zinc-400 mt-1">Онлайн-запись 24/7: выбор услуги, мастера и свободного окна</div>
-                  </div>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">4 900 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+2 раб. дн.</div>
-                </div>
-              </button>
-
-              <!-- Item 2 -->
-              <button type="button" data-group="base" data-id="gsheets_sync" data-price="2500" data-days="1" data-name="Синхронизация и авто-отчеты в Google Таблицах"
-                class="calc-option is-selected w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
-                <div class="flex items-start gap-3.5">
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                  <div>
-                    <div class="font-medium text-sm sm:text-base text-white">Синхронизация и авто-отчеты в Google Таблицах</div>
-                    <div class="text-xs text-zinc-400 mt-1">Список клиентов, выручка и загрузка в одной таблице</div>
-                  </div>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">2 500 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+1 раб. дн.</div>
-                </div>
-              </button>
-
-              <!-- Item 3 -->
-              <button type="button" data-group="base" data-id="landing_site" data-price="9900" data-days="4" data-name="Лендинг / Имиджевый сайт под ключ"
-                class="calc-option w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
-                <div class="flex items-start gap-3.5">
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                  <div>
-                    <div class="font-medium text-sm sm:text-base text-white">Лендинг / Имиджевый сайт под ключ</div>
-                    <div class="text-xs text-zinc-400 mt-1">Аккуратный дизайн, быстрая загрузка и полная адаптация под телефоны</div>
-                  </div>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">9 900 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+4 раб. дн.</div>
-                </div>
-              </button>
-
-              <!-- Item 4 -->
-              <button type="button" data-group="base" data-id="complex_api" data-price="19900" data-days="7" data-name="Сложный веб-сервис / интеграция с внешним API"
-                class="calc-option w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
-                <div class="flex items-start gap-3.5">
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                  <div>
-                    <div class="font-medium text-sm sm:text-base text-white">Сложный веб-сервис / интеграция с внешним API</div>
-                    <div class="text-xs text-zinc-400 mt-1">Агрегаторы, внешние системы бронирования, ИИ-ответчики</div>
-                  </div>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="font-display font-semibold text-sm sm:text-base text-white whitespace-nowrap">19 900 ₽</div>
-                  <div class="text-[11px] text-zinc-500 mt-0.5">+7 раб. дн.</div>
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="glass-panel rounded-3xl p-5 sm:p-7">
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-3">
-                <span class="w-7 h-7 rounded-lg bg-white text-black font-display font-bold text-xs flex items-center justify-center">2</span>
-                <h3 class="font-display font-semibold text-base sm:text-lg text-white">Дополнительные модули</h3>
-              </div>
-              <span class="text-xs text-zinc-400">По желанию</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="step-2-options">
-              <!-- Free Default Option -->
-              <button type="button" id="addon-none-btn" data-group="addon-free" data-id="base_only" data-price="0" data-days="0" data-name="Базовая комплектация (без доп. модулей)"
-                class="calc-option is-selected sm:col-span-2 w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-4 transition-all active:scale-[0.99]">
-                <div class="flex items-center gap-3.5">
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                  <div>
-                    <div class="font-medium text-sm sm:text-base text-white">Базовая комплектация (без доп. модулей)</div>
-                    <div class="text-xs text-zinc-400 mt-0.5">Стартуем с основного — остальное можно докупить позже</div>
-                  </div>
-                </div>
-                <div class="font-display font-semibold text-sm text-emerald-400 shrink-0 whitespace-nowrap">0 ₽</div>
-              </button>
-
-              <!-- Addon 1 -->
-              <button type="button" data-group="addon" data-id="tg_admin" data-price="2500" data-days="1" data-name="Удобная админ-панель управления через Telegram"
-                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
-                <div class="flex items-start justify-between gap-3">
-                  <span class="font-medium text-sm text-white leading-snug">Удобная админ-панель управления через Telegram</span>
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
-                  <span class="text-xs text-zinc-500">+1 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+2 500 ₽</span>
-                </div>
-              </button>
-
-              <!-- Addon 2 -->
-              <button type="button" data-group="addon" data-id="reminders" data-price="1500" data-days="1" data-name="Автоматические напоминания клиентам о визите"
-                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
-                <div class="flex items-start justify-between gap-3">
-                  <span class="font-medium text-sm text-white leading-snug">Автоматические напоминания клиентам о визите</span>
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
-                  <span class="text-xs text-zinc-500">+1 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+1 500 ₽</span>
-                </div>
-              </button>
-
-              <!-- Addon 3 -->
-              <button type="button" data-group="addon" data-id="payments" data-price="2000" data-days="1" data-name="Прием онлайн-оплаты"
-                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
-                <div class="flex items-start justify-between gap-3">
-                  <span class="font-medium text-sm text-white leading-snug">Прием онлайн-оплаты (СБП / карты / предоплата)</span>
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
-                  <span class="text-xs text-zinc-500">+1 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+2 000 ₽</span>
-                </div>
-              </button>
-
-              <!-- Addon 4 -->
-              <button type="button" data-group="addon" data-id="seo_analytics" data-price="1500" data-days="1" data-name="Базовая SEO-оптимизация и аналитика"
-                class="calc-option w-full text-left p-4 rounded-2xl border border-white/10 bg-white/[0.02] flex flex-col justify-between gap-3 transition-all active:scale-[0.99]">
-                <div class="flex items-start justify-between gap-3">
-                  <span class="font-medium text-sm text-white leading-snug">Базовая SEO-оптимизация и аналитика</span>
-                  <div class="check-indicator w-6 h-6 rounded-lg border border-white/25 flex items-center justify-center shrink-0 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between pt-2 border-t border-white/[0.06]">
-                  <span class="text-xs text-zinc-500">+1 раб. дн.</span>
-                  <span class="font-display font-semibold text-sm text-white">+1 500 ₽</span>
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="glass-panel rounded-3xl p-5 sm:p-7">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="w-7 h-7 rounded-lg bg-white text-black font-display font-bold text-xs flex items-center justify-center">3</span>
-              <h3 class="font-display font-semibold text-base sm:text-lg text-white">Формат сопровождения</h3>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="step-3-options">
-              <!-- Support Option 1 -->
-              <button type="button" data-group="support" data-monthly="0" data-name="Разовая передача «под ключ»"
-                class="calc-option is-selected w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3 transition-all active:scale-[0.99]">
-                <div>
-                  <div class="font-medium text-sm sm:text-base text-white">Разовая передача «под ключ»</div>
-                  <div class="text-xs text-zinc-400 mt-1">Отдаем все доступы и короткую видео-инструкцию</div>
-                </div>
-                <div class="font-display font-semibold text-sm text-white shrink-0">0 ₽/мес</div>
-              </button>
-
-              <!-- Support Option 2 -->
-              <button type="button" data-group="support" data-monthly="990" data-name="Техподдержка, хостинг и мелкие правки"
-                class="calc-option w-full text-left p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.02] flex items-center justify-between gap-3 transition-all active:scale-[0.99]">
-                <div>
-                  <div class="font-medium text-sm sm:text-base text-white">Техподдержка, хостинг и мелкие правки</div>
-                  <div class="text-xs text-zinc-400 mt-1">Следим, чтобы бот и сайт не падали, вносим правки</div>
-                </div>
-                <div class="font-display font-semibold text-sm text-white shrink-0">+990 ₽/мес</div>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Right Column: Sticky Live Estimate Summary -->
-        <div class="lg:col-span-5 lg:sticky lg:top-28">
-          <div class="glass-panel rounded-3xl p-6 sm:p-8 border-white/15 shadow-card relative overflow-hidden">
-            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
-
-            <div class="flex items-center justify-between mb-6">
-              <span class="text-xs font-semibold tracking-[0.18em] text-zinc-400 uppercase">Ваш расчет</span>
-              <span id="selected-count-badge" class="px-2.5 py-1 rounded-full bg-white/10 text-xs font-medium text-white">2 модуля</span>
-            </div>
-
-            <!-- Selected Modules Breakdown -->
-            <div class="space-y-2.5 mb-6 max-h-56 overflow-y-auto pr-1" id="summary-list">
-              <!-- Populated dynamically via JS -->
-            </div>
-
-            <div class="border-t border-white/10 pt-5 space-y-4">
-              <!-- Total Implementation Cost -->
-              <div class="flex items-baseline justify-between gap-2">
-                <span class="text-sm text-zinc-400">Итого за запуск:</span>
-                <span id="total-price" class="font-display font-bold text-2xl sm:text-3xl text-white">7 400 ₽</span>
-              </div>
-
-              <!-- Monthly Fee -->
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-sm text-zinc-400">Сопровождение:</span>
-                <span id="monthly-price" class="font-display font-semibold text-base text-zinc-200">0 ₽ / мес</span>
-              </div>
-
-              <!-- Delivery Time -->
-              <div class="flex items-center justify-between gap-2 bg-white/[0.04] rounded-2xl p-3.5 border border-white/[0.07]">
-                <div class="flex items-center gap-2.5 text-sm text-zinc-300">
-                  <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  <span>Срок запуска:</span>
-                </div>
-                <span id="total-days" class="font-display font-bold text-sm sm:text-base text-white">3 рабочих дня</span>
-              </div>
-            </div>
-
-            <!-- Action Button -->
-            <button type="button" id="open-lead-modal-btn" class="btn-metallic w-full mt-6 py-4 px-6 rounded-2xl text-sm sm:text-base flex items-center justify-center gap-2">
-              <span>Оставить заявку по этому расчету</span>
-            </button>
-
-            <p class="text-[11px] text-zinc-500 text-center mt-3.5 leading-relaxed">
-              Цена фиксируется на 14 дней. Оплата частями: предоплата и остаток после сдачи.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. PORTFOLIO (SELECTED WORKS) -->
-  <section id="cases" class="py-16 sm:py-24 border-b border-white/[0.06]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
-        <div>
-          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Портфолио</span>
-          <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
-            Реализованные проекты
-          </h2>
-        </div>
-        <p class="text-sm text-zinc-400 max-w-md">
-          Реальные проекты, которые уже работают, плюс живой симулятор бота записи — можно покликать прямо здесь.
-        </p>
+        <a href="services.html" class="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+          Открыть калькулятор цен →
+        </a>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-        <!-- CASE 1 (With Live Site Link) -->
-        <article id="case-card-case1" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+        
+        <!-- Card 1 -->
+        <a href="services.html?preset=crm" class="glass-panel glass-panel-interactive rounded-3xl p-7 sm:p-8 flex flex-col justify-between group">
           <div>
-            <!-- Visual Preview Header -->
-            <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/80 via-zinc-900 to-black border border-white/10 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md bg-white/10 text-[10px] font-semibold tracking-wider text-zinc-200 uppercase">Частная практика</span>
-                <span class="text-xs text-emerald-400 font-medium">Запущен</span>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-white/[0.07] border border-white/15 flex items-center justify-center text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                </svg>
               </div>
-              <div class="space-y-1.5">
-                <div class="h-2 w-2/3 rounded bg-white/25"></div>
-                <div class="h-2 w-1/2 rounded bg-white/10"></div>
-                <div class="flex gap-2 pt-2">
-                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px]">Google Таблицы</span>
-                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Правки из Telegram</span>
-                </div>
-              </div>
+              <span class="px-3 py-1 rounded-full bg-white text-black text-[10px] font-bold uppercase tracking-wider">Хит для ИП</span>
             </div>
-
-            <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3 leading-snug">
-              Сайт и бот записи для психолога и юриста
-            </h3>
-            <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-              Личный сайт специалиста, бот для быстрого редактирования цен и текстов с телефона, плюс запись клиентов сразу в Google Таблицу.
+            <h3 class="font-display font-bold text-xl text-white mb-3">Системы онлайн-записи и CRM в TG</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Запись 24/7, напоминания клиентам и автоматический учет выручки в Google Таблицах.
             </p>
           </div>
+          <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between">
+            <span class="font-display font-semibold text-base text-white">от 9 900 ₽</span>
+            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">Рассчитать →</span>
+          </div>
+        </a>
 
-          <div class="space-y-2.5">
-            <a href="https://svetlanasokovikova.ru/" target="_blank" rel="noopener noreferrer" class="btn-metallic w-full py-3.5 px-5 rounded-xl text-sm flex items-center justify-center gap-2">
-              <span>Открыть живой сайт ↗</span>
+        <!-- Card 2 -->
+        <a href="services.html?preset=site" class="glass-panel glass-panel-interactive rounded-3xl p-7 sm:p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <span class="text-xs text-zinc-500 font-medium">3–5 дней</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Сайты и лендинги с управлением через TG</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Меняйте цены, акции и услуги прямо с телефона через закрытого бота — без программиста.
+            </p>
+          </div>
+          <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between">
+            <span class="font-display font-semibold text-base text-white">от 14 900 ₽</span>
+            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">Рассчитать →</span>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="services.html?preset=miniapp" class="glass-panel glass-panel-interactive rounded-3xl p-7 sm:p-8 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <span class="text-xs text-zinc-500 font-medium">5–7 дней</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Telegram Mini Apps для бизнеса</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Полноценное веб-приложение внутри мессенджера: витрина товаров, корзина, доставка и оплата.
+            </p>
+          </div>
+          <div class="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between">
+            <span class="font-display font-semibold text-base text-white">от 19 900 ₽</span>
+            <span class="text-xs font-medium text-zinc-400 group-hover:text-white transition-colors">Рассчитать →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FEATURED CASES (PREVIEW OF 3 PROJECTS) -->
+  <section class="py-24 sm:py-32 border-b border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+        <div>
+          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Избранные проекты</span>
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
+            Работающие системы клиентов
+          </h2>
+        </div>
+        <a href="cases.html" class="px-5 py-2.5 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white hover:text-black text-white text-xs sm:text-sm font-medium transition-all">
+          Все кейсы и разбор →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Case 1 -->
+        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-[10px] font-semibold tracking-wider text-zinc-200 uppercase">Частная практика</span>
+              <span class="text-xs text-emerald-400 font-medium">● Live</span>
+            </div>
+            <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3">
+              Сайт и система ботов для психолога и юриста
+            </h3>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-6">
+              Правки на сайте за 10 секунд через Telegram-бота и автозапись клиентов в Google Таблицу.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between gap-3">
+            <a href="https://svetlanasokovikova.ru" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-white hover:underline">
+              svetlanasokovikova.ru ↗
             </a>
-            <button type="button" data-case="case1" class="open-case-btn w-full py-3 px-5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white font-medium text-sm transition-all flex items-center justify-center gap-2">
-              <span>Подробнее о решении</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-            </button>
+            <a href="cases.html#case-practice" class="text-xs text-zinc-400 hover:text-white transition-colors">Разбор →</a>
           </div>
         </article>
 
-        <!-- CASE 2 (No External Link, Private Demo Badge) -->
-        <article id="case-card-case2" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+        <!-- Case 2 -->
+        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
           <div>
-            <!-- Visual Preview Header -->
-            <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/80 via-zinc-900 to-black border border-white/10 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex items-center justify-between gap-2">
-                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 border border-amber-400/25 text-[10px] font-semibold tracking-wider text-amber-300 uppercase">Закрытое демо / Внедрение</span>
-              </div>
-              <div class="space-y-1.5">
-                <div class="flex items-center justify-between text-xs text-zinc-300 font-medium">
-                  <span>Поиск туров Tourvisor API</span>
-                  <span class="text-white font-display">80+ операторов</span>
-                </div>
-                <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
-                  <div class="w-4/5 h-full bg-gradient-to-r from-zinc-400 to-white"></div>
-                </div>
-                <div class="flex gap-2 pt-2">
-                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Горящие туры</span>
-                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Заявки в Telegram</span>
-                </div>
-              </div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-[10px] font-semibold tracking-wider text-zinc-200 uppercase">Travel Tech</span>
+              <span class="text-xs text-emerald-400 font-medium">● Live</span>
             </div>
-
-            <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3 leading-snug">
-              Сайт и админ-бот для турагентства Withiv
+            <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3">
+              Платформа поиска туров Withiv
             </h3>
             <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-              Живой поиск туров по 80 туроператорам через Tourvisor API, публикация горящих туров и отзывов из Telegram, сбор заявок менеджерам.
+              Интеграция Tourvisor API по 80+ туроператорам, витрина горящих туров и перехват заявок в Telegram.
             </p>
           </div>
-
-          <button type="button" data-case="case2" class="open-case-btn w-full py-3.5 px-5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white font-medium text-sm transition-all flex items-center justify-center gap-2">
-            <span>Подробнее о решении</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+          <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between gap-3">
+            <a href="https://travel.skovtech.ru" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-white hover:underline">
+              travel.skovtech.ru ↗
+            </a>
+            <a href="cases.html#case-withiv" class="text-xs text-zinc-400 hover:text-white transition-colors">Разбор →</a>
+          </div>
         </article>
 
-        <!-- CASE 3 (Interactive Simulator) -->
-        <article id="case-card-case3" class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-white/20 relative group">
+        <!-- Case 3 -->
+        <article class="glass-panel glass-panel-interactive rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
           <div>
-            <!-- Visual Preview Header -->
-            <div class="h-40 rounded-2xl bg-gradient-to-br from-zinc-800/90 via-zinc-900 to-black border border-white/15 p-4 mb-6 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md bg-white text-black text-[10px] font-bold tracking-wider uppercase">Живое демо</span>
-                <span class="text-xs text-emerald-400 font-medium flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                  Можно покликать
-                </span>
-              </div>
-              <div class="space-y-1.5">
-                <div class="text-xs text-zinc-300 font-medium">Бот автозаписи + Google Таблица</div>
-                <div class="text-[11px] text-zinc-400">Клиники • Косметологии • Салоны красоты</div>
-                <div class="flex gap-2 pt-1.5">
-                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px]">Авто-напоминания</span>
-                  <span class="px-2 py-0.5 rounded bg-white/10 text-zinc-300 text-[10px]">Учет выручки</span>
-                </div>
-              </div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-2.5 py-1 rounded-md bg-white text-black text-[10px] font-bold tracking-wider uppercase">Mini App</span>
+              <span class="text-xs text-emerald-400 font-medium">● Live</span>
             </div>
-
-            <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3 leading-snug">
-              Бот автозаписи для клиник и салонов красоты
+            <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-3">
+              Telegram Mini App меню и доставки L'Atelier Bistro
             </h3>
             <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-              Готовое решение: клиент выбирает услугу, мастера и время в Telegram, админу сразу приходит уведомление, а запись попадает в Google Таблицу.
+              Интерактивное меню, сбор корзины и моментальная передача заказа на кухню и в таблицу учета.
             </p>
           </div>
-
-          <button type="button" data-case="case3" class="open-case-btn btn-metallic w-full py-3.5 px-5 rounded-xl text-sm flex items-center justify-center gap-2">
-            <span>Потестировать бота</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </button>
+          <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between gap-3">
+            <a href="https://food.skovtech.ru" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-white hover:underline">
+              food.skovtech.ru ↗
+            </a>
+            <a href="cases.html#case-bistro" class="text-xs text-zinc-400 hover:text-white transition-colors">Разбор →</a>
+          </div>
         </article>
 
       </div>
     </div>
   </section>
 
-  <!-- 6. FOOTER -->
-  <footer id="contacts" class="py-12 sm:py-16 bg-[#050505]">
+  <!-- 4. HOW WE WORK (4 SHORT STEPS) -->
+  <section class="py-24 sm:py-32 border-b border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-14">
+        <span class="text-xs font-semibold tracking-[0.2em] text-zinc-500 uppercase">Процесс</span>
+        <h2 class="font-display font-bold text-2xl sm:text-4xl text-metallic-subtle mt-2">
+          Как мы работаем
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass-panel rounded-3xl p-6 sm:p-7">
+          <div class="w-9 h-9 rounded-xl bg-white text-black font-display font-bold text-sm flex items-center justify-center mb-5">01</div>
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">Разбор задачи за 15 мин</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+            Фиксируем логику, точную смету и срок запуска без скрытых доплат.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-6 sm:p-7">
+          <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/20 text-white font-display font-bold text-sm flex items-center justify-center mb-5">02</div>
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">Прототип за 1–2 дня</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+            Собираем рабочий каркас и показываем вживую на вашем телефоне.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-6 sm:p-7">
+          <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/20 text-white font-display font-bold text-sm flex items-center justify-center mb-5">03</div>
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">Тест и оплата остатка</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+            Проверяете все сценарии и заявки, после чего закрываете остаток суммы.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-6 sm:p-7">
+          <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/20 text-white font-display font-bold text-sm flex items-center justify-center mb-5">04</div>
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">Доступы и гарантия</h3>
+          <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+            Передаем права на код и таблицы + 30 дней бесплатной поддержки.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. QUICK LEAD FORM -->
+  <section id="quick-form" class="py-24 sm:py-32 border-b border-white/[0.06]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-panel rounded-3xl p-7 sm:p-12 border-white/15 shadow-card relative overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+
+        <div class="max-w-xl mb-8">
+          <span class="text-xs font-semibold tracking-[0.2em] text-zinc-400 uppercase">Быстрый старт</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-2">
+            Обсудим вашу задачу за 15 минут
+          </h2>
+          <p class="text-sm text-zinc-400 mt-2">
+            Оставьте контакт — предложим оптимальную связку инструментов и точный бюджет.
+          </p>
+        </div>
+
+        <form id="inline-lead-form" class="grid grid-cols-1 sm:grid-cols-12 gap-3.5">
+          <div class="sm:col-span-4">
+            <input type="text" name="name" required placeholder="Ваше имя"
+              class="w-full px-4 py-4 rounded-2xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50 transition-colors" />
+          </div>
+          <div class="sm:col-span-5">
+            <input type="text" name="contact" required placeholder="Телефон или @Telegram"
+              class="w-full px-4 py-4 rounded-2xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50 transition-colors" />
+          </div>
+          <div class="sm:col-span-3">
+            <button type="submit" class="btn-metallic w-full h-full py-4 px-5 rounded-2xl text-sm whitespace-nowrap">
+              Отправить
+            </button>
+          </div>
+        </form>
+
+        <div id="inline-lead-success" class="hidden mt-5 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-sm text-emerald-300">
+          ✓ Заявка улетела в наш Telegram-бот. Свяжемся в ближайшее время.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED FOOTER -->
+  <footer class="py-12 sm:py-16 bg-[#050505]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-white/[0.08]">
         
-        <!-- Logo (Clean, no frame, blend mode) -->
-        <div class="flex items-center gap-2.5">
+        <a href="index.html" class="flex items-center gap-2.5">
           <img src="logo.png" alt="SKOV TECHNOLOGIES" class="h-7 sm:h-8 w-auto object-contain mix-blend-lighten shrink-0">
           <div class="flex flex-col">
             <span class="font-display font-extrabold text-base tracking-wider text-white leading-none">SKOV</span>
             <span class="text-[9px] font-medium tracking-[0.28em] text-zinc-400 uppercase mt-1 leading-none">TECHNOLOGIES</span>
           </div>
-        </div>
+        </a>
 
-        <!-- Direct Telegram Contact Button -->
-        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white text-sm font-medium transition-all inline-flex items-center gap-2.5">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-          </svg>
+        <nav class="flex flex-wrap items-center gap-6 text-xs sm:text-sm text-zinc-400">
+          <a href="index.html" class="hover:text-white transition-colors">Главная</a>
+          <a href="cases.html" class="hover:text-white transition-colors">Кейсы</a>
+          <a href="services.html" class="hover:text-white transition-colors">Услуги и цены</a>
+          <a href="about.html" class="hover:text-white transition-colors">О студии</a>
+        </nav>
+
+        <a href="https://t.me/skov_tech" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white hover:text-black text-white text-xs sm:text-sm font-medium transition-all inline-flex items-center gap-2">
           <span>Написать в Telegram</span>
         </a>
       </div>
 
       <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-zinc-500">
-        <p>© 2026 SKOV TECHNOLOGIES</p>
-        <p class="text-zinc-600">Telegram-боты • Google Таблицы • Сайты под ключ</p>
+        <p>© 2026 SKOV TECHNOLOGIES • Ижевск / Вся РФ</p>
+        <p class="text-zinc-600">Telegram-боты • Mini Apps • Google Таблицы • Сайты</p>
       </div>
     </div>
   </footer>
 
-  <!-- MOBILE FLOATING ESTIMATE BAR -->
-  <div id="mobile-sticky-bar" class="lg:hidden fixed bottom-0 inset-x-0 z-30 border-t border-white/15 bg-[#0A0A0C]/95 backdrop-blur-2xl px-4 py-3 shadow-2xl">
-    <div class="max-w-xl mx-auto flex items-center justify-between gap-3">
-      <div>
-        <div class="text-[11px] text-zinc-400">Итого • <span id="mobile-bar-days" class="text-zinc-200 font-medium">3 раб. дн.</span></div>
-        <div id="mobile-bar-price" class="font-display font-bold text-lg text-white leading-tight">7 400 ₽</div>
-      </div>
-      <button type="button" id="mobile-bar-cta" class="btn-metallic px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap">
-        Оставить заявку
-      </button>
-    </div>
-  </div>
-
-  <!-- MODAL 1: LEAD CAPTURE & ESTIMATE SUMMARY -->
-  <div id="lead-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md">
-    <div class="glass-panel w-full sm:max-w-lg rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative">
-      
+  <!-- SHARED DISCUSS MODAL -->
+  <div id="discuss-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-panel w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8 relative">
       <div class="flex items-center justify-between mb-5">
         <div>
-          <span class="text-[11px] font-semibold tracking-widest text-zinc-400 uppercase">Заявка</span>
-          <h3 class="font-display font-bold text-xl text-white mt-0.5">Отправить расчет</h3>
+          <span class="text-[11px] font-semibold tracking-widest text-zinc-400 uppercase">SKOV TECHNOLOGIES</span>
+          <h3 class="font-display font-bold text-xl text-white mt-0.5">Обсудить проект</h3>
         </div>
-        <button type="button" id="close-lead-modal" class="p-2 rounded-xl bg-white/[0.06] hover:bg-white/15 text-zinc-300 hover:text-white transition-colors">
+        <button type="button" id="close-discuss-modal" class="p-2 rounded-xl bg-white/[0.06] hover:bg-white/15 text-zinc-300 hover:text-white transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <!-- Compact Estimate Receipt -->
-      <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-4 mb-6">
-        <div class="text-xs text-zinc-400 mb-2">Что вошло в расчет:</div>
-        <ul id="modal-summary-items" class="space-y-1.5 text-xs sm:text-sm text-zinc-200 mb-3"></ul>
-        <div class="pt-3 border-t border-white/10 flex items-center justify-between">
-          <div>
-            <div class="text-[11px] text-zinc-400">Срок: <span id="modal-days" class="text-white font-medium">3 раб. дн.</span></div>
-            <div class="text-[11px] text-zinc-400">Поддержка: <span id="modal-monthly" class="text-white font-medium">0 ₽/мес</span></div>
-          </div>
-          <div class="text-right">
-            <div class="text-[11px] text-zinc-400">Итого</div>
-            <div id="modal-total" class="font-display font-bold text-xl text-white">7 400 ₽</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lead Form -->
-      <form id="lead-form" class="space-y-4">
-        <div>
-          <label for="client-name" class="block text-xs font-medium text-zinc-300 mb-1.5">Ваше имя</label>
-          <input type="text" id="client-name" required placeholder="Например, Алексей"
-            class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50 transition-colors" />
-        </div>
-
-        <div>
-          <label for="client-contact" class="block text-xs font-medium text-zinc-300 mb-1.5">Телефон или Telegram (@username)</label>
-          <input type="text" id="client-contact" required placeholder="+7 (999) 000-00-00 или @username"
-            class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50 transition-colors" />
-        </div>
-
-        <div>
-          <label for="client-niche" class="block text-xs font-medium text-zinc-300 mb-1.5">Чем занимаетесь</label>
-          <input type="text" id="client-niche" required placeholder="Клиника, салон, частный мастер, услуги..."
-            class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50 transition-colors" />
-        </div>
-
-        <button type="submit" id="submit-lead-btn" class="btn-metallic w-full py-4 rounded-2xl text-sm sm:text-base mt-2">
-          Отправить заявку
+      <form id="modal-discuss-form" class="space-y-4">
+        <input type="text" name="name" required placeholder="Ваше имя"
+          class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <input type="text" name="contact" required placeholder="Телефон или @Telegram"
+          class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-white/50" />
+        <button type="submit" class="btn-metallic w-full py-4 rounded-2xl text-sm">
+          Жду звонка / сообщения
         </button>
       </form>
 
-      <!-- Success State (Hidden by default) -->
-      <div id="lead-success-box" class="hidden text-center py-6 space-y-4">
-        <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-        </div>
-        <h4 class="font-display font-bold text-lg text-white">Заявка отправлена!</h4>
-        <p class="text-sm text-zinc-400 leading-relaxed">
-          Получили ваш расчет. Напишем в ближайшее время, чтобы уточнить детали и показать, как это будет работать именно у вас.
-        </p>
-        <button type="button" id="copy-estimate-btn" class="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.05] text-xs font-medium text-zinc-200 hover:bg-white/10 transition-colors">
-          Скопировать расчет текстом
-        </button>
+      <div id="modal-discuss-success" class="hidden text-center py-6 space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">✓</div>
+        <h4 class="font-display font-bold text-base text-white">Заявка принята!</h4>
+        <p class="text-xs text-zinc-400">Напишем в течение 15 минут в рабочее время.</p>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 2: CASE STUDY DETAILS & INTERACTIVE BOT SIMULATOR -->
-  <div id="case-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/85 backdrop-blur-md">
-    <div class="glass-panel w-full sm:max-w-3xl rounded-t-3xl sm:rounded-3xl border-white/15 bg-[#0D0D10] p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative">
-      
-      <div class="flex items-start justify-between gap-4 mb-5">
-        <div>
-          <span id="case-modal-tag" class="text-[11px] font-semibold tracking-widest text-zinc-400 uppercase">ПРОЕКТ</span>
-          <h3 id="case-modal-title" class="font-display font-bold text-lg sm:text-2xl text-white mt-1 leading-snug"></h3>
-        </div>
-        <button type="button" id="close-case-modal" class="p-2 rounded-xl bg-white/[0.06] hover:bg-white/15 text-zinc-300 hover:text-white transition-colors shrink-0">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <!-- Dynamic Content Container -->
-      <div id="case-modal-body" class="space-y-5"></div>
-
-      <!-- Bottom Action -->
-      <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <span class="text-xs text-zinc-400">Нужно что-то похожее для вашего бизнеса?</span>
-        <button type="button" id="case-to-calc-btn" class="btn-metallic w-full sm:w-auto px-5 py-3 rounded-xl text-xs sm:text-sm">
-          Посчитать под свой проект
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- JAVASCRIPT ENGINE -->
+  <!-- SHARED ENGINE & ANALYTICS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      /* =====================================================================
-      0. GOOGLE APPS SCRIPT WEBHOOK & ANALYTICS TRACKING
-      ===================================================================== */
-      // Вставьте сюда URL вашего развернутого веб-приложения Google Apps Script
       const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec';
-
       const VISITOR_KEY = 'skov_visitor_seen';
-      const CALC_USED_SESSION_KEY = 'skov_calc_used_session';
 
-      function sendAnalyticsEvent(payload) {
-        if (!GAS_WEBHOOK_URL || GAS_WEBHOOK_URL === 'YOUR_GAS_WEBAPP_URL') {
-          console.log('[SKOV Analytics - Demo Mode]', payload);
-          return Promise.resolve();
-        }
-
+      function sendToGAS(payload) {
+        if (!GAS_WEBHOOK_URL) return Promise.resolve();
         return fetch(GAS_WEBHOOK_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-          },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
-        }).catch(err => {
-          console.warn('Analytics send error:', err);
-        });
+        }).catch(() => {});
       }
 
-      // 1) Track Page View (with unique visitor detection via localStorage)
+      // Page View Analytics
       (function trackPageView() {
         let isUnique = false;
         try {
@@ -948,716 +623,110 @@
             isUnique = true;
             localStorage.setItem(VISITOR_KEY, new Date().toISOString());
           }
-        } catch (e) {
-          isUnique = false;
-        }
+        } catch (e) {}
 
-        sendAnalyticsEvent({
+        sendToGAS({
           event: 'page_view',
           is_unique: isUnique,
-          page: window.location.href,
+          page: window.location.pathname || 'index.html',
           referrer: document.referrer || 'direct'
         });
       })();
 
-      // 2) Track first calculator interaction per session
-      let calcUsedThisSession = false;
-      try {
-        calcUsedThisSession = sessionStorage.getItem(CALC_USED_SESSION_KEY) === '1';
-      } catch (e) {
-        calcUsedThisSession = false;
-      }
-
-      function trackCalcInteraction(actionId) {
-        if (calcUsedThisSession) return;
-        calcUsedThisSession = true;
-        try {
-          sessionStorage.setItem(CALC_USED_SESSION_KEY, '1');
-        } catch (e) {}
-
-        sendAnalyticsEvent({
-          event: 'calc_use',
-          action: actionId || 'click'
-        });
-      }
-
-      /* =====================================================================
-      1. AMBIENT SPOTLIGHT & MOBILE NAVIGATION
-      ===================================================================== */
+      // Ambient Spotlight & Mobile Nav
       const spotlight = document.getElementById('spotlight');
       window.addEventListener('mousemove', (e) => {
-        spotlight.style.background = `radial-gradient(650px circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.045), transparent 70%)`;
+        spotlight.style.background = `radial-gradient(650px circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.04), transparent 70%)`;
       });
 
       const mobileMenuBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+      // Interactive Hero Mockup Simulation
+      const demoEntries = [
+        { name: 'Анна К.', service: 'Консультация', time: 'Завтра, 15:00', sum: '3 500 ₽' },
+        { name: 'Дмитрий В.', service: 'Стрижка + Борода', time: 'Сегодня, 18:30', sum: '2 400 ₽' },
+        { name: 'Елена М.', service: 'Чистка лица', time: 'Чт, 12:00', sum: '4 900 ₽' }
+      ];
+      let demoIdx = 0;
+      const heroSimBtn = document.getElementById('hero-sim-trigger');
+      heroSimBtn.addEventListener('click', () => {
+        demoIdx = (demoIdx + 1) % demoEntries.length;
+        const item = demoEntries[demoIdx];
+        document.getElementById('hero-tg-bubble').innerHTML = `Клиент: <b>${item.name}</b> • ${item.service} (${item.time}) • <b>${item.sum}</b>`;
+        const row = document.getElementById('hero-sheet-row');
+        row.classList.add('bg-emerald-500/30');
+        document.getElementById('hero-cell-name').textContent = item.name;
+        document.getElementById('hero-cell-time').textContent = item.time;
+        document.getElementById('hero-cell-sum').textContent = item.sum;
+        setTimeout(() => row.classList.remove('bg-emerald-500/30'), 450);
       });
 
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-      });
+      // Discuss Modal Logic
+      const discussModal = document.getElementById('discuss-modal');
+      const closeDiscussBtn = document.getElementById('close-discuss-modal');
+      const modalForm = document.getElementById('modal-discuss-form');
+      const modalSuccess = document.getElementById('modal-discuss-success');
 
-      /* =====================================================================
-      2. INTERACTIVE PROJECT ESTIMATOR (CALCULATOR)
-      ===================================================================== */
-      const baseButtons = document.querySelectorAll('[data-group="base"]');
-      const addonNoneBtn = document.getElementById('addon-none-btn');
-      const addonButtons = document.querySelectorAll('[data-group="addon"]');
-      const supportButtons = document.querySelectorAll('[data-group="support"]');
-
-      const summaryListEl = document.getElementById('summary-list');
-      const selectedCountBadge = document.getElementById('selected-count-badge');
-      const totalPriceEl = document.getElementById('total-price');
-      const monthlyPriceEl = document.getElementById('monthly-price');
-      const totalDaysEl = document.getElementById('total-days');
-
-      // Mobile sticky bar elements
-      const mobileBarPrice = document.getElementById('mobile-bar-price');
-      const mobileBarDays = document.getElementById('mobile-bar-days');
-
-      let currentEstimate = {
-        items: [],
-        hasPaidAddons: false,
-        totalPrice: 0,
-        monthlyPrice: 0,
-        days: 0,
-        supportName: 'Разовая передача «под ключ»'
-      };
-
-      function formatRub(num) {
-        return num.toLocaleString('ru-RU') + ' ₽';
-      }
-
-      function pluralizeDays(days) {
-        const mod10 = days % 10;
-        const mod100 = days % 100;
-        if (mod10 === 1 && mod100 !== 11) return `${days} рабочий день`;
-        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return `${days} рабочих дня`;
-        return `${days} рабочих дней`;
-      }
-
-      function pluralizeModules(count) {
-        if (count === 1) return '1 модуль';
-        if (count >= 2 && count <= 4) return `${count} модуля`;
-        return `${count} модулей`;
-      }
-
-      function recalculateEstimate() {
-        let items = [];
-        let total = 0;
-        let rawDays = 0;
-        let paidAddonsCount = 0;
-
-        baseButtons.forEach(btn => {
-          if (btn.classList.contains('is-selected')) {
-            const price = Number(btn.dataset.price);
-            const days = Number(btn.dataset.days);
-            items.push({ name: btn.dataset.name, price });
-            total += price;
-            rawDays += days;
-          }
-        });
-
-        addonButtons.forEach(btn => {
-          if (btn.classList.contains('is-selected')) {
-            const price = Number(btn.dataset.price);
-            const days = Number(btn.dataset.days);
-            items.push({ name: btn.dataset.name, price });
-            total += price;
-            rawDays += days;
-            paidAddonsCount += 1;
-          }
-        });
-
-        let monthly = 0;
-        let supportName = 'Разовая передача «под ключ»';
-        supportButtons.forEach(btn => {
-          if (btn.classList.contains('is-selected')) {
-            monthly = Number(btn.dataset.monthly);
-            supportName = btn.dataset.name;
-          }
-        });
-
-        const finalDays = items.length === 0
-          ? 0
-          : (items.length > 2 ? Math.max(2, Math.round(rawDays * 0.85)) : Math.max(1, rawDays));
-
-        currentEstimate = {
-          items,
-          hasPaidAddons: paidAddonsCount > 0,
-          totalPrice: total,
-          monthlyPrice: monthly,
-          days: finalDays,
-          supportName
-        };
-
-        // Render Summary List
-        summaryListEl.innerHTML = '';
-        if (items.length === 0) {
-          summaryListEl.innerHTML = '<div class="text-xs text-zinc-500 py-2">Выберите хотя бы один пункт слева, чтобы увидеть цену.</div>';
-        } else {
-          items.forEach(item => {
-            const row = document.createElement('div');
-            row.className = 'flex items-start justify-between gap-3 text-xs sm:text-sm';
-            row.innerHTML = `
-              <span class="text-zinc-300 leading-snug">${item.name}</span>
-              <span class="text-white font-medium shrink-0">${formatRub(item.price)}</span>
-            `;
-            summaryListEl.appendChild(row);
-          });
-
-          if (!currentEstimate.hasPaidAddons) {
-            const baseRow = document.createElement('div');
-            baseRow.className = 'flex items-start justify-between gap-3 text-xs sm:text-sm';
-            baseRow.innerHTML = `
-              <span class="text-zinc-400 leading-snug">Базовая комплектация (без доп. модулей)</span>
-              <span class="text-emerald-400 font-medium shrink-0">0 ₽</span>
-            `;
-            summaryListEl.appendChild(baseRow);
-          }
-        }
-
-        selectedCountBadge.textContent = pluralizeModules(items.length);
-        totalPriceEl.textContent = formatRub(total);
-        monthlyPriceEl.textContent = monthly > 0 ? `${formatRub(monthly)} / мес` : '0 ₽ / мес';
-        totalDaysEl.textContent = items.length === 0 ? '—' : pluralizeDays(finalDays);
-
-        // Sync Mobile Bottom Bar
-        mobileBarPrice.textContent = formatRub(total);
-        mobileBarDays.textContent = items.length === 0 ? 'выберите пункты' : `${finalDays} раб. дн.`;
-      }
-
-      // Multi-select handler (Step 1)
-      baseButtons.forEach(btn => {
+      document.querySelectorAll('[data-open-discuss]').forEach(btn => {
         btn.addEventListener('click', () => {
-          trackCalcInteraction(btn.dataset.id);
-          btn.classList.toggle('is-selected');
-          recalculateEstimate();
+          modalForm.classList.remove('hidden');
+          modalSuccess.classList.add('hidden');
+          discussModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
         });
       });
 
-      // Step 2: Free default vs Paid addons mutual logic
-      addonNoneBtn.addEventListener('click', () => {
-        trackCalcInteraction('base_only');
-        addonButtons.forEach(b => b.classList.remove('is-selected'));
-        addonNoneBtn.classList.add('is-selected');
-        recalculateEstimate();
-      });
-
-      addonButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          trackCalcInteraction(btn.dataset.id);
-          btn.classList.toggle('is-selected');
-          const anyPaidSelected = Array.from(addonButtons).some(b => b.classList.contains('is-selected'));
-          if (anyPaidSelected) {
-            addonNoneBtn.classList.remove('is-selected');
-          } else {
-            addonNoneBtn.classList.add('is-selected');
-          }
-          recalculateEstimate();
-        });
-      });
-
-      // Single-select handler (Step 3)
-      supportButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          trackCalcInteraction('support_' + btn.dataset.monthly);
-          supportButtons.forEach(b => b.classList.remove('is-selected'));
-          btn.classList.add('is-selected');
-          recalculateEstimate();
-        });
-      });
-
-      recalculateEstimate();
-
-      /* =====================================================================
-      3. LEAD MODAL & GAS WEBHOOK SUBMISSION
-      ===================================================================== */
-      const leadModal = document.getElementById('lead-modal');
-      const openLeadBtn = document.getElementById('open-lead-modal-btn');
-      const mobileBarCta = document.getElementById('mobile-bar-cta');
-      const closeLeadBtn = document.getElementById('close-lead-modal');
-      const leadForm = document.getElementById('lead-form');
-      const leadSuccessBox = document.getElementById('lead-success-box');
-      const copyEstimateBtn = document.getElementById('copy-estimate-btn');
-
-      function openLeadModal() {
-        const modalSummaryItems = document.getElementById('modal-summary-items');
-        modalSummaryItems.innerHTML = '';
-
-        if (currentEstimate.items.length === 0) {
-          modalSummaryItems.innerHTML = '<li class="text-zinc-400">Индивидуальный расчет по запросу</li>';
-        } else {
-          currentEstimate.items.forEach(item => {
-            const li = document.createElement('li');
-            li.className = 'flex justify-between gap-2';
-            li.innerHTML = `<span>• ${item.name}</span><span class="text-zinc-400 shrink-0">${formatRub(item.price)}</span>`;
-            modalSummaryItems.appendChild(li);
-          });
-          if (!currentEstimate.hasPaidAddons) {
-            const li = document.createElement('li');
-            li.className = 'flex justify-between gap-2 text-zinc-400';
-            li.innerHTML = `<span>• Базовая комплектация (без доп. модулей)</span><span class="text-emerald-400 shrink-0">0 ₽</span>`;
-            modalSummaryItems.appendChild(li);
-          }
-        }
-
-        document.getElementById('modal-total').textContent = formatRub(currentEstimate.totalPrice);
-        document.getElementById('modal-monthly').textContent = currentEstimate.monthlyPrice > 0 ? `${formatRub(currentEstimate.monthlyPrice)}/мес` : '0 ₽/мес';
-        document.getElementById('modal-days').textContent = currentEstimate.days > 0 ? pluralizeDays(currentEstimate.days) : 'Уточняется';
-
-        leadForm.classList.remove('hidden');
-        leadSuccessBox.classList.add('hidden');
-        leadModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeLeadModal() {
-        leadModal.classList.add('hidden');
+      function closeDiscuss() {
+        discussModal.classList.add('hidden');
         document.body.style.overflow = '';
       }
 
-      openLeadBtn.addEventListener('click', openLeadModal);
-      mobileBarCta.addEventListener('click', openLeadModal);
-      closeLeadBtn.addEventListener('click', closeLeadModal);
-      leadModal.addEventListener('click', (e) => {
-        if (e.target === leadModal) closeLeadModal();
-      });
+      closeDiscussBtn.addEventListener('click', closeDiscuss);
+      discussModal.addEventListener('click', (e) => { if (e.target === discussModal) closeDiscuss(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDiscuss(); });
 
-      function buildEstimateText(clientName = '', clientContact = '', clientNiche = '') {
-        let modulesList = currentEstimate.items.length
-          ? currentEstimate.items.map(i => `— ${i.name} (${formatRub(i.price)})`).join('\n')
-          : '— Индивидуальный запрос';
-
-        if (currentEstimate.items.length && !currentEstimate.hasPaidAddons) {
-          modulesList += '\n— Базовая комплектация (без доп. модулей) (0 ₽)';
-        }
-
-        return [
-          `🔥 НОВАЯ ЗАЯВКА | SKOV TECHNOLOGIES`,
-          clientName ? `👤 Имя: ${clientName}` : '',
-          clientContact ? `📞 Контакт: ${clientContact}` : '',
-          clientNiche ? `🏢 Ниша: ${clientNiche}` : '',
-          `\n📋 Выбрано в калькуляторе:\n${modulesList}`,
-          `🛠 Сопровождение: ${currentEstimate.supportName}`,
-          `\n💰 Итого запуск: ${formatRub(currentEstimate.totalPrice)}`,
-          `🔄 Поддержка: ${formatRub(currentEstimate.monthlyPrice)}/мес`,
-          `⏱ Срок: ${currentEstimate.days > 0 ? pluralizeDays(currentEstimate.days) : 'Уточняется'}`
-        ].filter(Boolean).join('\n');
-      }
-
-      leadForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = document.getElementById('submit-lead-btn');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Отправляем...';
+      // Lead Form Handler (Both Inline & Modal)
+      async function handleQuickLead(formEl, successEl, sourceLabel) {
+        const name = formEl.querySelector('[name="name"]').value.trim();
+        const contact = formEl.querySelector('[name="contact"]').value.trim();
+        const submitBtn = formEl.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
 
-        const name = document.getElementById('client-name').value.trim();
-        const contact = document.getElementById('client-contact').value.trim();
-        const niche = document.getElementById('client-niche').value.trim();
+        const formattedText = [
+          `🔥 БЫСТРАЯ ЗАЯВКА | SKOV TECHNOLOGIES`,
+          `👤 Имя: ${name}`,
+          `📞 Контакт: ${contact}`,
+          `📍 Источник: ${sourceLabel}`
+        ].join('\n');
 
-        const modulesSummary = currentEstimate.items.length
-          ? currentEstimate.items.map(i => `${i.name} (${formatRub(i.price)})`).join('; ')
-          : 'Индивидуальный запрос';
-
-        const leadPayload = {
+        await sendToGAS({
           event: 'lead',
           name,
           contact,
-          niche,
-          modules: modulesSummary + (!currentEstimate.hasPaidAddons && currentEstimate.items.length ? '; Базовая комплектация (0 ₽)' : ''),
-          support: currentEstimate.supportName,
-          total_price: currentEstimate.totalPrice,
-          monthly_price: currentEstimate.monthlyPrice,
-          days: currentEstimate.days > 0 ? pluralizeDays(currentEstimate.days) : 'Уточняется',
-          formatted_text: buildEstimateText(name, contact, niche)
-        };
-
-        try {
-          await sendAnalyticsEvent(leadPayload);
-          if (!GAS_WEBHOOK_URL || GAS_WEBHOOK_URL === 'YOUR_GAS_WEBAPP_URL') {
-            await new Promise(resolve => setTimeout(resolve, 400));
-          }
-          leadForm.classList.add('hidden');
-          leadSuccessBox.classList.remove('hidden');
-        } catch (err) {
-          leadForm.classList.add('hidden');
-          leadSuccessBox.classList.remove('hidden');
-        } finally {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        }
-      });
-
-      copyEstimateBtn.addEventListener('click', () => {
-        const text = buildEstimateText(
-          document.getElementById('client-name').value.trim(),
-          document.getElementById('client-contact').value.trim(),
-          document.getElementById('client-niche').value.trim()
-        );
-        navigator.clipboard.writeText(text).then(() => {
-          copyEstimateBtn.textContent = 'Скопировано в буфер ✓';
-          setTimeout(() => {
-            copyEstimateBtn.textContent = 'Скопировать расчет текстом';
-          }, 2500);
-        });
-      });
-
-      /* =====================================================================
-      4. PORTFOLIO CASE MODALS & INTERACTIVE BOT SIMULATOR (CASE 3)
-      ===================================================================== */
-      const caseModal = document.getElementById('case-modal');
-      const caseModalTag = document.getElementById('case-modal-tag');
-      const caseModalTitle = document.getElementById('case-modal-title');
-      const caseModalBody = document.getElementById('case-modal-body');
-      const closeCaseModalBtn = document.getElementById('close-case-modal');
-      const caseToCalcBtn = document.getElementById('case-to-calc-btn');
-
-      const casesData = {
-        case1: {
-          tag: 'ПРОЕКТ 01 • ЧАСТНАЯ ПРАКТИКА',
-          title: 'Сайт и бот записи для психолога и юриста',
-          render() {
-            return `
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Правки на сайте</div>
-                  <div class="font-display font-bold text-lg text-white mt-1">15 секунд</div>
-                </div>
-                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Потерянные заявки</div>
-                  <div class="font-display font-bold text-lg text-emerald-400 mt-1">0%</div>
-                </div>
-                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Учет клиентов</div>
-                  <div class="font-display font-bold text-lg text-white mt-1">Google Таблица</div>
-                </div>
-              </div>
-
-              <div class="space-y-3 text-sm text-zinc-300 leading-relaxed">
-                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Что было нужно:</strong>
-                  Простой и аккуратный сайт для частного специалиста, без сложных админок. Важно было менять цены, расписание и заметки прямо с телефона между консультациями.
-                </div>
-                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Что сделали:</strong>
-                  <ul class="list-disc list-inside space-y-1 text-zinc-400 mt-1">
-                    <li>Собрали быстрый сайт с понятной подачей услуг и кнопками записи.</li>
-                    <li>Подключили закрытого бота-админа: отправляете новый текст или фото в Telegram — сайт обновляется сам.</li>
-                    <li>Все заявки прилетают в Telegram и сразу фиксируются в Google Таблице.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <a href="https://svetlanasokovikova.ru/" target="_blank" rel="noopener noreferrer" class="btn-metallic inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm">
-                  <span>Открыть живой сайт ↗</span>
-                </a>
-              </div>
-            `;
-          }
-        },
-        case2: {
-          tag: 'ПРОЕКТ 02 • ЗАКРЫТОЕ ДЕМО / ВНЕДРЕНИЕ',
-          title: 'Сайт и админ-бот для турагентства Withiv',
-          render() {
-            return `
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">База туров</div>
-                  <div class="font-display font-bold text-lg text-white mt-1">80 операторов</div>
-                </div>
-                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Выложить горящий тур</div>
-                  <div class="font-display font-bold text-lg text-white mt-1">1 минута</div>
-                </div>
-                <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <div class="text-xs text-zinc-400">Статус</div>
-                  <div class="font-display font-bold text-sm text-amber-300 mt-1.5">Закрытое демо / Внедрение</div>
-                </div>
-              </div>
-
-              <div class="space-y-3 text-sm text-zinc-300 leading-relaxed">
-                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Что было нужно:</strong>
-                  Убрать ручной подбор туров в мессенджерах. Дать клиентам живой поиск с актуальными ценами прямо на сайте, а менеджерам — быструю публикацию горящих предложений с телефона.
-                </div>
-                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-                  <strong class="text-white block mb-1">Что сделали:</strong>
-                  <ul class="list-disc list-inside space-y-1 text-zinc-400 mt-1">
-                    <li>Подключили поиск туров по 80 туроператорам через Tourvisor API.</li>
-                    <li>Сделали закрытого Telegram-бота для менеджеров: публикация горящих туров, акций и отзывов без участия разработчика.</li>
-                    <li>Настроили мгновенную пересылку всех заявок с сайта в рабочий чат менеджеров.</li>
-                  </ul>
-                </div>
-              </div>
-            `;
-          }
-        },
-        case3: {
-          tag: 'ЖИВОЕ ДЕМО • КЛИНИКИ И САЛОНЫ',
-          title: 'Симулятор бота записи и уведомлений админу',
-          render() {
-            return `
-              <p class="text-xs sm:text-sm text-zinc-400">
-                Покликайте кнопки в окне клиента слева — и посмотрите, что в ту же секунду приходит администратору в Telegram и в Google Таблицу справа:
-              </p>
-
-              <!-- Interactive Split Simulator: Client Bot + Admin Notification & Google Sheet -->
-              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
-                
-                <!-- Left: Client Telegram Bot -->
-                <div class="md:col-span-6 rounded-2xl border border-white/15 bg-[#09090B] overflow-hidden flex flex-col">
-                  <!-- TG Top Bar -->
-                  <div class="px-4 py-3 bg-white/[0.04] border-b border-white/10 flex items-center justify-between">
-                    <div class="flex items-center gap-2.5">
-                      <div class="w-8 h-8 rounded-full bg-white text-black font-display font-bold text-xs flex items-center justify-center">A</div>
-                      <div>
-                        <div class="text-xs font-semibold text-white">Чат клиента (AURA Bot)</div>
-                        <div class="text-[10px] text-emerald-400">онлайн-запись 24/7</div>
-                      </div>
-                    </div>
-                    <button type="button" id="sim-reset-btn" class="text-[11px] text-zinc-400 hover:text-white underline">Сбросить</button>
-                  </div>
-
-                  <!-- Chat Messages Area -->
-                  <div id="sim-chat-log" class="p-4 space-y-3 text-xs min-h-[210px] max-h-[250px] overflow-y-auto flex-1">
-                    <div class="bg-white/[0.07] text-zinc-100 p-3 rounded-2xl rounded-tl-sm max-w-[90%] leading-relaxed">
-                      Здравствуйте! Выберите услугу для записи:
-                    </div>
-                  </div>
-
-                  <!-- Interactive Inline Keyboard -->
-                  <div id="sim-keyboard" class="p-3 bg-white/[0.02] border-t border-white/10 grid grid-cols-2 gap-2">
-                    <button type="button" data-step="service" data-val="Чистка лица HydraFacial" data-price="4 500 ₽"
-                      class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors text-center">
-                      HydraFacial • 4 500 ₽
-                    </button>
-                    <button type="button" data-step="service" data-val="Лазерная эпиляция" data-price="3 200 ₽"
-                      class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors text-center">
-                      Лазер • 3 200 ₽
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Right: Admin Telegram Chat + Live Google Sheet Row -->
-                <div class="md:col-span-6 rounded-2xl border border-white/15 bg-[#09090B] p-4 flex flex-col justify-between gap-4">
-                  <div>
-                    <!-- Clear Prominent Header -->
-                    <div class="pb-3 mb-3 border-b border-white/10">
-                      <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
-                        <h4 class="font-display font-bold text-xs sm:text-sm text-white leading-snug">
-                          Чат администратора (уведомление в Telegram)
-                        </h4>
-                      </div>
-                      <p class="text-[11px] text-zinc-400 mt-1 leading-snug">
-                        Заявка мгновенно дублируется сюда и в Google Таблицу.
-                      </p>
-                    </div>
-
-                    <!-- Admin Telegram Incoming Message Preview -->
-                    <div id="sim-admin-msg" class="rounded-2xl border border-white/10 bg-white/[0.03] p-3 text-xs text-zinc-400 leading-relaxed transition-all duration-300 mb-3">
-                      Ожидание новой записи от клиента...
-                    </div>
-
-                    <!-- Live Google Sheet Row Preview -->
-                    <div class="rounded-xl border border-white/10 overflow-hidden text-[11px]">
-                      <div class="flex items-center justify-between px-2.5 py-1.5 bg-emerald-500/10 border-b border-white/10 text-[10px] font-semibold text-emerald-300">
-                        <span>Google Таблица (авто-запись)</span>
-                        <span>Live</span>
-                      </div>
-                      <div class="grid grid-cols-3 bg-white/[0.05] text-zinc-400 font-medium p-2 border-b border-white/10">
-                        <span>Услуга</span>
-                        <span>Мастер / Время</span>
-                        <span class="text-right">Сумма</span>
-                      </div>
-                      <div class="divide-y divide-white/[0.06] bg-white/[0.01]">
-                        <div class="grid grid-cols-3 p-2 text-zinc-400">
-                          <span class="truncate">Пилинг PRX</span>
-                          <span>Анна • 12:00</span>
-                          <span class="text-right">3 800 ₽</span>
-                        </div>
-                        <div id="sim-sheet-new-row" class="grid grid-cols-3 p-2 text-zinc-500 italic transition-all duration-300">
-                          <span id="sim-cell-service">Ожидание...</span>
-                          <span id="sim-cell-slot">—</span>
-                          <span id="sim-cell-price" class="text-right">—</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            `;
-          }
-        }
-      };
-
-      function initCase3Simulator() {
-        const chatLog = document.getElementById('sim-chat-log');
-        const keyboard = document.getElementById('sim-keyboard');
-        const resetBtn = document.getElementById('sim-reset-btn');
-
-        const adminMsg = document.getElementById('sim-admin-msg');
-        const cellService = document.getElementById('sim-cell-service');
-        const cellSlot = document.getElementById('sim-cell-slot');
-        const cellPrice = document.getElementById('sim-cell-price');
-        const newRow = document.getElementById('sim-sheet-new-row');
-
-        let simState = { service: '', price: '', master: '', time: '' };
-
-        function appendMsg(text, isUser = false) {
-          const msg = document.createElement('div');
-          msg.className = isUser
-            ? 'bg-white text-black font-medium p-2.5 px-3.5 rounded-2xl rounded-tr-sm max-w-[82%] ml-auto'
-            : 'bg-white/[0.07] text-zinc-100 p-3 rounded-2xl rounded-tl-sm max-w-[90%] leading-relaxed';
-          msg.innerHTML = text;
-          chatLog.appendChild(msg);
-          chatLog.scrollTop = chatLog.scrollHeight;
-        }
-
-        function bindSimButtons() {
-          keyboard.querySelectorAll('.sim-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const step = btn.dataset.step;
-              const val = btn.dataset.val;
-
-              if (step === 'service') {
-                simState.service = val;
-                simState.price = btn.dataset.price;
-                appendMsg(val, true);
-                cellService.textContent = val;
-                cellPrice.textContent = simState.price;
-                newRow.classList.remove('text-zinc-500', 'italic');
-                newRow.classList.add('text-white', 'bg-emerald-500/10');
-                adminMsg.innerHTML = `<span class="text-zinc-300">Клиент выбирает мастера для: <b>${simState.service}</b>...</span>`;
-
-                setTimeout(() => {
-                  appendMsg('Отлично! Выберите мастера:');
-                  keyboard.innerHTML = `
-                    <button type="button" data-step="master" data-val="Елена (Топ-мастер)" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors">Елена (Топ-мастер)</button>
-                    <button type="button" data-step="master" data-val="Мария (Врач)" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors">Мария (Врач)</button>
-                  `;
-                  bindSimButtons();
-                }, 220);
-              } else if (step === 'master') {
-                simState.master = val.split(' ')[0];
-                appendMsg(val, true);
-                cellSlot.textContent = `${simState.master} • ...`;
-                adminMsg.innerHTML = `<span class="text-zinc-300">Мастер: <b>${simState.master}</b>. Клиент выбирает время...</span>`;
-
-                setTimeout(() => {
-                  appendMsg('Свободные окна на завтра:');
-                  keyboard.innerHTML = `
-                    <button type="button" data-step="time" data-val="Завтра, 14:30" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors">Завтра • 14:30</button>
-                    <button type="button" data-step="time" data-val="Завтра, 17:00" class="sim-btn py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white hover:text-black text-white text-xs font-medium transition-colors">Завтра • 17:00</button>
-                  `;
-                  bindSimButtons();
-                }, 220);
-              } else if (step === 'time') {
-                simState.time = val;
-                appendMsg(val, true);
-                cellSlot.textContent = `${simState.master} • ${val.replace('Завтра, ', '')}`;
-                newRow.classList.remove('bg-emerald-500/10');
-                newRow.classList.add('bg-emerald-500/20', 'font-medium');
-
-                adminMsg.classList.remove('bg-white/[0.03]', 'border-white/10', 'text-zinc-400');
-                adminMsg.classList.add('bg-emerald-500/10', 'border-emerald-500/30', 'text-zinc-100');
-                adminMsg.innerHTML = `
-                  <div class="font-semibold text-emerald-300 mb-1">🔔 Новая запись!</div>
-                  <div>Услуга: <b>${simState.service}</b> (${simState.price})</div>
-                  <div>Мастер: <b>${simState.master}</b> • ${simState.time}</div>
-                  <div class="text-[11px] text-zinc-400 mt-1">✓ Добавлено в Google Таблицу</div>
-                `;
-
-                setTimeout(() => {
-                  appendMsg(`✅ <b>Вы записаны!</b><br>Услуга: ${simState.service}<br>Время: ${simState.time}<br><span class="text-emerald-400">Напоминание придет за 2 часа до визита.</span>`);
-                  keyboard.innerHTML = `
-                    <div class="col-span-2 text-center text-[11px] text-emerald-400 py-1.5 font-medium">
-                      ✓ Уведомление отправлено админу и в таблицу
-                    </div>
-                  `;
-                }, 250);
-              }
-            });
-          });
-        }
-
-        resetBtn.addEventListener('click', () => {
-          caseModalBody.innerHTML = casesData.case3.render();
-          initCase3Simulator();
+          niche: sourceLabel,
+          modules: 'Быстрая заявка на консультацию',
+          support: '—',
+          total_price: 0,
+          monthly_price: 0,
+          days: 'Уточняется',
+          formatted_text: formattedText
         });
 
-        bindSimButtons();
+        formEl.classList.add('hidden');
+        successEl.classList.remove('hidden');
+        submitBtn.disabled = false;
       }
 
-      function openCaseModal(caseKey) {
-        const data = casesData[caseKey];
-        if (!data) return;
-
-        caseModalTag.textContent = data.tag;
-        caseModalTitle.textContent = data.title;
-        caseModalBody.innerHTML = data.render();
-
-        if (caseKey === 'case3') {
-          initCase3Simulator();
-        }
-
-        caseModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
-
-      document.querySelectorAll('.open-case-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          openCaseModal(btn.dataset.case);
-        });
+      document.getElementById('inline-lead-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        handleQuickLead(e.target, document.getElementById('inline-lead-success'), 'Главная страница (форма)');
       });
 
-      // Links from "Core Solutions" cards -> scroll to case, highlight & open modal
-      document.querySelectorAll('.solution-example-link').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const targetCase = btn.dataset.targetCase;
-          const cardEl = document.getElementById(`case-card-${targetCase}`);
-          if (cardEl) {
-            cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            cardEl.classList.add('case-highlight');
-            setTimeout(() => {
-              openCaseModal(targetCase);
-            }, 450);
-            setTimeout(() => {
-              cardEl.classList.remove('case-highlight');
-            }, 2600);
-          } else {
-            openCaseModal(targetCase);
-          }
-        });
-      });
-
-      function closeCaseModal() {
-        caseModal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-
-      closeCaseModalBtn.addEventListener('click', closeCaseModal);
-      caseModal.addEventListener('click', (e) => {
-        if (e.target === caseModal) closeCaseModal();
-      });
-
-      caseToCalcBtn.addEventListener('click', () => {
-        closeCaseModal();
-        document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' });
-      });
-
-      // Escape key closes active modals
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeLeadModal();
-          closeCaseModal();
-        }
+      modalForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        handleQuickLead(modalForm, modalSuccess, 'Шапка сайта (Обсудить проект)');
       });
     });
   </script>
