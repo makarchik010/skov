@@ -127,7 +127,6 @@
       animation: rowFadeIn 0.55s ease-out;
     }
 
-    /* Тонкий скроллбар для таблицы событий */
     .custom-scroll::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -149,7 +148,6 @@
   <!-- 1. ВЕРХНЯЯ ПАНЕЛЬ -->
   <header class="sticky top-0 z-40 border-b border-white/[0.08] bg-[#050505]/95 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-      <!-- Бренд и статус потока -->
       <div class="flex items-center gap-3.5">
         <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center font-bold text-sm tracking-wider text-white">
           SK
@@ -166,7 +164,6 @@
         </div>
       </div>
 
-      <!-- Переключатель периода и кнопки управления потоком -->
       <div class="flex flex-wrap items-center gap-2 sm:gap-3">
         <div class="inline-flex p-1 rounded-xl bg-[#0E0E11] border border-white/[0.08]" role="group" aria-label="Период">
           <button type="button" data-period="today" class="period-btn is-active px-3 py-1.5 rounded-lg text-xs text-zinc-300 transition-colors">
@@ -196,7 +193,7 @@
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-8">
 
-    <!-- 2. ПОДКЛЮЧЕНИЕ ИСТОЧНИКА ДАННЫХ (GAS / JSON ENDPOINT / LIVE-СИМУЛЯТОР) -->
+    <!-- 2. ПОДКЛЮЧЕНИЕ ИСТОЧНИКА ДАННЫХ -->
     <section class="skov-card p-5 sm:p-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
         <div>
@@ -207,7 +204,7 @@
             </span>
           </h2>
           <p class="text-xs text-zinc-400 mt-1">
-            Укажите URL вебхука Google Apps Script (/exec) или JSON-эндпоинт. При недоступности внешнего ответа или включённом симуляторе поток событий работает непрерывно.
+            Укажите URL вебхука Google Apps Script (/exec) или JSON-эндпоинт. При включённом симуляторе поток событий работает непрерывно.
           </p>
         </div>
 
@@ -245,7 +242,7 @@
             Применить
           </button>
           <button type="button" id="btn-sim-mode" class="btn-ghost py-2.5 px-3.5 text-xs sm:text-sm whitespace-nowrap" title="Переключить симулятор потока">
-            Симулятор: ВКЛ
+            Симулятор: ВЫКЛ
           </button>
         </div>
       </form>
@@ -253,7 +250,6 @@
 
     <!-- 3. 4 КЛЮЧЕВЫЕ KPI-КАРТОЧКИ -->
     <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
-      <!-- KPI 1: Просмотры страниц -->
       <div class="skov-card p-5 sm:p-6">
         <div class="flex items-center justify-between text-xs text-zinc-400">
           <span>Просмотры страниц</span>
@@ -268,7 +264,6 @@
         <p id="kpi-views-sub" class="text-xs text-zinc-500 mt-2.5">За сегодня: 0 просмотров</p>
       </div>
 
-      <!-- KPI 2: Уникальные посетители -->
       <div class="skov-card p-5 sm:p-6">
         <div class="flex items-center justify-between text-xs text-zinc-400">
           <span>Уникальные посетители</span>
@@ -280,10 +275,9 @@
             +0%
           </span>
         </div>
-        <p id="kpi-unique-sub" class="text-xs text-zinc-500 mt-2.5">Доля новых визитов: 0%</p>
+        <p id="kpi-unique-sub" class="text-xs text-zinc-500 mt-2.5">Доля уникальных: 0%</p>
       </div>
 
-      <!-- KPI 3: Использование калькулятора -->
       <div class="skov-card p-5 sm:p-6">
         <div class="flex items-center justify-between text-xs text-zinc-400">
           <span>Калькулятор услуг</span>
@@ -295,10 +289,9 @@
             +0%
           </span>
         </div>
-        <p id="kpi-calc-sub" class="text-xs text-zinc-500 mt-2.5">Вовлечённость: 0% от визитов</p>
+        <p id="kpi-calc-sub" class="text-xs text-zinc-500 mt-2.5">Открыли калькулятор: 0% визитов</p>
       </div>
 
-      <!-- KPI 4: Заявки и конверсия -->
       <div class="skov-card p-5 sm:p-6">
         <div class="flex items-center justify-between text-xs text-zinc-400">
           <span>Заявки (лиды)</span>
@@ -310,13 +303,12 @@
             CR 0.0%
           </span>
         </div>
-        <p id="kpi-leads-sub" class="text-xs text-zinc-500 mt-2.5">Средний чек сметы: 0 ₽</p>
+        <p id="kpi-leads-sub" class="text-xs text-zinc-500 mt-2.5">Средняя смета: 0 ₽</p>
       </div>
     </section>
 
-    <!-- 4. ВИЗУАЛИЗАЦИЯ: ГРАФИК ПО ВРЕМЕНИ + РАЗБИВКА ПО СТРАНИЦАМ И ИСТОЧНИКАМ -->
+    <!-- 4. ВИЗУАЛИЗАЦИЯ: ГРАФИК + РАЗБИВКА ПО СТРАНИЦАМ И ИСТОЧНИКАМ -->
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      <!-- Интерактивный SVG-график активности -->
       <div class="lg:col-span-7 skov-card p-5 sm:p-6 flex flex-col justify-between">
         <div>
           <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
@@ -337,9 +329,7 @@
           </div>
 
           <div class="relative rounded-2xl bg-[#070709] border border-white/[0.06] p-3 sm:p-4">
-            <svg id="activity-chart" viewBox="0 0 640 250" class="w-full h-56 sm:h-64 block select-none">
-              <!-- Отрисовывается через JS -->
-            </svg>
+            <svg id="activity-chart" viewBox="0 0 640 250" class="w-full h-56 sm:h-64 block select-none"></svg>
             <div
               id="chart-tooltip"
               class="hidden pointer-events-none absolute z-20 px-3 py-2 rounded-xl bg-[#141418] border border-white/15 text-xs text-white shadow-2xl"
@@ -348,23 +338,20 @@
         </div>
 
         <div class="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-500">
-          <span id="chart-bucket-label">Шаг интервала: по минутам / срезам</span>
+          <span id="chart-bucket-label">Шаг интервала: по срезам / датам</span>
           <span id="chart-peak-label" class="text-zinc-300 font-medium">Пик: —</span>
         </div>
       </div>
 
-      <!-- Разбивка по страницам и источникам трафика -->
       <div class="lg:col-span-5 skov-card p-5 sm:p-6 flex flex-col justify-between space-y-6">
-        <!-- По страницам -->
         <div>
           <div class="flex items-center justify-between mb-3.5">
             <h2 class="text-base font-bold text-white">По страницам сайта</h2>
-            <span class="text-xs text-zinc-500">4 раздела</span>
+            <span class="text-xs text-zinc-500">Разделы</span>
           </div>
           <div id="pages-breakdown" class="space-y-3"></div>
         </div>
 
-        <!-- По источникам -->
         <div class="pt-5 border-t border-white/[0.08]">
           <div class="flex items-center justify-between mb-3.5">
             <h2 class="text-base font-bold text-white">Источники трафика</h2>
@@ -375,7 +362,7 @@
       </div>
     </section>
 
-    <!-- 5. ЛЕНТА СОБЫТИЙ В РЕАЛЬНОМ ВРЕМЕНИ (LIVE FEED) -->
+    <!-- 5. ЛЕНТА СОБЫТИЙ В РЕАЛЬНОМ ВРЕМЕНИ -->
     <section class="skov-card p-5 sm:p-6">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
         <div>
@@ -383,11 +370,10 @@
             <h2 class="text-base sm:text-lg font-bold text-white">Лента событий в реальном времени</h2>
             <span id="feed-count" class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/[0.06] text-zinc-300">0</span>
           </div>
-          <p class="text-xs text-zinc-400 mt-0.5">Потоковые события page_view, calc_use и lead с мгновенной фильтрацией</p>
+          <p class="text-xs text-zinc-400 mt-0.5">События page_view, calc_use и lead с мгновенной фильтрацией</p>
         </div>
 
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
-          <!-- Фильтр по типу события -->
           <div class="inline-flex p-1 rounded-xl bg-[#070709] border border-white/[0.08]" role="group" aria-label="Тип события">
             <button type="button" data-filter="all" class="filter-btn is-active px-3 py-1.5 rounded-lg text-xs text-zinc-300">Все</button>
             <button type="button" data-filter="page_view" class="filter-btn px-3 py-1.5 rounded-lg text-xs text-zinc-300">page_view</button>
@@ -395,7 +381,6 @@
             <button type="button" data-filter="lead" class="filter-btn px-3 py-1.5 rounded-lg text-xs text-zinc-300">lead</button>
           </div>
 
-          <!-- Поиск -->
           <div class="relative min-w-[210px]">
             <input
               id="feed-search"
@@ -418,9 +403,7 @@
               <th class="py-3 px-4">Детали</th>
             </tr>
           </thead>
-          <tbody id="live-feed-body" class="divide-y divide-white/[0.05] text-xs sm:text-sm">
-            <!-- Строки рендерятся через JS -->
-          </tbody>
+          <tbody id="live-feed-body" class="divide-y divide-white/[0.05] text-xs sm:text-sm"></tbody>
         </table>
       </div>
     </section>
@@ -431,13 +414,12 @@
     (function () {
       "use strict";
 
-      // Конфигурация страниц, источников и демо-деталей SKOV TECHNOLOGIES
       const PAGES = ["index.html", "cases.html", "services.html", "about.html"];
       const SOURCES = [
         { key: "Telegram", label: "Telegram (@skov_tech / каналы)" },
         { key: "Прямой заход", label: "Прямой заход (skovtech.ru)" },
-        { key: "Поиск", label: "Поиск (Яндекс / Google)" },
-        { key: "Рефералы", label: "Рефералы и демо-сайты" }
+        { key: "Яндекс", label: "Яндекс / Поиск" },
+        { key: "Google", label: "Google / Поиск" }
       ];
 
       const PACKAGES = [
@@ -454,110 +436,53 @@
         "Базовая конфигурация"
       ];
 
-      const SAMPLE_NAMES = ["Алексей", "Марина", "Дмитрий", "Екатерина", "Артём", "Ольга", "Сергей", "Анна"];
-      const SAMPLE_CONTACTS = ["@alex_auto", "@marina_beauty", "+7 (912) ***-48-19", "@dmitry_bistro", "@olga_practice", "+7 (904) ***-12-77"];
+      const SAMPLE_NAMES = ["Алексей", "Марина", "Дмитрий", "Екатерина", "Артём", "Ольга"];
+      const SAMPLE_CONTACTS = ["@alex_auto", "@marina_beauty", "+7 (912) ***-48-19", "@dmitry_bistro"];
 
-      // Состояние приложения
       const state = {
-        period: "today", // 'today' | '7d' | '30d'
-        eventFilter: "all", // 'all' | 'page_view' | 'calc_use' | 'lead'
+        period: "today",
+        eventFilter: "all",
         searchQuery: "",
         isStreaming: true,
-        simulatorEnabled: true,
+        simulatorEnabled: false,
         endpointUrl: "https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec",
         pollMs: 5000,
         pollTimer: null,
         lastSyncTime: null,
-        lastSyncMode: "Симулятор",
-        // Базовые метрики по периодам для реалистичной динамики
+        lastSyncMode: "Ожидание синхронизации...",
         periods: {
-          today: {
-            views: 348,
-            viewsDelta: "+18.4%",
-            todayViews: 348,
-            unique: 241,
-            uniqueDelta: "+14.2%",
-            calc: 64,
-            calcDelta: "+26.0%",
-            leads: 11,
-            avgCheck: 9400,
-            pages: {
-              "index.html": 148,
-              "services.html": 92,
-              "cases.html": 71,
-              "about.html": 37
-            },
-            sources: {
-              "Telegram": 134,
-              "Прямой заход": 102,
-              "Поиск": 76,
-              "Рефералы": 36
-            },
-            series: buildInitialSeries(14, 18, 4)
-          },
-          "7d": {
-            views: 2190,
-            viewsDelta: "+22.1%",
-            todayViews: 348,
-            unique: 1520,
-            uniqueDelta: "+16.8%",
-            calc: 382,
-            calcDelta: "+31.4%",
-            leads: 67,
-            avgCheck: 10200,
-            pages: {
-              "index.html": 910,
-              "services.html": 590,
-              "cases.html": 455,
-              "about.html": 235
-            },
-            sources: {
-              "Telegram": 820,
-              "Прямой заход": 640,
-              "Поиск": 495,
-              "Рефералы": 235
-            },
-            series: buildInitialSeries(14, 145, 28)
-          },
-          "30d": {
-            views: 8940,
-            viewsDelta: "+29.7%",
-            todayViews: 348,
-            unique: 6180,
-            uniqueDelta: "+21.5%",
-            calc: 1510,
-            calcDelta: "+38.2%",
-            leads: 264,
-            avgCheck: 10800,
-            pages: {
-              "index.html": 3720,
-              "services.html": 2410,
-              "cases.html": 1840,
-              "about.html": 970
-            },
-            sources: {
-              "Telegram": 3390,
-              "Прямой заход": 2580,
-              "Поиск": 2010,
-              "Рефералы": 960
-            },
-            series: buildInitialSeries(14, 580, 110)
-          }
+          today: emptyPeriod(),
+          "7d": emptyPeriod(),
+          "30d": emptyPeriod()
         },
         events: []
       };
 
-      function buildInitialSeries(count, baseViews, baseEvents) {
-        const now = Date.now();
-        const arr = [];
-        for (let i = count - 1; i >= 0; i--) {
-          const ts = new Date(now - i * 60 * 1000);
-          const label = formatTime(ts);
-          const v = Math.max(3, Math.round(baseViews * (0.65 + Math.random() * 0.7)));
-          const e = Math.max(0, Math.round(baseEvents * (0.5 + Math.random() * 0.9)));
-          arr.push({ label, views: v, events: e });
-        }
-        return arr;
+      function emptyPeriod() {
+        return {
+          views: 0,
+          viewsDelta: "+0%",
+          todayViews: 0,
+          unique: 0,
+          uniqueDelta: "+0%",
+          calc: 0,
+          calcDelta: "+0%",
+          leads: 0,
+          avgCheck: 0,
+          pages: {
+            "index.html": 0,
+            "cases.html": 0,
+            "services.html": 0,
+            "about.html": 0
+          },
+          sources: {
+            "Telegram": 0,
+            "Прямой заход": 0,
+            "Яндекс": 0,
+            "Google": 0
+          },
+          series: []
+        };
       }
 
       function formatTime(dateObj) {
@@ -572,93 +497,34 @@
         return arr[Math.floor(Math.random() * arr.length)];
       }
 
-      function seedInitialEvents() {
-        const initial = [
-          {
-            id: cryptoRandomId(),
-            time: formatTime(new Date(Date.now() - 48000)),
-            type: "lead",
-            page: "services.html",
-            source: "Telegram",
-            details: "Заявка: Алексей (@alex_auto) • Бот записи + учёт выручки • 8 400 ₽"
-          },
-          {
-            id: cryptoRandomId(),
-            time: formatTime(new Date(Date.now() - 35000)),
-            type: "calc_use",
-            page: "services.html",
-            source: "Поиск",
-            details: "Расчёт: Telegram Mini App + Напоминания за 2 часа (18 400 ₽)"
-          },
-          {
-            id: cryptoRandomId(),
-            time: formatTime(new Date(Date.now() - 22000)),
-            type: "page_view",
-            page: "cases.html",
-            source: "Рефералы",
-            details: "Открыт тест-драйв: Тонировка и детейлинг (auto.skovtech.ru)"
-          },
-          {
-            id: cryptoRandomId(),
-            time: formatTime(new Date(Date.now() - 12000)),
-            type: "page_view",
-            page: "index.html",
-            source: "Прямой заход",
-            details: "Новый посетитель • Ижевск • мобильный браузер"
-          },
-          {
-            id: cryptoRandomId(),
-            time: formatTime(new Date(Date.now() - 5000)),
-            type: "calc_use",
-            page: "services.html",
-            source: "Telegram",
-            details: "Расчёт: Бот записи + учёт выручки (6 900 ₽)"
-          }
-        ];
-        state.events = initial;
-      }
-
       function cryptoRandomId() {
         return Math.random().toString(36).slice(2, 10);
       }
 
-      // Генерация одного реалистичного события в реальном времени
       function generateSimulatedEvent() {
         const roll = Math.random();
         let type = "page_view";
-        if (roll > 0.87) {
-          type = "lead";
-        } else if (roll > 0.64) {
-          type = "calc_use";
-        }
+        if (roll > 0.86) type = "lead";
+        else if (roll > 0.62) type = "calc_use";
 
-        const page = type === "calc_use" || type === "lead"
-          ? (Math.random() > 0.2 ? "services.html" : "index.html")
-          : pickRandom(PAGES);
-
+        const page = type === "calc_use" || type === "lead" ? "services.html" : pickRandom(PAGES);
         const source = pickRandom(SOURCES).key;
         const now = new Date();
         const time = formatTime(now);
+        const isUnique = Math.random() > 0.35;
 
         let details = "";
-        let isUnique = Math.random() > 0.34;
         let priceVal = 6900;
 
         if (type === "page_view") {
-          const hints = {
-            "index.html": "Просмотр главного экрана и тест-драйва",
-            "cases.html": "Просмотр кейсов и живых демо",
-            "services.html": "Переход на страницу калькулятора",
-            "about.html": "Изучение условий и FAQ студии"
-          };
-          details = `${hints[page]}${isUnique ? " • новый визит" : ""}`;
+          details = `Просмотр ${page}${isUnique ? " • новый визит" : ""}`;
         } else if (type === "calc_use") {
           const pkg = pickRandom(PACKAGES);
           const add = pickRandom(ADDONS);
           const matchPrice = pkg.match(/(\d[\d\s]*)\s*₽/);
           priceVal = matchPrice ? parseInt(matchPrice[1].replace(/\s+/g, ""), 10) : 6900;
           details = `${pkg} • ${add}`;
-        } else if (type === "lead") {
+        } else {
           const name = pickRandom(SAMPLE_NAMES);
           const contact = pickRandom(SAMPLE_CONTACTS);
           const pkg = pickRandom(PACKAGES);
@@ -667,10 +533,33 @@
           details = `${name} (${contact}) • ${pkg}`;
         }
 
-        // Обновляем метрики во всех периодах (с масштабом для текущего)
-        applyEventToMetrics({ type, page, source, isUnique, priceVal, time });
+        const cur = state.periods[state.period];
+        cur.views += 1;
+        if (state.period === "today") cur.todayViews += 1;
+        if (isUnique) cur.unique += 1;
+        if (type === "calc_use") cur.calc += 1;
+        if (type === "lead") {
+          cur.leads += 1;
+          cur.avgCheck = cur.avgCheck > 0 ? Math.round((cur.avgCheck + priceVal) / 2) : priceVal;
+        }
+        cur.pages[page] = (cur.pages[page] || 0) + 1;
+        cur.sources[source] = (cur.sources[source] || 0) + 1;
 
-        const ev = {
+        const shortTime = time.slice(0, 5);
+        const lastPt = cur.series[cur.series.length - 1];
+        if (lastPt && lastPt.label === shortTime) {
+          lastPt.views += 1;
+          if (type === "calc_use" || type === "lead") lastPt.events += 1;
+        } else {
+          cur.series.push({
+            label: shortTime,
+            views: 1,
+            events: (type === "calc_use" || type === "lead") ? 1 : 0
+          });
+          if (cur.series.length > 14) cur.series.shift();
+        }
+
+        state.events.unshift({
           id: cryptoRandomId(),
           time,
           type,
@@ -678,89 +567,32 @@
           source,
           details,
           isNew: true
-        };
-
-        state.events.unshift(ev);
-        if (state.events.length > 80) {
-          state.events.length = 80;
-        }
-      }
-
-      function applyEventToMetrics({ type, page, source, isUnique, priceVal, time }) {
-        const todayData = state.periods.today;
-        todayData.views += 1;
-        todayData.todayViews += 1;
-        if (isUnique) todayData.unique += 1;
-        if (type === "calc_use") todayData.calc += 1;
-        if (type === "lead") {
-          todayData.leads += 1;
-          todayData.avgCheck = Math.round((todayData.avgCheck * 0.85) + (priceVal * 0.15));
-        }
-
-        todayData.pages[page] = (todayData.pages[page] || 0) + 1;
-        todayData.sources[source] = (todayData.sources[source] || 0) + 1;
-
-        // Обновляем последнюю точку графика или добавляем новую минуту
-        const lastPt = todayData.series[todayData.series.length - 1];
-        const shortTime = time.slice(0, 5);
-        if (lastPt && lastPt.label === shortTime) {
-          lastPt.views += 1;
-          if (type === "calc_use" || type === "lead") {
-            lastPt.events += 1;
-          }
-        } else {
-          todayData.series.push({
-            label: shortTime,
-            views: 1,
-            events: (type === "calc_use" || type === "lead") ? 1 : 0
-          });
-          if (todayData.series.length > 14) {
-            todayData.series.shift();
-          }
-        }
-
-        // Синхронно приращиваем 7d и 30d для консистентности
-        ["7d", "30d"].forEach((pKey) => {
-          const p = state.periods[pKey];
-          p.views += 1;
-          p.todayViews = todayData.todayViews;
-          if (isUnique) p.unique += 1;
-          if (type === "calc_use") p.calc += 1;
-          if (type === "lead") p.leads += 1;
-          p.pages[page] = (p.pages[page] || 0) + 1;
-          p.sources[source] = (p.sources[source] || 0) + 1;
         });
+        if (state.events.length > 80) state.events.length = 80;
       }
 
-      // Попытка опросить внешний URL (GAS / JSON)
       async function pollExternalEndpoint() {
         const url = state.endpointUrl.trim();
-        if (!url) {
-          return false;
-        }
+        if (!url) return false;
 
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 3500);
+          const timeoutId = setTimeout(() => controller.abort(), 5000);
           const sep = url.includes("?") ? "&" : "?";
-          const res = await fetch(`${url}${sep}action=stats&period=${state.period}&t=${Date.now()}`, {
+          const res = await fetch(`${url}${sep}action=stats&period=${encodeURIComponent(state.period)}&t=${Date.now()}`, {
             method: "GET",
             signal: controller.signal
           });
           clearTimeout(timeoutId);
 
           if (!res.ok) return false;
-          const contentType = res.headers.get("content-type") || "";
-          if (!contentType.includes("application/json")) {
-            // Google Apps Script с mode: no-cors не читается, а обычный GET без JSON-ответа не содержит метрик
-            return false;
-          }
+          const text = await res.text();
+          const data = JSON.parse(text);
 
-          const data = await res.json();
           if (data && typeof data === "object") {
             ingestExternalPayload(data);
-            state.lastSyncTime = formatTime(new Date());
-            state.lastSyncMode = "Внешний эндпоинт (200 OK)";
+            state.lastSyncTime = data.updatedAt || formatTime(new Date());
+            state.lastSyncMode = "GAS (200 OK)";
             return true;
           }
           return false;
@@ -771,29 +603,76 @@
 
       function ingestExternalPayload(data) {
         const cur = state.periods[state.period];
-        if (typeof data.views === "number") cur.views = data.views;
-        if (typeof data.unique === "number") cur.unique = data.unique;
-        if (typeof data.calc === "number") cur.calc = data.calc;
-        if (typeof data.leads === "number") cur.leads = data.leads;
+        const k = (data && typeof data.kpis === "object" && data.kpis !== null) ? data.kpis : data;
+
+        if (typeof k.pageViews === "number") cur.views = k.pageViews;
+        else if (typeof k.views === "number") cur.views = k.views;
+
+        if (state.period === "today") {
+          cur.todayViews = cur.views;
+        }
+
+        if (typeof k.uniqueUsers === "number") cur.unique = k.uniqueUsers;
+        else if (typeof k.unique === "number") cur.unique = k.unique;
+
+        if (typeof k.calcUses === "number") cur.calc = k.calcUses;
+        else if (typeof k.calc === "number") cur.calc = k.calc;
+
+        if (typeof k.leadsCount === "number") cur.leads = k.leadsCount;
+        else if (typeof k.leads === "number") cur.leads = k.leads;
+
+        if (typeof k.avgCheck === "number") cur.avgCheck = k.avgCheck;
+
+        if (Array.isArray(data.series) && data.series.length > 0) {
+          cur.series = data.series.map((pt) => ({
+            label: pt.label || "—",
+            views: Number(pt.views) || 0,
+            events: Number(pt.events !== undefined ? pt.events : pt.actions) || 0
+          }));
+        }
+
+        if (Array.isArray(data.pages) && data.pages.length > 0) {
+          const nextPages = {
+            "index.html": 0,
+            "cases.html": 0,
+            "services.html": 0,
+            "about.html": 0
+          };
+          data.pages.forEach((p) => {
+            if (p && p.name) nextPages[p.name] = Number(p.count) || 0;
+          });
+          cur.pages = nextPages;
+        }
+
+        if (Array.isArray(data.sources) && data.sources.length > 0) {
+          const nextSources = {
+            "Telegram": 0,
+            "Прямой заход": 0,
+            "Яндекс": 0,
+            "Google": 0
+          };
+          data.sources.forEach((s) => {
+            if (s && s.name) {
+              const key = s.name === "Поиск" ? "Яндекс" : s.name;
+              nextSources[key] = (nextSources[key] || 0) + (Number(s.count) || 0);
+            }
+          });
+          cur.sources = nextSources;
+        }
 
         if (Array.isArray(data.events)) {
-          data.events.slice().reverse().forEach((item) => {
-            if (!item || !item.type) return;
-            state.events.unshift({
-              id: item.id || cryptoRandomId(),
-              time: item.time || formatTime(new Date()),
-              type: item.type,
-              page: item.page || "index.html",
-              source: item.source || "Прямой заход",
-              details: item.details || "Событие из внешнего источника",
-              isNew: true
-            });
-          });
-          if (state.events.length > 80) state.events.length = 80;
+          state.events = data.events.slice(0, 80).map((item) => ({
+            id: item.id || cryptoRandomId(),
+            time: item.time || "—",
+            type: item.type || "event",
+            page: item.page || "index.html",
+            source: item.source || "Прямой заход",
+            details: item.details || item.title || item.meta || "—",
+            isNew: false
+          }));
         }
       }
 
-      // Основной тик цикла реального времени
       async function tickStream() {
         if (!state.isStreaming) return;
 
@@ -802,19 +681,16 @@
           if (state.simulatorEnabled) {
             generateSimulatedEvent();
             state.lastSyncTime = formatTime(new Date());
-            state.lastSyncMode = state.endpointUrl.trim()
-              ? "Симулятор (эндпоинт недоступен/не-JSON)"
-              : "Симулятор потока";
+            state.lastSyncMode = "Симулятор потока";
           } else {
             state.lastSyncTime = formatTime(new Date());
-            state.lastSyncMode = "Ожидание внешнего ответа";
+            state.lastSyncMode = "Нет ответа от GAS / симулятор выкл";
           }
         }
 
         renderAll();
       }
 
-      // Рендер KPI-карточек
       function renderKPIs() {
         const d = state.periods[state.period];
         const cr = d.views > 0 ? ((d.leads / d.views) * 100).toFixed(2) : "0.00";
@@ -838,11 +714,12 @@
         document.getElementById("kpi-leads-sub").textContent = `Средняя смета: ${d.avgCheck.toLocaleString("ru-RU")} ₽`;
       }
 
-      // Рендер интерактивного SVG-графика с тултипами
       function renderChart() {
         const svg = document.getElementById("activity-chart");
         const tooltip = document.getElementById("chart-tooltip");
-        const series = state.periods[state.period].series;
+        const series = state.periods[state.period].series.length
+          ? state.periods[state.period].series
+          : [{ label: "—", views: 0, events: 0 }];
 
         const width = 640;
         const height = 250;
@@ -856,21 +733,20 @@
 
         const maxViews = Math.max(10, ...series.map((s) => s.views));
         const maxEvents = Math.max(1, ...series.map((s) => s.events));
-        const peakItem = series.reduce((best, cur) => (cur.views > best.views ? cur : best), series[0] || { label: "—", views: 0 });
+        const peakItem = series.reduce((best, cur) => (cur.views > best.views ? cur : best), series[0]);
 
         document.getElementById("chart-peak-label").textContent = `Пик: ${peakItem.views} просм. (${peakItem.label})`;
 
         const stepX = series.length > 1 ? plotW / (series.length - 1) : plotW;
 
         const points = series.map((item, idx) => {
-          const x = padLeft + idx * stepX;
+          const x = series.length > 1 ? padLeft + idx * stepX : padLeft + plotW / 2;
           const yViews = padTop + plotH - (item.views / maxViews) * plotH;
-          const evH = Math.max(2, (item.events / maxEvents) * (plotH * 0.48));
+          const evH = item.events > 0 ? Math.max(4, (item.events / maxEvents) * (plotH * 0.48)) : 0;
           const yEvents = padTop + plotH - evH;
           return { ...item, x, yViews, evH, yEvents };
         });
 
-        // Горизонтальные линии сетки и подписи оси Y
         let gridMarkup = "";
         for (let i = 0; i <= 4; i++) {
           const ratio = i / 4;
@@ -882,8 +758,7 @@
           `;
         }
 
-        // Столбцы событий (калькулятор + заявки) в изумрудном оттенке
-        const barW = Math.max(6, Math.min(18, stepX * 0.45));
+        const barW = Math.max(8, Math.min(20, stepX * 0.45));
         const barsMarkup = points
           .map(
             (pt) => `
@@ -901,16 +776,14 @@
           )
           .join("");
 
-        // Область под линией просмотров и сама линия
         const linePath = points
           .map((pt, idx) => `${idx === 0 ? "M" : "L"} ${pt.x.toFixed(1)} ${pt.yViews.toFixed(1)}`)
           .join(" ");
 
-        const areaPath = points.length
+        const areaPath = points.length > 1
           ? `${linePath} L ${points[points.length - 1].x.toFixed(1)} ${(padTop + plotH).toFixed(1)} L ${points[0].x.toFixed(1)} ${(padTop + plotH).toFixed(1)} Z`
           : "";
 
-        // Точки и подписи оси X
         const dotsAndLabels = points
           .map((pt, idx) => {
             const showLabel = idx % 2 === 0 || idx === points.length - 1;
@@ -931,9 +804,9 @@
               <rect
                 class="chart-hit"
                 data-idx="${idx}"
-                x="${(pt.x - stepX / 2).toFixed(1)}"
+                x="${(pt.x - Math.max(18, stepX) / 2).toFixed(1)}"
                 y="${padTop}"
-                width="${Math.max(16, stepX).toFixed(1)}"
+                width="${Math.max(24, stepX).toFixed(1)}"
                 height="${plotH}"
                 fill="transparent"
                 style="cursor: pointer;"
@@ -952,11 +825,10 @@
           ${gridMarkup}
           ${barsMarkup}
           ${areaPath ? `<path d="${areaPath}" fill="url(#viewsAreaGrad)" />` : ""}
-          ${linePath ? `<path d="${linePath}" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />` : ""}
+          ${points.length > 1 ? `<path d="${linePath}" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />` : ""}
           ${dotsAndLabels}
         `;
 
-        // Интерактивный тултип
         svg.querySelectorAll(".chart-hit").forEach((hit) => {
           hit.addEventListener("mouseenter", (e) => {
             const idx = Number(e.currentTarget.dataset.idx);
@@ -979,28 +851,21 @@
           });
 
           hit.addEventListener("mousemove", positionTooltip);
-          hit.addEventListener("mouseleave", () => {
-            tooltip.classList.add("hidden");
-          });
+          hit.addEventListener("mouseleave", () => tooltip.classList.add("hidden"));
         });
 
         function positionTooltip(e) {
           const containerRect = svg.parentElement.getBoundingClientRect();
-          const left = Math.min(
-            containerRect.width - 170,
-            Math.max(10, e.clientX - containerRect.left + 12)
-          );
+          const left = Math.min(containerRect.width - 170, Math.max(10, e.clientX - containerRect.left + 12));
           const top = Math.max(10, e.clientY - containerRect.top - 54);
           tooltip.style.left = `${left}px`;
           tooltip.style.top = `${top}px`;
         }
       }
 
-      // Рендер разбивки по страницам и источникам
       function renderBreakdowns() {
         const d = state.periods[state.period];
 
-        // Страницы
         const pagesEl = document.getElementById("pages-breakdown");
         const totalPages = Math.max(1, Object.values(d.pages).reduce((a, b) => a + b, 0));
         pagesEl.innerHTML = PAGES.map((page) => {
@@ -1019,7 +884,6 @@
           `;
         }).join("");
 
-        // Источники
         const sourcesEl = document.getElementById("sources-breakdown");
         const totalSrc = Math.max(1, Object.values(d.sources).reduce((a, b) => a + b, 0));
         sourcesEl.innerHTML = SOURCES.map((src) => {
@@ -1039,7 +903,6 @@
         }).join("");
       }
 
-      // Рендер ленты событий с фильтрацией и поиском
       function renderFeed() {
         const tbody = document.getElementById("live-feed-body");
         const q = state.searchQuery.trim().toLowerCase();
@@ -1123,7 +986,7 @@
 
         modePill.textContent = state.simulatorEnabled
           ? "Режим: Живой поток + GAS"
-          : "Режим: Только внешний URL";
+          : "Режим: Только GAS";
 
         simBtn.textContent = state.simulatorEnabled ? "Симулятор: ВКЛ" : "Симулятор: ВЫКЛ";
         simBtn.classList.toggle("is-active", state.simulatorEnabled);
@@ -1148,19 +1011,17 @@
         state.pollTimer = setInterval(tickStream, state.pollMs);
       }
 
-      // Привязка обработчиков UI
       function bindEvents() {
-        // Период
         document.querySelectorAll(".period-btn").forEach((btn) => {
           btn.addEventListener("click", () => {
             document.querySelectorAll(".period-btn").forEach((b) => b.classList.remove("is-active"));
             btn.classList.add("is-active");
             state.period = btn.dataset.period;
             renderAll();
+            tickStream();
           });
         });
 
-        // Фильтр событий
         document.querySelectorAll(".filter-btn").forEach((btn) => {
           btn.addEventListener("click", () => {
             document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("is-active"));
@@ -1170,13 +1031,11 @@
           });
         });
 
-        // Поиск
         document.getElementById("feed-search").addEventListener("input", (e) => {
           state.searchQuery = e.target.value;
           renderFeed();
         });
 
-        // Ручное обновление
         document.getElementById("btn-refresh").addEventListener("click", async () => {
           const icon = document.getElementById("refresh-icon");
           icon.classList.add("animate-spin");
@@ -1190,7 +1049,6 @@
           setTimeout(() => icon.classList.remove("animate-spin"), 350);
         });
 
-        // Пауза / возобновление потока
         document.getElementById("btn-toggle-stream").addEventListener("click", () => {
           state.isStreaming = !state.isStreaming;
           renderStreamHeader();
@@ -1199,7 +1057,6 @@
           }
         });
 
-        // Применение URL и интервала опроса
         document.getElementById("source-form").addEventListener("submit", (e) => {
           e.preventDefault();
           state.endpointUrl = document.getElementById("endpoint-url").value.trim();
@@ -1212,3 +1069,24 @@
           state.pollMs = Number(e.target.value) || 5000;
           restartInterval();
         });
+
+        document.getElementById("btn-sim-mode").addEventListener("click", () => {
+          state.simulatorEnabled = !state.simulatorEnabled;
+          renderStreamHeader();
+          tickStream();
+        });
+
+        renderAll();
+        restartInterval();
+        tickStream();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bindEvents);
+      } else {
+        bindEvents();
+      }
+    })();
+  </script>
+</body>
+</html>
