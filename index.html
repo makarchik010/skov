@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SKOV TECHNOLOGIES — Запись клиентов, учёт и сайты под ключ</title>
-  <meta name="description" content="Telegram-боты для записи, учёт в Google Таблицах и сайты без абонентки. г. Ижевск • Работаем по всей РФ." />
+  <title>SKOV Technologies — разработка сайтов, Telegram-ботов и Mini Apps под ключ</title>
+  <meta name="description" content="SKOV Technologies (Ижевск) — создаём быстрые сайты, Telegram-ботов для онлайн-записи и учёта клиентов без ежемесячной абонентки. Запуск от 2 дней." />
+  <meta name="keywords" content="SKOV, SKOV Technologies, создание сайтов и ботов Ижевск, разработка Telegram ботов, Telegram Mini Apps под ключ" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://skovtech.ru/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SKOV Technologies" />
+  <meta property="og:title" content="SKOV Technologies — разработка сайтов, Telegram-ботов и Mini Apps под ключ" />
+  <meta property="og:description" content="SKOV Technologies (Ижевск) — создаём быстрые сайты, Telegram-ботов для онлайн-записи и учёта клиентов без ежемесячной абонентки. Запуск от 2 дней." />
+  <meta property="og:url" content="https://skovtech.ru/" />
+  <meta property="og:image" content="https://skovtech.ru/logo.png" />
+
   <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="shortcut icon" type="image/png" href="logo.png" />
   <link rel="apple-touch-icon" href="logo.png" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -34,26 +47,14 @@
       transition: opacity 0.2s ease;
     }
     .btn-main:hover { opacity: 0.9; }
-
-    /* Interactive Demo Tabs */
     .demo-tab {
       background: #0E0E11;
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: #A1A1AA;
       transition: all 0.2s ease;
     }
-    .demo-tab:hover {
-      border-color: rgba(255, 255, 255, 0.28);
-      color: #FFFFFF;
-    }
-    .demo-tab.is-active {
-      background: #FFFFFF;
-      border-color: #FFFFFF;
-      color: #050505;
-      font-weight: 600;
-    }
-
-    /* iPhone Mockup Frame */
+    .demo-tab:hover { border-color: rgba(255, 255, 255, 0.28); color: #FFFFFF; }
+    .demo-tab.is-active { background: #FFFFFF; border-color: #FFFFFF; color: #050505; font-weight: 600; }
     .iphone-frame {
       width: 100%;
       max-width: 372px;
@@ -91,7 +92,6 @@
 </head>
 <body class="selection:bg-white selection:text-black">
 
-  <!-- HEADER -->
   <header class="sticky top-0 z-40 border-b border-white/[0.08] bg-[#050505]/95">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
       <a href="index.html" class="flex items-center gap-3 shrink-0">
@@ -134,7 +134,6 @@
   </header>
 
   <main>
-    <!-- 1. HERO -->
     <section class="py-20 sm:py-28 border-b border-white/[0.06]">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="max-w-3xl">
@@ -151,7 +150,6 @@
           </div>
         </div>
 
-        <!-- 3 Hard Facts -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-16 mt-16 border-t border-white/[0.08]">
           <div>
             <div class="font-bold text-3xl text-white">0 ₽/мес</div>
@@ -169,42 +167,27 @@
       </div>
     </section>
 
-    <!-- 2. INTERACTIVE LIVE TEST-DRIVE (IPHONE MOCKUP + TABS) -->
     <section id="live-testdrive" class="py-24 sm:py-32 border-b border-white/[0.06]">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
         <div class="mb-10">
           <p class="text-xs font-semibold tracking-[0.18em] text-zinc-500 uppercase mb-3">Интерактив</p>
           <h2 class="h-title font-bold text-3xl sm:text-5xl leading-[1.1] mb-8">
             Живой тест-драйв наших решений
           </h2>
 
-          <!-- Niche Tabs -->
           <div class="flex flex-wrap gap-3" id="testdrive-tabs">
-            <button type="button" data-niche="auto" class="demo-tab is-active px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">
-              Тонировка и детейлинг
-            </button>
-            <button type="button" data-niche="beauty" class="demo-tab px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">
-              Бьюти и мастера
-            </button>
-            <button type="button" data-niche="food" class="demo-tab px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">
-              Ресторан и доставка
-            </button>
+            <button type="button" data-niche="auto" class="demo-tab is-active px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">Тонировка и детейлинг</button>
+            <button type="button" data-niche="beauty" class="demo-tab px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">Бьюти и мастера</button>
+            <button type="button" data-niche="food" class="demo-tab px-5 py-3 rounded-xl text-xs sm:text-sm whitespace-nowrap">Ресторан и доставка</button>
           </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <!-- Left Column: Niche Description -->
           <div class="lg:col-span-6 space-y-6">
             <div class="card rounded-3xl p-7 sm:p-9 border-white/15">
               <div class="flex flex-wrap items-center gap-2.5 mb-5">
-                <span id="td-tag-days" class="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/10 text-xs font-medium text-zinc-200">
-                  Запуск: 2–3 дня
-                </span>
-                <span id="td-tag-price" class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/25 text-xs font-semibold text-emerald-300">
-                  Под ключ: от 6 900 ₽
-                </span>
+                <span id="td-tag-days" class="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/10 text-xs font-medium text-zinc-200">Запуск: 2–3 дня</span>
+                <span id="td-tag-price" class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/25 text-xs font-semibold text-emerald-300">Под ключ: от 6 900 ₽</span>
               </div>
 
               <h3 id="td-title" class="font-bold text-2xl sm:text-3xl text-white leading-tight mb-4">
@@ -216,41 +199,27 @@
               </p>
 
               <div class="flex flex-col sm:flex-row gap-3">
-                <a id="td-calc-link" href="services.html?base=bot" class="btn-main px-6 py-4 rounded-xl text-sm text-center whitespace-nowrap">
-                  Хочу такое же решение
-                </a>
-                <a id="td-ext-link" href="https://auto.skovtech.ru/" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-xl border border-white/15 hover:border-white/35 text-white text-sm font-medium text-center whitespace-nowrap">
-                  Открыть на весь экран ↗
-                </a>
+                <a id="td-calc-link" href="services.html?base=bot" class="btn-main px-6 py-4 rounded-xl text-sm text-center whitespace-nowrap">Хочу такое же решение</a>
+                <a id="td-ext-link" href="https://auto.skovtech.ru/" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-xl border border-white/15 hover:border-white/35 text-white text-sm font-medium text-center whitespace-nowrap">Открыть на весь экран ↗</a>
               </div>
             </div>
           </div>
 
-          <!-- Right Column: Interactive iPhone Mockup -->
           <div class="lg:col-span-6 flex flex-col items-center">
             <div class="iphone-frame">
               <div class="iphone-island"></div>
-
-              <!-- Loading Overlay -->
               <div id="iphone-loader" class="hidden absolute inset-0 z-10 bg-[#09090B]/90 flex flex-col items-center justify-center gap-3">
                 <div class="spinner"></div>
                 <span class="text-xs text-zinc-400">Загружаем демо...</span>
               </div>
-
-              <iframe id="iphone-iframe" src="https://auto.skovtech.ru/" title="Живое демо SKOV TECHNOLOGIES"
-                class="w-full h-full border-0 bg-[#050505]" loading="lazy"></iframe>
+              <iframe id="iphone-iframe" src="https://auto.skovtech.ru/" title="Живое демо SKOV TECHNOLOGIES" class="w-full h-full border-0 bg-[#050505]" loading="lazy"></iframe>
             </div>
-
-            <p class="text-xs text-zinc-400 text-center mt-4">
-              Покликайте прямо внутри экрана — это живые рабочие системы
-            </p>
+            <p class="text-xs text-zinc-400 text-center mt-4">Покликайте прямо внутри экрана — это живые рабочие системы</p>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- 3. SOLUTIONS & PRICES -->
     <section class="py-24 sm:py-32 border-b border-white/[0.06]">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex items-end justify-between gap-4 mb-10">
@@ -295,7 +264,6 @@
       </div>
     </section>
 
-    <!-- 4. ALL 5 PROJECTS PREVIEW (STRICTLY 3 LINES PER CASE) -->
     <section class="py-24 sm:py-32">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex items-end justify-between gap-4 mb-10">
@@ -348,7 +316,6 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="py-16 border-t border-white/[0.08] bg-[#050505]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.08]">
@@ -398,7 +365,6 @@
 
     document.getElementById('menu-btn').onclick = () => document.getElementById('mobile-nav').classList.toggle('hidden');
 
-    // Interactive iPhone Test-Drive Switcher
     const niches = {
       auto: {
         days: 'Запуск: 2–3 дня',
@@ -430,27 +396,20 @@
     const loader = document.getElementById('iphone-loader');
     let loaderTimer = null;
 
-    iframe.addEventListener('load', () => {
-      clearTimeout(loaderTimer);
-      loader.classList.add('hidden');
-    });
+    iframe.addEventListener('load', () => { clearTimeout(loaderTimer); loader.classList.add('hidden'); });
 
     document.querySelectorAll('#testdrive-tabs .demo-tab').forEach(btn => {
       btn.addEventListener('click', () => {
-        const key = btn.dataset.niche;
-        const item = niches[key];
+        const item = niches[btn.dataset.niche];
         if (!item) return;
-
         document.querySelectorAll('#testdrive-tabs .demo-tab').forEach(t => t.classList.remove('is-active'));
         btn.classList.add('is-active');
-
         document.getElementById('td-tag-days').textContent = item.days;
         document.getElementById('td-tag-price').textContent = item.price;
         document.getElementById('td-title').textContent = item.title;
         document.getElementById('td-desc').textContent = item.desc;
         document.getElementById('td-calc-link').href = item.calc;
         document.getElementById('td-ext-link').href = item.url;
-
         if (iframe.src !== item.url) {
           loader.classList.remove('hidden');
           iframe.src = item.url;
