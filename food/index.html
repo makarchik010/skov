@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+  />
+  <title>L'Atelier — Меню, доставка и отзывы</title>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bistro: {
+              cream: 'var(--bg-main, #FDFBF7)',
+              surface: 'var(--bg-card, #FFFFFF)',
+              sand: 'var(--bg-soft, #F4EFEA)',
+              border: 'var(--border-soft, #E8DFD5)',
+              terracotta: 'var(--accent-main, #C05621)',
+              terracottaDark: '#9C4215',
+              ink: 'var(--text-main, #1C1917)',
+              muted: 'var(--text-muted, #78716C)',
+              pillActiveBg: 'var(--pill-active-bg, #1C1917)',
+              pillActiveText: 'var(--pill-active-text, #FFFFFF)',
+              footer: '#1E2B25'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-main: #FDFBF7;
+      --bg-card: #FFFFFF;
+      --bg-soft: #F4EFEA;
+      --border-soft: #E8DFD5;
+      --accent-main: #C05621;
+      --text-main: #1C1917;
+      --text-muted: #78716C;
+      --pill-active-bg: #1C1917;
+      --pill-active-text: #FFFFFF;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      min-height: var(--tg-viewport-stable-height, 100vh);
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-bistro-cream text-bistro-ink antialiased">
+  <div id="app" class="min-h-screen flex flex-col"></div>
+
+  <script>
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzPaXuJedwLy8i1eDGkDAe7lUAQgHlQ0pQsUsetgYxrkT54cIZB66tKFwfhnIVh3JMW5Q/exec";
+
+    const RESTAURANT_LOCATIONS = [
+      { id: "loc-1", title: "L'Atelier · Патриаршие", address: "Москва, Малая Бронная ул., 19с1", hours: "09:00 – 23:00" },
+      { id: "loc-2", title: "L'Atelier · Хамовники", address: "Москва, ул. Усачёва, 29к3", hours: "10:00 – 23:00" },
+      { id: "loc-3", title: "L'Atelier · Замоскворечье", address: "Москва, Пятницкая ул., 43с2", hours: "09:00 – 22:00" }
+    ];
+
+    const DEFAULT_CATEGORIES = [
+      "Все меню",
+      "Завтраки",
+      "Салаты и закуски",
+      "Супы",
+      "Горячее",
+      "Десерты",
+      "Напитки"
+    ];
+
+    const DEFAULT_MENU = [
+      {
+        id: "d-101",
+        category: "Завтраки",
+        title: "Бриошь с авокадо и яйцом пашот",
+        description: "Тёплая бриошь, пюре из спелого авокадо, яйцо пашот и микрозелень.",
+        weight: "240 г",
+        price: 590,
+        badge: "Шеф",
+        image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-102",
+        category: "Завтраки",
+        title: "Сырники с ванильным кремом и ягодами",
+        description: "Румяные творожные сырники, сметанно-ванильный соус и свежие ягоды.",
+        weight: "220 г",
+        price: 490,
+        badge: "Хит",
+        image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-103",
+        category: "Завтраки",
+        title: "Слоёный круассан со слабосолёным лососем",
+        description: "Хрустящий круассан, творожный крем, лосось и слайсы свежего огурца.",
+        weight: "210 г",
+        price: 670,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-104",
+        category: "Салаты и закуски",
+        title: "Тартар из говядины с хрустящим хлебом",
+        description: "Рубленая говяжья вырезка, каперсы, красный лук, оливковое масло и тосты.",
+        weight: "190 г",
+        price: 860,
+        badge: "Хит",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-105",
+        category: "Салаты и закуски",
+        title: "Буррата с томатами и соусом песто",
+        description: "Нежная буррата, спелые томаты, базиликовое песто и бальзамический крем.",
+        weight: "270 г",
+        price: 780,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-106",
+        category: "Салаты и закуски",
+        title: "Салат с обжаренной курицей и зеленью",
+        description: "Сочное куриное филе, микс салата, черри, хрустящие гренки и лёгкая заправка.",
+        weight: "250 г",
+        price: 620,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-107",
+        category: "Супы",
+        title: "Тыквенный крем-суп с семечками",
+        description: "Бархатный суп из запечённой тыквы со сливками, пряными нотами и тыквенными семечками.",
+        weight: "310 г",
+        price: 540,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-108",
+        category: "Супы",
+        title: "Луковый суп под сырной корочкой",
+        description: "Наваристый бульон с карамелизированным луком, гренкой и запечённым сыром.",
+        weight: "300 г",
+        price: 510,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-109",
+        category: "Горячее",
+        title: "Филе лосося на гриле с овощами",
+        description: "Стейк лосося, обжаренные сезонные овощи и сливочно-цитрусовый соус.",
+        weight: "300 г",
+        price: 1250,
+        badge: "Шеф",
+        image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-110",
+        category: "Горячее",
+        title: "Грибное ризотто с пармезаном",
+        description: "Кремовое ризотто с лесными грибами, белым вином, сливочным маслом и пармезаном.",
+        weight: "290 г",
+        price: 840,
+        badge: "Хит",
+        image: "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-111",
+        category: "Горячее",
+        title: "Паста с томатным соусом и базиликом",
+        description: "Паста аль денте в густом томатном соусе с чесноком, оливковым маслом и свежим базиликом.",
+        weight: "280 г",
+        price: 680,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-112",
+        category: "Десерты",
+        title: "Баскский чизкейк с ягодным соусом",
+        description: "Карамелизированная корочка, нежная кремовая текстура и ягодный топпинг.",
+        weight: "180 г",
+        price: 520,
+        badge: "Хит",
+        image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-113",
+        category: "Десерты",
+        title: "Тёплый шоколадный фондан с мороженым",
+        description: "Шоколадный десерт с жидким центром и шариком холодного ванильного мороженого.",
+        weight: "170 г",
+        price: 560,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-114",
+        category: "Напитки",
+        title: "Освежающий цитрусовый матча-тоник",
+        description: "Зелёный чай матча, тоник, цитрусовая свежесть и лёд.",
+        weight: "350 мл",
+        price: 430,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=800&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "d-115",
+        category: "Напитки",
+        title: "Флэт Уайт на двойном эспрессо",
+        description: "Плотный кофейный напиток с бархатистой микропеной.",
+        weight: "220 мл",
+        price: 350,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=800&auto=format&fit=crop&q=80"
+      }
+    ];
+
+    const DEFAULT_REVIEWS = [
+      {
+        id: "r-1",
+        name: "Анна Волкова",
+        location: "L'Atelier · Патриаршие",
+        date: "Ноябрь 2026",
+        text: "Заказывали лосось и тартар — привезли горячим за 35 минут, упаковка аккуратная, порции честные."
+      },
+      {
+        id: "r-2",
+        name: "Дмитрий Орлов",
+        location: "Самовывоз",
+        date: "Ноябрь 2026",
+        text: "Удобно забрать по пути домой: оформил заказ за минуту, к приезду всё уже было готово."
+      }
+    ];
+
+    const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
+    const isTelegram = Boolean(tg && tg.initData && tg.initData.length > 0);
+    const hasGasUrl = Boolean(GAS_WEB_APP_URL && !GAS_WEB_APP_URL.includes("ВАШ_DEPLOYMENT_ID"));
+
+    const initialBranch =
+      RESTAURANT_LOCATIONS[Math.floor(Math.random() * RESTAURANT_LOCATIONS.length)] ||
+      RESTAURANT_LOCATIONS[0];
+
+    const state = {
+      menuItems: DEFAULT_MENU.slice(),
+      reviews: DEFAULT_REVIEWS.slice(),
+      selectedBranchId: initialBranch.id,
+      activeCategory: "Все меню",
+      cart: {},
+      view: "menu",
+      selectedDishId: null,
+      orderType: "delivery",
+      form: {
+        name: "",
+        phone: "",
+        locationValue: "",
+        comment: ""
+      },
+      isSubmitting: false,
+      errorMsg: "",
+      lastOrder: null
+    };
+
+    function haptic(type = "light") {
+      try {
+        if (!tg || !tg.HapticFeedback) return;
+        if (type === "success" || type === "error") tg.HapticFeedback.notificationOccurred(type);
+        else tg.HapticFeedback.impactOccurred(type);
+      } catch (_) {}
+    }
+
+    function applyTelegramTheme() {
+      if (!tg) return;
+      tg.ready();
+      tg.expand();
+
+      const p = tg.themeParams || {};
+      const isDark = tg.colorScheme === "dark";
+      const root = document.documentElement.style;
+
+      if (isDark) {
+        const bgMain = p.bg_color || "#141414";
+        const bgCard = p.secondary_bg_color || "#1E1E1E";
+        const bgSoft = "#2A2A2A";
+        const borderSoft = "rgba(255,255,255,0.12)";
+        const textMain = p.text_color || "#F5F5F5";
+        const textMuted = p.hint_color || "#A1A1AA";
+        const accent = p.button_color || "#E06D3B";
+
+        root.setProperty("--bg-main", bgMain);
+        root.setProperty("--bg-card", bgCard);
+        root.setProperty("--bg-soft", bgSoft);
+        root.setProperty("--border-soft", borderSoft);
+        root.setProperty("--text-main", textMain);
+        root.setProperty("--text-muted", textMuted);
+        root.setProperty("--accent-main", accent);
+        root.setProperty("--pill-active-bg", "#F5F5F5");
+        root.setProperty("--pill-active-text", "#141414");
+      } else {
+        if (p.bg_color) root.setProperty("--bg-main", p.bg_color);
+        if (p.secondary_bg_color) root.setProperty("--bg-soft", p.secondary_bg_color);
+        root.setProperty("--bg-card", "#FFFFFF");
+        root.setProperty("--border-soft", "#E8DFD5");
+        if (p.text_color) root.setProperty("--text-main", p.text_color);
+        if (p.hint_color) root.setProperty("--text-muted", p.hint_color);
+        if (p.button_color) root.setProperty("--accent-main", p.button_color);
+        root.setProperty("--pill-active-bg", "#1C1917");
+        root.setProperty("--pill-active-text", "#FFFFFF");
+      }
+
+      if (tg.viewportStableHeight) {
+        root.setProperty("--tg-viewport-stable-height", `${tg.viewportStableHeight}px`);
+      }
+
+      const tgUser = tg.initDataUnsafe && tg.initDataUnsafe.user;
+      if (tgUser && !state.form.name) {
+        state.form.name = [tgUser.first_name, tgUser.last_name].filter(Boolean).join(" ");
+      }
+    }
+
+    async function loadRemoteStorefrontData() {
+      if (!hasGasUrl) return;
+      try {
+        const [menuRes, revRes] = await Promise.all([
+          fetch(`${GAS_WEB_APP_URL}?action=menu&_t=${Date.now()}`),
+          fetch(`${GAS_WEB_APP_URL}?action=reviews&_t=${Date.now()}`)
+        ]);
+
+        const menuJson = await menuRes.json();
+        if (Array.isArray(menuJson) && menuJson.length > 0) {
+          state.menuItems = menuJson.map((m, idx) => ({
+            id: String(m.id || m.ID || idx + 1),
+            category: String(m.category || m["Категория"] || "Горячее"),
+            title: String(m.title || m["Название"] || "Блюдо"),
+            description: String(m.description || m["Описание"] || ""),
+            weight: String(m.weight || m["Вес"] || "250 г"),
+            price: Number(m.price || m["Цена"] || 0),
+            badge: String(m.badge || m["Плашка"] || ""),
+            image: String(
+              m.image ||
+                m["Фото"] ||
+                "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80"
+            )
+          }));
+        }
+
+        const revJson = await revRes.json();
+        if (Array.isArray(revJson) && revJson.length > 0) {
+          state.reviews = revJson
+            .map((r, idx) => ({
+              id: String(r.id || r.ID || `r-${idx + 1}`),
+              name: String(r.name || r["Имя"] || "Гость"),
+              location: String(r.location || r["Локация"] || ""),
+              date: String(r.date || r["Дата"] || ""),
+              text: String(r.text || r["Текст"] || "")
+            }))
+            .filter((r) => r.text);
+        }
+
+        render();
+      } catch (_) {}
+    }
+
+    function getCurrentBranch() {
+      return (
+        RESTAURANT_LOCATIONS.find((l) => l.id === state.selectedBranchId) || RESTAURANT_LOCATIONS[0]
+      );
+    }
+
+    function pickRandomBranch() {
+      haptic("medium");
+      const current = getCurrentBranch();
+      const pool = RESTAURANT_LOCATIONS.filter((l) => l.id !== current.id);
+      const next = pool[Math.floor(Math.random() * pool.length)] || RESTAURANT_LOCATIONS[0];
+      state.selectedBranchId = next.id;
+      if (state.orderType === "pickup") {
+        state.form.locationValue = `Самовывоз: ${next.address}`;
+      }
+      render();
+    }
+
+    function getCartStats() {
+      let count = 0;
+      let subtotal = 0;
+      for (const [id, qty] of Object.entries(state.cart)) {
+        const dish = state.menuItems.find((d) => d.id === id);
+        if (dish && qty > 0) {
+          count += qty;
+          subtotal += dish.price * qty;
+        }
+      }
+      const deliveryFee =
+        state.orderType === "delivery" && subtotal > 0 && subtotal < 2000 ? 250 : 0;
+      const total = subtotal + deliveryFee;
+      return { count, subtotal, deliveryFee, total };
+    }
+
+    function addItem(id) {
+      haptic("light");
+      state.cart[id] = (state.cart[id] || 0) + 1;
+      state.errorMsg = "";
+      render();
+    }
+
+    function removeItem(id) {
+      haptic("light");
+      const next = (state.cart[id] || 0) - 1;
+      if (next <= 0) delete state.cart[id];
+      else state.cart[id] = next;
+      render();
+    }
+
+    function clearCart() {
+      haptic("medium");
+      state.cart = {};
+      render();
+    }
+
+    function setView(nextView) {
+      haptic("light");
+      state.view = nextView;
+      state.errorMsg = "";
+      if (nextView === "cart" && !state.form.locationValue.trim() && state.orderType === "pickup") {
+        state.form.locationValue = `Самовывоз: ${getCurrentBranch().address}`;
+      }
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function getOrderTypeLabel(type) {
+      if (type === "delivery") return "Доставка";
+      if (type === "pickup") return "Самовывоз";
+      return "За столик";
+    }
+
+    function getLocationPlaceholder(type) {
+      const branch = getCurrentBranch();
+      if (type === "delivery") return "Адрес доставки: улица, дом, квартира *";
+      if (type === "pickup") return `Точка самовывоза (${branch.address}) *`;
+      return "Номер столика (например: Стол №5) *";
+    }
+
+    async function submitOrder() {
+      const stats = getCartStats();
+      if (stats.count === 0 || state.isSubmitting) return;
+
+      const name = state.form.name.trim();
+      const phone = state.form.phone.trim();
+      const loc = state.form.locationValue.trim();
+
+      if (!name || !phone || !loc) {
+        state.errorMsg = "Заполните имя, телефон и адрес / способ получения.";
+        haptic("error");
+        render();
+        return;
+      }
+
+      state.isSubmitting = true;
+      state.errorMsg = "";
+      syncMainButton(stats);
+      render();
+
+      const items = Object.entries(state.cart)
+        .map(([id, qty]) => {
+          const dish = state.menuItems.find((d) => d.id === id);
+          if (!dish || qty <= 0) return null;
+          return {
+            id: dish.id,
+            title: dish.title,
+            price: dish.price,
+            quantity: qty,
+            line_total: dish.price * qty
+          };
+        })
+        .filter(Boolean);
+
+      const branch = getCurrentBranch();
+      const tgUser = tg && tg.initDataUnsafe ? tg.initDataUnsafe.user : null;
+
+      const payload = {
+        action: "order_create",
+        source: isTelegram ? "telegram_mini_app" : "browser_demo",
+        brand: "L'Atelier (SKOV TECHNOLOGIES)",
+        branch: `${branch.title} (${branch.address})`,
+        order_type: state.orderType,
+        order_type_label: getOrderTypeLabel(state.orderType),
+        customer_name: name,
+        phone: phone,
+        location: loc,
+        comment: state.form.comment.trim(),
+        subtotal: stats.subtotal,
+        delivery_fee: stats.deliveryFee,
+        total_amount: stats.total,
+        items,
+        tg_user: tgUser
+          ? {
+              id: tgUser.id,
+              username: tgUser.username || "",
+              first_name: tgUser.first_name || "",
+              last_name: tgUser.last_name || ""
+            }
+          : null
+      };
+
+      try {
+        let orderId = "ORD-" + Math.floor(100000 + Math.random() * 900000);
+
+        if (hasGasUrl) {
+          const res = await fetch(GAS_WEB_APP_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          if (data && data.ok === false) {
+            throw new Error(data.error || "Ошибка Google Apps Script");
+          }
+          if (data && data.order_id) orderId = data.order_id;
+        }
+
+        state.lastOrder = {
+          id: orderId,
+          total: stats.total,
+          typeLabel: getOrderTypeLabel(state.orderType),
+          location: loc,
+          branchTitle: branch.title,
+          itemsCount: stats.count,
+          isDemoOnly: !hasGasUrl
+        };
+        state.cart = {};
+        state.view = "success";
+        haptic("success");
+      } catch (err) {
+        state.errorMsg = "Не удалось отправить заказ. Проверьте соединение и URL GAS.";
+        haptic("error");
+      } finally {
+        state.isSubmitting = false;
+        render();
+      }
+    }
+
+    let mainButtonHandler = null;
+
+    function syncMainButton(stats) {
+      if (!tg || !tg.MainButton) return;
+      const mb = tg.MainButton;
+
+      if (mainButtonHandler) {
+        mb.offClick(mainButtonHandler);
+        mainButtonHandler = null;
+      }
+
+      if (stats.count === 0 || state.view === "success") {
+        mb.hide();
+        return;
+      }
+
+      if (state.view === "menu") {
+        mb.setText(`Корзина · ${stats.count} шт. · ${stats.subtotal} ₽`);
+        mb.enable();
+        mb.show();
+        mainButtonHandler = () => setView("cart");
+        mb.onClick(mainButtonHandler);
+      } else if (state.view === "cart") {
+        mb.setText(
+          state.isSubmitting ? "Отправляем заказ..." : `Оформить заказ · ${stats.total} ₽`
+        );
+        if (state.isSubmitting) mb.disable();
+        else mb.enable();
+        mb.show();
+        mainButtonHandler = () => submitOrder();
+        mb.onClick(mainButtonHandler);
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function renderLocationsBlock() {
+      const current = getCurrentBranch();
+      const pillsHtml = RESTAURANT_LOCATIONS.map((loc) => {
+        const active = loc.id === current.id;
+        return `
+          <button
+            type="button"
+            data-branch-id="${escapeHtml(loc.id)}"
+            class="branch-pill text-left px-3.5 py-2 rounded-xl border text-xs transition ${
+              active
+                ? "bg-bistro-pillActiveBg text-bistro-pillActiveText border-bistro-pillActiveBg"
+                : "bg-bistro-surface text-bistro-muted border-bistro-border hover:text-bistro-ink"
+            }"
+          >
+            <div class="font-semibold">${escapeHtml(loc.title)}</div>
+            <div class="text-[11px] opacity-80">${escapeHtml(loc.address)}</div>
+          </button>
+        `;
+      }).join("");
+
+      return `
+        <section class="bg-bistro-surface rounded-2xl p-4 border border-bistro-border shadow-sm mb-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-bistro-terracotta">Адреса ресторанов</span>
+              <h2 class="font-serif font-bold text-base sm:text-lg text-bistro-ink">${escapeHtml(current.address)} · <span class="text-xs font-sans font-normal text-bistro-muted">${escapeHtml(current.hours)}</span></h2>
+            </div>
+            <button
+              type="button"
+              id="random-branch-btn"
+              class="px-3 py-1.5 rounded-full bg-bistro-sand hover:opacity-90 text-bistro-ink text-xs font-semibold border border-bistro-border transition"
+            >
+              🎲 Случайный адрес
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            ${pillsHtml}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderReviewsBlock() {
+      const cardsHtml = state.reviews
+        .map(
+          (rev) => `
+            <article class="bg-bistro-surface rounded-2xl p-4 border border-bistro-border shadow-sm flex flex-col justify-between">
+              <p class="text-xs sm:text-sm text-bistro-ink leading-relaxed">«${escapeHtml(rev.text)}»</p>
+              <div class="mt-3 pt-2.5 border-t border-bistro-border flex items-center justify-between text-xs text-bistro-muted">
+                <span class="font-semibold text-bistro-ink">${escapeHtml(rev.name)}</span>
+                <span>${escapeHtml([rev.location, rev.date].filter(Boolean).join(" · "))}</span>
+              </div>
+            </article>
+          `
+        )
+        .join("");
+
+      return `
+        <section class="mt-10 pt-8 border-t border-bistro-border">
+          <div class="flex items-end justify-between gap-2 mb-4">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-bistro-terracotta">Гости о нас</span>
+              <h2 class="font-serif font-bold text-xl sm:text-2xl text-bistro-ink">Отзывы</h2>
+            </div>
+            <span class="text-xs text-bistro-muted">${state.reviews.length} отзыва</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${cardsHtml}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderMenuView(stats) {
+      const dynamicCategories = Array.from(
+        new Set([
+          ...DEFAULT_CATEGORIES,
+          ...state.menuItems.map((item) => item.category).filter(Boolean)
+        ])
+      );
+
+      const filtered =
+        state.activeCategory === "Все меню"
+          ? state.menuItems
+          : state.menuItems.filter((item) => item.category === state.activeCategory);
+
+      const categoryButtonsHtml = dynamicCategories
+        .map((cat) => {
+          const active = cat === state.activeCategory;
+          return `
+            <button
+              type="button"
+              data-cat="${escapeHtml(cat)}"
+              class="cat-btn whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition border ${
+                active
+                  ? "bg-bistro-pillActiveBg text-bistro-pillActiveText border-bistro-pillActiveBg shadow-sm"
+                  : "bg-bistro-surface text-bistro-muted border-bistro-border hover:bg-bistro-sand hover:text-bistro-ink"
+              }"
+            >
+              ${escapeHtml(cat)}
+            </button>
+          `;
+        })
+        .join("");
+
+      const cardsHtml = filtered
+        .map((dish) => {
+          const qty = state.cart[dish.id] || 0;
+          const controlHtml =
+            qty === 0
+              ? `
+                <button
+                  type="button"
+                  data-add="${escapeHtml(dish.id)}"
+                  class="add-btn bg-bistro-sand hover:bg-bistro-terracotta hover:text-white text-bistro-ink text-xs font-semibold px-4 py-2 rounded-full border border-bistro-border transition active:scale-95"
+                >
+                  + В заказ
+                </button>
+              `
+              : `
+                <div class="inline-flex items-center bg-bistro-sand rounded-full p-1 border border-bistro-border">
+                  <button type="button" data-dec="${escapeHtml(dish.id)}" class="dec-btn w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-bistro-ink hover:opacity-80 transition">−</button>
+                  <span class="text-xs font-semibold px-2.5 min-w-[24px] text-center text-bistro-ink">${qty}</span>
+                  <button type="button" data-inc="${escapeHtml(dish.id)}" class="inc-btn w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm bg-bistro-pillActiveBg text-bistro-pillActiveText hover:opacity-90 transition">+</button>
+                </div>
+              `;
+
+          return `
+            <article class="bg-bistro-surface rounded-2xl p-4 border border-bistro-border shadow-sm hover:shadow-md transition flex flex-col justify-between">
+              <div class="flex gap-3.5">
+                <div
+                  data-open-dish="${escapeHtml(dish.id)}"
+                  class="open-dish relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden cursor-pointer bg-bistro-sand"
+                >
+                  <img
+                    src="${escapeHtml(dish.image)}"
+                    alt="${escapeHtml(dish.title)}"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  ${
+                    dish.badge
+                      ? `<span class="absolute top-1.5 left-1.5 bg-bistro-terracotta text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">${escapeHtml(dish.badge)}</span>`
+                      : ""
+                  }
+                </div>
+
+                <div
+                  data-open-dish="${escapeHtml(dish.id)}"
+                  class="open-dish flex-1 min-w-0 flex flex-col justify-between cursor-pointer"
+                >
+                  <div>
+                    <h3 class="font-serif font-bold text-sm sm:text-base leading-snug line-clamp-2 text-bistro-ink">${escapeHtml(dish.title)}</h3>
+                    <p class="text-xs text-bistro-muted mt-1 line-clamp-2 leading-relaxed">${escapeHtml(dish.description)}</p>
+                  </div>
+                  <span class="text-[11px] text-bistro-muted mt-1.5">${escapeHtml(dish.weight)}</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-bistro-border">
+                <span class="font-bold text-base sm:text-lg text-bistro-ink">${dish.price} ₽</span>
+                ${controlHtml}
+              </div>
+            </article>
+          `;
+        })
+        .join("");
+
+      const browserBottomBarHtml =
+        !isTelegram && stats.count > 0
+          ? `
+            <div class="fixed bottom-4 inset-x-4 z-30 max-w-2xl mx-auto">
+              <button
+                type="button"
+                id="browser-cart-bar"
+                class="w-full bg-bistro-terracotta hover:bg-bistro-terracottaDark text-white px-5 py-3.5 rounded-2xl shadow-xl flex items-center justify-between text-sm font-bold transition"
+              >
+                <span>Перейти в корзину (${stats.count} шт.)</span>
+                <span>${stats.subtotal} ₽ →</span>
+              </button>
+            </div>
+          `
+          : "";
+
+      return `
+        <main class="max-w-6xl w-full mx-auto px-4 sm:px-8 pt-5 pb-20 flex-1">
+          ${renderLocationsBlock()}
+
+          <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 mb-5">
+            ${categoryButtonsHtml}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            ${cardsHtml}
+          </div>
+
+          ${renderReviewsBlock()}
+        </main>
+        ${browserBottomBarHtml}
+      `;
+    }
+
+    function renderCartView(stats) {
+      const cartEntries = Object.entries(state.cart).filter(([, q]) => q > 0);
+      const itemsHtml =
+        cartEntries.length === 0
+          ? `<p class="text-sm text-bistro-muted py-6 text-center">Корзина пуста. Добавьте блюда из меню.</p>`
+          : cartEntries
+              .map(([id, qty]) => {
+                const dish = state.menuItems.find((d) => d.id === id);
+                if (!dish) return "";
+                return `
+                  <div class="py-3 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <img src="${escapeHtml(dish.image)}" alt="${escapeHtml(dish.title)}" class="w-12 h-12 rounded-xl object-cover flex-shrink-0" />
+                      <div class="min-w-0">
+                        <h4 class="text-sm font-semibold truncate text-bistro-ink">${escapeHtml(dish.title)}</h4>
+                        <span class="text-xs text-bistro-muted">${dish.price} ₽ × ${qty} = ${dish.price * qty} ₽</span>
+                      </div>
+                    </div>
+                    <div class="inline-flex items-center bg-bistro-sand rounded-full p-1 border border-bistro-border flex-shrink-0">
+                      <button type="button" data-dec="${escapeHtml(dish.id)}" class="dec-btn w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-bistro-ink">−</button>
+                      <span class="text-xs font-semibold px-2.5 text-bistro-ink">${qty}</span>
+                      <button type="button" data-inc="${escapeHtml(dish.id)}" class="inc-btn w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm bg-bistro-pillActiveBg text-bistro-pillActiveText">+</button>
+                    </div>
+                  </div>
+                `;
+              })
+              .join("");
+
+      const typeOptions = [
+        { id: "delivery", label: "Доставка" },
+        { id: "pickup", label: "Самовывоз" },
+        { id: "table", label: "За столик №" }
+      ];
+
+      const typeButtonsHtml = typeOptions
+        .map((opt) => {
+          const active = state.orderType === opt.id;
+          return `
+            <button
+              type="button"
+              data-order-type="${opt.id}"
+              class="order-type-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold border transition ${
+                active
+                  ? "bg-bistro-pillActiveBg text-bistro-pillActiveText border-bistro-pillActiveBg"
+                  : "bg-bistro-sand text-bistro-muted border-bistro-border hover:text-bistro-ink"
+              }"
+            >
+              ${opt.label}
+            </button>
+          `;
+        })
+        .join("");
+
+      const formHtml =
+        cartEntries.length > 0
+          ? `
+            <form id="order-form" class="bg-bistro-surface rounded-2xl p-5 sm:p-6 border border-bistro-border shadow-sm space-y-4">
+              <h3 class="font-serif font-bold text-base sm:text-lg text-bistro-ink">Способ получения и контакты</h3>
+
+              <div class="grid grid-cols-3 gap-2">
+                ${typeButtonsHtml}
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  id="inp-name"
+                  type="text"
+                  required
+                  placeholder="Ваше имя *"
+                  value="${escapeHtml(state.form.name)}"
+                  class="w-full bg-bistro-sand border border-bistro-border text-bistro-ink rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-bistro-terracotta"
+                />
+                <input
+                  id="inp-phone"
+                  type="tel"
+                  required
+                  placeholder="+7 (999) 123-45-67 *"
+                  value="${escapeHtml(state.form.phone)}"
+                  class="w-full bg-bistro-sand border border-bistro-border text-bistro-ink rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-bistro-terracotta"
+                />
+              </div>
+
+              <input
+                id="inp-location"
+                type="text"
+                required
+                placeholder="${escapeHtml(getLocationPlaceholder(state.orderType))}"
+                value="${escapeHtml(state.form.locationValue)}"
+                class="w-full bg-bistro-sand border border-bistro-border text-bistro-ink rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-bistro-terracotta"
+              />
+
+              <textarea
+                id="inp-comment"
+                rows="2"
+                placeholder="Комментарий к заказу (без лука, аллергии, домофон...)"
+                class="w-full bg-bistro-sand border border-bistro-border text-bistro-ink rounded-xl px-4 py-2.5 text-sm resize-none focus:outline-none focus:border-bistro-terracotta"
+              >${escapeHtml(state.form.comment)}</textarea>
+
+              <div class="pt-3 border-t border-bistro-border space-y-1.5 text-sm">
+                <div class="flex justify-between text-bistro-muted">
+                  <span>Блюда</span>
+                  <span>${stats.subtotal} ₽</span>
+                </div>
+                ${
+                  state.orderType === "delivery"
+                    ? `
+                      <div class="flex justify-between text-bistro-muted">
+                        <span>Доставка (бесплатно от 2 000 ₽)</span>
+                        <span>${stats.deliveryFee === 0 ? "0 ₽" : `${stats.deliveryFee} ₽`}</span>
+                      </div>
+                    `
+                    : ""
+                }
+                <div class="flex justify-between items-center pt-2 border-t border-bistro-border text-base sm:text-lg font-bold text-bistro-ink">
+                  <span>Итого к оплате</span>
+                  <span class="text-bistro-terracotta">${stats.total} ₽</span>
+                </div>
+              </div>
+
+              ${
+                state.errorMsg
+                  ? `<p class="text-xs font-medium text-rose-500 bg-rose-500/10 border border-rose-500/30 rounded-xl px-3.5 py-2.5">${escapeHtml(state.errorMsg)}</p>`
+                  : ""
+              }
+
+              ${
+                !isTelegram
+                  ? `
+                    <button
+                      type="submit"
+                      ${state.isSubmitting ? "disabled" : ""}
+                      class="w-full bg-bistro-terracotta hover:bg-bistro-terracottaDark disabled:opacity-60 text-white py-3.5 rounded-xl text-sm font-bold tracking-wide transition shadow-md"
+                    >
+                      ${state.isSubmitting ? "Отправляем заказ..." : `Подтвердить заказ · ${stats.total} ₽`}
+                    </button>
+                  `
+                  : `<p class="text-xs text-bistro-muted text-center">Подтверждение доступно в нижней кнопке Telegram</p>`
+              }
+            </form>
+          `
+          : "";
+
+      return `
+        <main class="max-w-3xl w-full mx-auto px-4 sm:px-8 pt-5 pb-28 flex-1">
+          <div class="flex items-center justify-between mb-4">
+            <button type="button" id="back-to-menu" class="text-xs sm:text-sm font-semibold text-bistro-muted hover:text-bistro-ink">
+              ← Вернуться к меню
+            </button>
+            ${
+              cartEntries.length > 0
+                ? `<button type="button" id="clear-cart" class="text-xs sm:text-sm text-bistro-muted hover:text-rose-500">Очистить</button>`
+                : ""
+            }
+          </div>
+
+          <div class="bg-bistro-surface rounded-2xl p-5 sm:p-6 border border-bistro-border shadow-sm mb-5">
+            <h2 class="font-serif font-bold text-lg border-b border-bistro-border pb-3 text-bistro-ink">Ваш заказ (${stats.count})</h2>
+            <div class="divide-y divide-bistro-border">
+              ${itemsHtml}
+            </div>
+          </div>
+
+          ${formHtml}
+        </main>
+      `;
+    }
+
+    function renderSuccessView() {
+      const ord = state.lastOrder || {
+        id: "ORD-100001",
+        total: 0,
+        typeLabel: "Доставка",
+        location: "",
+        branchTitle: "",
+        itemsCount: 0,
+        isDemoOnly: true
+      };
+
+      return `
+        <main class="max-w-md w-full mx-auto px-6 py-12 flex-1 flex flex-col items-center justify-center text-center">
+          <div class="w-16 h-16 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 flex items-center justify-center text-2xl font-bold mb-4">
+            ✓
+          </div>
+          <span class="text-[11px] uppercase tracking-[0.2em] font-semibold text-bistro-terracotta">
+            ${ord.isDemoOnly ? "Демо-режим (без GAS URL)" : "Передано на кухню"}
+          </span>
+          <h2 class="font-serif font-bold text-2xl mt-1 text-bistro-ink">Заказ #${escapeHtml(ord.id)} принят</h2>
+          <p class="text-xs sm:text-sm text-bistro-muted mt-2 leading-relaxed">
+            ${escapeHtml(ord.branchTitle)} · ${escapeHtml(ord.typeLabel)}: <strong class="text-bistro-ink">${escapeHtml(ord.location)}</strong>.<br />
+            Позиций: ${ord.itemsCount} · Сумма: <strong class="text-bistro-ink">${ord.total} ₽</strong>.
+          </p>
+          <button
+            type="button"
+            id="success-back-menu"
+            class="mt-6 bg-bistro-pillActiveBg text-bistro-pillActiveText px-7 py-3 rounded-full text-xs sm:text-sm font-semibold hover:opacity-90 transition"
+          >
+            Вернуться в меню
+          </button>
+        </main>
+      `;
+    }
+
+    function renderDishModal() {
+      if (!state.selectedDishId) return "";
+      const dish = state.menuItems.find((d) => d.id === state.selectedDishId);
+      if (!dish) return "";
+
+      return `
+        <div
+          id="dish-modal-backdrop"
+          class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4"
+        >
+          <div class="bg-bistro-surface w-full max-w-lg rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl border border-bistro-border">
+            <div class="relative h-60 sm:h-64 w-full bg-stone-900">
+              <img src="${escapeHtml(dish.image)}" alt="${escapeHtml(dish.title)}" class="w-full h-full object-cover" />
+              <button
+                type="button"
+                id="close-dish-modal"
+                class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-xs"
+              >✕</button>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="font-serif font-bold text-xl leading-snug text-bistro-ink">${escapeHtml(dish.title)}</h3>
+                <span class="font-serif font-bold text-lg text-bistro-terracotta whitespace-nowrap">${dish.price} ₽</span>
+              </div>
+              <span class="text-xs text-bistro-muted block mt-1">${escapeHtml(dish.weight)} · ${escapeHtml(dish.category)}</span>
+              <p class="text-xs sm:text-sm text-bistro-muted mt-3 leading-relaxed">${escapeHtml(dish.description)}</p>
+              <button
+                type="button"
+                data-modal-add="${escapeHtml(dish.id)}"
+                class="modal-add-btn mt-6 w-full bg-bistro-terracotta hover:bg-bistro-terracottaDark text-white py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition"
+              >
+                Добавить в заказ · ${dish.price} ₽
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFooter() {
+      const branch = getCurrentBranch();
+      return `
+        <footer class="bg-bistro-footer text-stone-200 mt-auto">
+          <div class="max-w-6xl mx-auto px-4 sm:px-8 py-6 text-center space-y-2">
+            <p class="text-xs text-stone-300">
+              © 2026 L'Atelier Restaurant · ${escapeHtml(branch.address)}
+            </p>
+            <p class="text-[11px] tracking-[0.18em] uppercase text-stone-400">
+              ENGINEERED BY
+              <a
+                href="https://skov.ru"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white font-semibold underline decoration-stone-500 underline-offset-4 hover:text-amber-300 transition"
+              >
+                SKOV TECHNOLOGIES
+              </a>
+            </p>
+          </div>
+        </footer>
+      `;
+    }
+
+    function render() {
+      const stats = getCartStats();
+      const branch = getCurrentBranch();
+      const root = document.getElementById("app");
+
+      const headerHtml = `
+        <header class="sticky top-0 z-30 bg-bistro-cream/95 backdrop-blur-md border-b border-bistro-border px-4 sm:px-8 py-3.5">
+          <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+            <div class="cursor-pointer min-w-0" id="brand-home">
+              <span class="text-[10px] tracking-[0.2em] font-semibold text-bistro-terracotta uppercase block truncate">
+                ${escapeHtml(branch.title)} · ${isTelegram ? "Mini App" : "Демо"}
+              </span>
+              <h1 class="text-xl sm:text-2xl font-serif font-bold tracking-tight text-bistro-ink">L'Atelier</h1>
+            </div>
+
+            <button
+              type="button"
+              id="header-cart-btn"
+              class="bg-bistro-pillActiveBg text-bistro-pillActiveText px-4 py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-sm hover:opacity-90 transition shrink-0"
+            >
+              <span>${state.view === "cart" ? "Меню" : "Корзина"}</span>
+              <span class="bg-bistro-terracotta text-white px-2 py-0.5 rounded-full text-[11px] font-bold">
+                ${stats.count}
+              </span>
+              ${stats.count > 0 ? `<span class="hidden sm:inline font-mono">· ${stats.subtotal} ₽</span>` : ""}
+            </button>
+          </div>
+        </header>
+      `;
+
+      let bodyHtml = "";
+      if (state.view === "menu") bodyHtml = renderMenuView(stats);
+      else if (state.view === "cart") bodyHtml = renderCartView(stats);
+      else bodyHtml = renderSuccessView();
+
+      root.innerHTML = `${headerHtml}${bodyHtml}${renderFooter()}${renderDishModal()}`;
+      bindEvents();
+      syncMainButton(stats);
+    }
+
+    function bindEvents() {
+      const brandHome = document.getElementById("brand-home");
+      if (brandHome) brandHome.onclick = () => setView("menu");
+
+      const headerCartBtn = document.getElementById("header-cart-btn");
+      if (headerCartBtn) {
+        headerCartBtn.onclick = () => setView(state.view === "cart" ? "menu" : "cart");
+      }
+
+      document.querySelectorAll(".branch-pill").forEach((btn) => {
+        btn.onclick = () => {
+          haptic("light");
+          state.selectedBranchId = btn.getAttribute("data-branch-id");
+          const branch = getCurrentBranch();
+          if (state.orderType === "pickup") {
+            state.form.locationValue = `Самовывоз: ${branch.address}`;
+          }
+          render();
+        };
+      });
+
+      const randomBranchBtn = document.getElementById("random-branch-btn");
+      if (randomBranchBtn) randomBranchBtn.onclick = pickRandomBranch;
+
+      document.querySelectorAll(".cat-btn").forEach((btn) => {
+        btn.onclick = () => {
+          haptic("light");
+          state.activeCategory = btn.getAttribute("data-cat");
+          render();
+        };
+      });
+
+      document.querySelectorAll(".add-btn, .inc-btn").forEach((btn) => {
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          const id = btn.getAttribute("data-add") || btn.getAttribute("data-inc");
+          addItem(id);
+        };
+      });
+
+      document.querySelectorAll(".dec-btn").forEach((btn) => {
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          removeItem(btn.getAttribute("data-dec"));
+        };
+      });
+
+      document.querySelectorAll(".open-dish").forEach((el) => {
+        el.onclick = () => {
+          haptic("light");
+          state.selectedDishId = el.getAttribute("data-open-dish");
+          render();
+        };
+      });
+
+      const backdrop = document.getElementById("dish-modal-backdrop");
+      const closeModal = document.getElementById("close-dish-modal");
+      if (backdrop) {
+        backdrop.onclick = (e) => {
+          if (e.target === backdrop) {
+            state.selectedDishId = null;
+            render();
+          }
+        };
+      }
+      if (closeModal) {
+        closeModal.onclick = () => {
+          state.selectedDishId = null;
+          render();
+        };
+      }
+
+      document.querySelectorAll(".modal-add-btn").forEach((btn) => {
+        btn.onclick = () => {
+          const id = btn.getAttribute("data-modal-add");
+          state.selectedDishId = null;
+          addItem(id);
+        };
+      });
+
+      const browserCartBar = document.getElementById("browser-cart-bar");
+      if (browserCartBar) browserCartBar.onclick = () => setView("cart");
+
+      const backToMenu = document.getElementById("back-to-menu");
+      if (backToMenu) backToMenu.onclick = () => setView("menu");
+
+      const clearCartBtn = document.getElementById("clear-cart");
+      if (clearCartBtn) clearCartBtn.onclick = () => clearCart();
+
+      const successBack = document.getElementById("success-back-menu");
+      if (successBack) successBack.onclick = () => setView("menu");
+
+      document.querySelectorAll(".order-type-btn").forEach((btn) => {
+        btn.onclick = () => {
+          haptic("light");
+          const prevType = state.orderType;
+          const nextType = btn.getAttribute("data-order-type");
+          state.orderType = nextType;
+          const branch = getCurrentBranch();
+          if (
+            nextType === "pickup" &&
+            (!state.form.locationValue.trim() || prevType === "delivery" || prevType === "table")
+          ) {
+            state.form.locationValue = `Самовывоз: ${branch.address}`;
+          } else if (prevType === "pickup" && nextType !== "pickup") {
+            state.form.locationValue = "";
+          }
+          render();
+        };
+      });
+
+      const inpName = document.getElementById("inp-name");
+      const inpPhone = document.getElementById("inp-phone");
+      const inpLocation = document.getElementById("inp-location");
+      const inpComment = document.getElementById("inp-comment");
+      const orderForm = document.getElementById("order-form");
+
+      if (inpName) inpName.oninput = (e) => { state.form.name = e.target.value; };
+      if (inpPhone) inpPhone.oninput = (e) => { state.form.phone = e.target.value; };
+      if (inpLocation) inpLocation.oninput = (e) => { state.form.locationValue = e.target.value; };
+      if (inpComment) inpComment.oninput = (e) => { state.form.comment = e.target.value; };
+
+      if (orderForm) {
+        orderForm.onsubmit = (e) => {
+          e.preventDefault();
+          submitOrder();
+        };
+      }
+    }
+
+    applyTelegramTheme();
+    render();
+    loadRemoteStorefrontData();
+  </script>
+</body>
+</html>
