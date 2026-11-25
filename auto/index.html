@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CARBON LAB • Онлайн-запись в бокс</title>
+
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="shortcut icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+   /* Плавный скролл внутри iframe-мокапа без грубых полос прокрутки */
+html, body {
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #27272A #09090B;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #09090B;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 4px;
+}
+    body {
+      background-color: #09090B;
+      color: #F4F4F5;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+  <div class="max-w-xl mx-auto px-4 pt-5 pb-10">
+
+    <!-- КОМПАКТНАЯ ШАПКА -->
+    <header class="flex items-center justify-between pb-5 border-b border-white/10">
+      <div class="flex items-center gap-2.5">
+        <div class="w-7 h-7 rounded bg-white text-black font-mono font-bold text-xs flex items-center justify-center">
+          CL
+        </div>
+        <span class="font-extrabold tracking-wider text-sm uppercase text-white">CARBON LAB</span>
+      </div>
+      <div class="flex items-center gap-1.5 text-[11px] font-mono text-zinc-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        <span>09:00 – 21:00</span>
+      </div>
+    </header>
+
+    <!-- ПЕРВЫЙ ЭКРАН (СРАЗУ К ДЕЛУ) -->
+    <section class="pt-6 pb-6">
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+        Тонировка и защита авто • Онлайн-запись в бокс
+      </h1>
+
+      <!-- 3 коротких тега -->
+      <div class="mt-3.5 flex flex-wrap gap-2 text-xs font-mono">
+        <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-white/10 text-zinc-200">LLumar / SunTek</span>
+        <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-white/10 text-zinc-200">Гарантия</span>
+        <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-white/10 text-zinc-200">Без звонков</span>
+      </div>
+    </section>
+
+    <!-- ГЛАВНЫЙ БЛОК: КАЛЬКУЛЯТОР И ЗАПИСЬ -->
+    <main id="booking" class="space-y-5">
+
+      <!-- 1. КЛАСС АВТО -->
+      <div>
+        <div class="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">1. Класс авто</div>
+        <div class="grid grid-cols-3 gap-2" id="car-class-group">
+          <button type="button" data-mult="1" data-label="Седан"
+            class="car-btn py-2.5 px-2 rounded-xl border border-white bg-white text-black font-bold text-xs sm:text-sm text-center transition">
+            Седан
+          </button>
+          <button type="button" data-mult="1.2" data-label="Кроссовер"
+            class="car-btn py-2.5 px-2 rounded-xl border border-white/10 bg-zinc-900 text-white font-bold text-xs sm:text-sm text-center transition">
+            Кроссовер
+          </button>
+          <button type="button" data-mult="1.35" data-label="Премиум"
+            class="car-btn py-2.5 px-2 rounded-xl border border-white/10 bg-zinc-900 text-white font-bold text-xs sm:text-sm text-center transition">
+            Премиум
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. ВЫБОР УСЛУГИ -->
+      <div>
+        <div class="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">2. Услуга</div>
+        <div class="space-y-2" id="services-list"></div>
+      </div>
+
+      <!-- 3. ДАТА И ВРЕМЯ -->
+      <div>
+        <div class="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-2">3. Дата и время</div>
+        <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-2" id="dates-container"></div>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5 mt-1" id="slots-container"></div>
+      </div>
+
+      <!-- 4. ИТОГ И ФОРМА ЗАПИСИ -->
+      <form id="booking-form" class="p-4 sm:p-5 rounded-2xl border border-white/15 bg-zinc-900/90 space-y-3.5">
+        <div class="flex items-baseline justify-between border-b border-white/10 pb-3">
+          <span class="text-xs font-mono uppercase text-zinc-400">Итого расчёт:</span>
+          <span id="total-price" class="text-2xl font-extrabold font-mono text-white">4 500 ₽</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <input type="text" id="car-model" required placeholder="Марка авто (напр. BMW X5)"
+            class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-white/15 text-white text-sm placeholder:text-zinc-500 focus:outline-none focus:border-white" />
+          <input type="text" id="client-contact" required placeholder="Телефон или @Telegram"
+            class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-white/15 text-white text-sm placeholder:text-zinc-500 focus:outline-none focus:border-white" />
+        </div>
+
+        <button type="submit" id="submit-btn"
+          class="w-full py-3.5 rounded-xl bg-white text-black font-extrabold text-sm uppercase tracking-wider active:scale-[0.98] transition">
+          Записаться в бокс
+        </button>
+
+        <!-- КОМПАКТНАЯ ПЛАШКА ДЛЯ ВЛАДЕЛЬЦА ПОСЛЕ ОТПРАВКИ -->
+        <div id="owner-toast" class="hidden p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs leading-snug">
+          <div class="font-bold text-emerald-400">✓ Заявка улетела в Telegram-бот мастеру (<span id="toast-summary"></span>)</div>
+          <div class="text-zinc-300 mt-0.5">✓ Строка с расчётом выручки добавлена в Google Таблицу учёта.</div>
+        </div>
+      </form>
+
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="mt-8 pt-5 border-t border-white/10 text-center">
+      <a href="https://skovtech.ru" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-1 font-mono text-[11px] font-bold tracking-wider text-zinc-400 hover:text-white transition">
+        <span>ENGINEERED BY SKOV TECHNOLOGIES</span>
+        <span>↗</span>
+      </a>
+    </footer>
+
+  </div>
+
+  <script>
+    // Вставьте ссылку на развёрнутый Google Apps Script (если пусто — работает локальный демо-отклик)
+    const GAS_URL = '';
+
+    const SERVICES = [
+      { id: 'rear', title: 'Тонировка задней полусферы (LLumar 5%/15%)', price: 4500 },
+      { id: 'front', title: 'Передние боковые (атермальная по ГОСТ)', price: 3500 },
+      { id: 'circle', title: 'Тонировка в круг (без лобового)', price: 6500 },
+      { id: 'ppf', title: 'Оклейка зон риска полиуретаном', price: 18000 },
+      { id: 'ceramic', title: 'Полировка кузова + керамика', price: 15000 }
+    ];
+
+    const SLOTS = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00'];
+
+    const state = {
+      carLabel: 'Седан',
+      mult: 1,
+      selected: new Set(['rear']),
+      date: '',
+      slot: '14:00'
+    };
+
+    const calcPrice = (base) => Math.round((base * state.mult) / 100) * 100;
+
+    function renderServices() {
+      const box = document.getElementById('services-list');
+      box.innerHTML = SERVICES.map(s => {
+        const active = state.selected.has(s.id);
+        const price = calcPrice(s.price).toLocaleString('ru-RU');
+        return `
+          <button type="button" data-id="${s.id}"
+            class="srv-btn w-full p-3 rounded-xl border text-left flex items-center justify-between gap-3 transition ${
+              active ? 'border-white bg-white/10 text-white' : 'border-white/10 bg-zinc-900/70 text-zinc-300'
+            }">
+            <span class="text-xs sm:text-sm font-semibold leading-snug">${s.title}</span>
+            <span class="font-mono font-bold text-xs sm:text-sm text-white shrink-0">от ${price} ₽</span>
+          </button>
+        `;
+      }).join('');
+
+      box.querySelectorAll('.srv-btn').forEach(btn => {
+        btn.onclick = () => {
+          const id = btn.dataset.id;
+          if (state.selected.has(id)) {
+            if (state.selected.size > 1) state.selected.delete(id);
+          } else {
+            if (id === 'circle') state.selected.delete('rear');
+            if (id === 'rear') state.selected.delete('circle');
+            state.selected.add(id);
+          }
+          renderServices();
+          updateTotal();
+        };
+      });
+    }
+
+    function initDatesAndSlots() {
+      const dBox = document.getElementById('dates-container');
+      const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+      const months = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+
+      let dHtml = '';
+      for (let i = 0; i < 5; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() + i);
+        const label = i === 0 ? 'Сегодня' : i === 1 ? 'Завтра' : `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
+        if (i === 0) state.date = label;
+        dHtml += `
+          <button type="button" data-date="${label}"
+            class="date-btn shrink-0 px-3 py-2 rounded-lg border font-mono text-xs font-bold transition ${
+              i === 0 ? 'border-white bg-white text-black' : 'border-white/10 bg-zinc-900 text-zinc-300'
+            }">
+            ${label}
+          </button>
+        `;
+      }
+      dBox.innerHTML = dHtml;
+      dBox.querySelectorAll('.date-btn').forEach(btn => {
+        btn.onclick = () => {
+          dBox.querySelectorAll('.date-btn').forEach(b => b.className = 'date-btn shrink-0 px-3 py-2 rounded-lg border border-white/10 bg-zinc-900 text-zinc-300 font-mono text-xs font-bold transition');
+          btn.className = 'date-btn shrink-0 px-3 py-2 rounded-lg border border-white bg-white text-black font-mono text-xs font-bold transition';
+          state.date = btn.dataset.date;
+        };
+      });
+
+      const sBox = document.getElementById('slots-container');
+      sBox.innerHTML = SLOTS.map((slot, i) => {
+        const busy = i === 1;
+        const active = slot === state.slot;
+        return `
+          <button type="button" ${busy ? 'disabled' : ''} data-slot="${slot}"
+            class="slot-btn py-2 rounded-lg border font-mono text-xs font-bold transition ${
+              busy ? 'border-white/5 bg-zinc-900/30 text-zinc-600 line-through' :
+              active ? 'border-white bg-white text-black' : 'border-white/10 bg-zinc-900 text-zinc-300'
+            }">
+            ${slot}
+          </button>
+        `;
+      }).join('');
+
+      sBox.querySelectorAll('.slot-btn:not([disabled])').forEach(btn => {
+        btn.onclick = () => {
+          sBox.querySelectorAll('.slot-btn:not([disabled])').forEach(b => b.className = 'slot-btn py-2 rounded-lg border border-white/10 bg-zinc-900 text-zinc-300 font-mono text-xs font-bold transition');
+          btn.className = 'slot-btn py-2 rounded-lg border border-white bg-white text-black font-mono text-xs font-bold transition';
+          state.slot = btn.dataset.slot;
+        };
+      });
+    }
+
+    function updateTotal() {
+      let sum = 0;
+      const names = [];
+      SERVICES.forEach(s => {
+        if (state.selected.has(s.id)) {
+          sum += calcPrice(s.price);
+          names.push(s.title);
+        }
+      });
+      document.getElementById('total-price').textContent = `от ${sum.toLocaleString('ru-RU')} ₽`;
+      return { sum, names };
+    }
+
+    document.querySelectorAll('.car-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.car-btn').forEach(b => b.className = 'car-btn py-2.5 px-2 rounded-xl border border-white/10 bg-zinc-900 text-white font-bold text-xs sm:text-sm text-center transition');
+        btn.className = 'car-btn py-2.5 px-2 rounded-xl border border-white bg-white text-black font-bold text-xs sm:text-sm text-center transition';
+        state.mult = parseFloat(btn.dataset.mult);
+        state.carLabel = btn.dataset.label;
+        renderServices();
+        updateTotal();
+      };
+    });
+
+    document.getElementById('booking-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const carModel = document.getElementById('car-model').value.trim();
+      const contact = document.getElementById('client-contact').value.trim();
+      const { sum, names } = updateTotal();
+
+      btn.disabled = true;
+      btn.textContent = 'Отправка...';
+
+      const payload = {
+        carClass: state.carLabel,
+        carModel,
+        services: names.join(', '),
+        date: state.date,
+        time: state.slot,
+        price: sum,
+        name: 'Клиент с сайта',
+        contact
+      };
+
+      if (GAS_URL) {
+        try {
+          await fetch(GAS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) { console.error(err); }
+      } else {
+        await new Promise(r => setTimeout(r, 300));
+      }
+
+      document.getElementById('toast-summary').textContent = `${carModel} • ${state.date}, ${state.slot} • ${sum.toLocaleString('ru-RU')} ₽`;
+      document.getElementById('owner-toast').classList.remove('hidden');
+
+      btn.disabled = false;
+      btn.textContent = 'Записаться в бокс';
+      e.target.reset();
+    };
+
+    renderServices();
+    initDatesAndSlots();
+    updateTotal();
+  </script>
+</body>
+</html>
