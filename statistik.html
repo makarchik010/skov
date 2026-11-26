@@ -4,17 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SKOV ANALYTICS • LIVE — Мониторинг статистики сайта в реальном времени</title>
+  <link rel="icon" type="image/png" href="logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       --bg-canvas: #050505;
       --bg-card: #0E0E11;
-      --bg-elevated: #141418;
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-hover: rgba(255, 255, 255, 0.2);
       --text-primary: #F4F4F5;
-      --text-muted: #A1A1AA;
-      --accent-emerald: #34D399;
     }
 
     * {
@@ -31,18 +29,11 @@
       overflow-x: hidden;
     }
 
-    .title-gradient {
-      letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 55%, #71717A 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     .skov-card {
       background-color: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 24px;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
+      transition: border-color 0.2s ease;
     }
 
     .skov-card:hover {
@@ -70,13 +61,8 @@
       transition: opacity 0.18s ease, transform 0.15s ease;
     }
 
-    .btn-white:hover {
-      opacity: 0.92;
-    }
-
-    .btn-white:active {
-      transform: scale(0.98);
-    }
+    .btn-white:hover { opacity: 0.92; }
+    .btn-white:active { transform: scale(0.98); }
 
     .btn-ghost {
       background-color: rgba(255, 255, 255, 0.04);
@@ -127,20 +113,10 @@
       animation: rowFadeIn 0.55s ease-out;
     }
 
-    .custom-scroll::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    .custom-scroll::-webkit-scrollbar-track {
-      background: #09090B;
-    }
-    .custom-scroll::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.14);
-      border-radius: 999px;
-    }
-    .custom-scroll::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #09090B; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.14); border-radius: 999px; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
   </style>
 </head>
 <body class="min-h-screen selection:bg-white selection:text-black">
@@ -200,18 +176,18 @@
           <h2 class="text-sm font-semibold text-white flex items-center gap-2">
             <span>Источник данных и поток событий</span>
             <span id="mode-pill" class="px-2 py-0.5 rounded-md text-[11px] font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
-              Режим: Живой поток + GAS
+              Режим: Только GAS (JSONP)
             </span>
           </h2>
           <p class="text-xs text-zinc-400 mt-1">
-            Укажите URL вебхука Google Apps Script (/exec) или JSON-эндпоинт. При включённом симуляторе поток событий работает непрерывно.
+            Данные забираются напрямую из Google Таблицы через JSONP без блокировок CORS.
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-2 text-xs">
           <span class="text-zinc-500">Последний пакет:</span>
           <span id="sync-status" class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-zinc-200 font-mono">
-            Ожидание синхронизации...
+            Синхронизация...
           </span>
         </div>
       </div>
@@ -223,7 +199,7 @@
             id="endpoint-url"
             type="url"
             value="https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec"
-            placeholder="https://script.google.com/macros/s/.../exec или JSON URL"
+            placeholder="https://script.google.com/macros/s/.../exec"
             class="skov-input w-full px-3.5 py-2.5 text-xs sm:text-sm font-mono"
           />
         </div>
@@ -231,7 +207,7 @@
         <div class="sm:col-span-6 lg:col-span-3">
           <label for="poll-interval" class="sr-only">Интервал опроса</label>
           <select id="poll-interval" class="skov-input w-full px-3.5 py-2.5 text-xs sm:text-sm">
-            <option value="2000">Интервал: каждые 2 сек</option>
+            <option value="3000">Интервал: каждые 3 сек</option>
             <option value="5000" selected>Интервал: каждые 5 сек</option>
             <option value="15000">Интервал: каждые 15 сек</option>
           </select>
@@ -258,10 +234,10 @@
         <div class="mt-3 flex items-baseline justify-between gap-2">
           <span id="kpi-views" class="text-2xl sm:text-3xl font-bold tracking-tight text-white tabular-nums">0</span>
           <span id="kpi-views-delta" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">
-            +0%
+            LIVE
           </span>
         </div>
-        <p id="kpi-views-sub" class="text-xs text-zinc-500 mt-2.5">За сегодня: 0 просмотров</p>
+        <p id="kpi-views-sub" class="text-xs text-zinc-500 mt-2.5">За период: 0 просмотров</p>
       </div>
 
       <div class="skov-card p-5 sm:p-6">
@@ -272,7 +248,7 @@
         <div class="mt-3 flex items-baseline justify-between gap-2">
           <span id="kpi-unique" class="text-2xl sm:text-3xl font-bold tracking-tight text-white tabular-nums">0</span>
           <span id="kpi-unique-delta" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">
-            +0%
+            0%
           </span>
         </div>
         <p id="kpi-unique-sub" class="text-xs text-zinc-500 mt-2.5">Доля уникальных: 0%</p>
@@ -286,7 +262,7 @@
         <div class="mt-3 flex items-baseline justify-between gap-2">
           <span id="kpi-calc" class="text-2xl sm:text-3xl font-bold tracking-tight text-white tabular-nums">0</span>
           <span id="kpi-calc-delta" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">
-            +0%
+            0%
           </span>
         </div>
         <p id="kpi-calc-sub" class="text-xs text-zinc-500 mt-2.5">Открыли калькулятор: 0% визитов</p>
@@ -338,7 +314,7 @@
         </div>
 
         <div class="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-500">
-          <span id="chart-bucket-label">Шаг интервала: по срезам / датам</span>
+          <span id="chart-bucket-label">Шаг интервала: по датам / срезам</span>
           <span id="chart-peak-label" class="text-zinc-300 font-medium">Пик: —</span>
         </div>
       </div>
@@ -370,7 +346,7 @@
             <h2 class="text-base sm:text-lg font-bold text-white">Лента событий в реальном времени</h2>
             <span id="feed-count" class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/[0.06] text-zinc-300">0</span>
           </div>
-          <p class="text-xs text-zinc-400 mt-0.5">События page_view, calc_use и lead с мгновенной фильтрацией</p>
+          <p class="text-xs text-zinc-400 mt-0.5">События page_view, calc_use и lead из таблицы Google Sheets</p>
         </div>
 
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
@@ -449,7 +425,7 @@
         pollMs: 5000,
         pollTimer: null,
         lastSyncTime: null,
-        lastSyncMode: "Ожидание синхронизации...",
+        lastSyncMode: "Ожидание ответа GAS...",
         periods: {
           today: emptyPeriod(),
           "7d": emptyPeriod(),
@@ -461,12 +437,9 @@
       function emptyPeriod() {
         return {
           views: 0,
-          viewsDelta: "+0%",
           todayViews: 0,
           unique: 0,
-          uniqueDelta: "+0%",
           calc: 0,
-          calcDelta: "+0%",
           leads: 0,
           avgCheck: 0,
           pages: {
@@ -535,7 +508,7 @@
 
         const cur = state.periods[state.period];
         cur.views += 1;
-        if (state.period === "today") cur.todayViews += 1;
+        cur.todayViews += 1;
         if (isUnique) cur.unique += 1;
         if (type === "calc_use") cur.calc += 1;
         if (type === "lead") {
@@ -571,32 +544,83 @@
         if (state.events.length > 80) state.events.length = 80;
       }
 
+      // Загрузка данных через JSONP (полностью обходит CORS на script.google.com)
+      function fetchJsonp(baseUrl, params, timeoutMs) {
+        return new Promise((resolve, reject) => {
+          const cbName = "__skovGasCb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+          const script = document.createElement("script");
+          let finished = false;
+
+          const cleanup = () => {
+            if (script.parentNode) script.parentNode.removeChild(script);
+            try { delete window[cbName]; } catch (_e) { window[cbName] = undefined; }
+          };
+
+          const timer = setTimeout(() => {
+            if (finished) return;
+            finished = true;
+            cleanup();
+            reject(new Error("JSONP timeout"));
+          }, timeoutMs || 7000);
+
+          window[cbName] = (payload) => {
+            if (finished) return;
+            finished = true;
+            clearTimeout(timer);
+            cleanup();
+            resolve(payload);
+          };
+
+          script.onerror = () => {
+            if (finished) return;
+            finished = true;
+            clearTimeout(timer);
+            cleanup();
+            reject(new Error("JSONP script load error"));
+          };
+
+          const sep = baseUrl.includes("?") ? "&" : "?";
+          const query = Object.keys(params)
+            .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
+            .join("&");
+
+          script.src = `${baseUrl}${sep}${query}&callback=${encodeURIComponent(cbName)}`;
+          document.head.appendChild(script);
+        });
+      }
+
       async function pollExternalEndpoint() {
         const url = state.endpointUrl.trim();
         if (!url) return false;
 
         try {
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 5000);
-          const sep = url.includes("?") ? "&" : "?";
-          const res = await fetch(`${url}${sep}action=stats&period=${encodeURIComponent(state.period)}&t=${Date.now()}`, {
-            method: "GET",
-            signal: controller.signal
-          });
-          clearTimeout(timeoutId);
+          const data = await fetchJsonp(url, {
+            action: "stats",
+            period: state.period,
+            t: Date.now()
+          }, 7000);
 
-          if (!res.ok) return false;
-          const text = await res.text();
-          const data = JSON.parse(text);
-
-          if (data && typeof data === "object") {
+          if (data && typeof data === "object" && data.ok !== false) {
             ingestExternalPayload(data);
             state.lastSyncTime = data.updatedAt || formatTime(new Date());
-            state.lastSyncMode = "GAS (200 OK)";
+            state.lastSyncMode = "GAS JSONP (OK)";
             return true;
           }
           return false;
         } catch (_err) {
+          // Резервная попытка через обычный fetch (если указан обычный JSON API)
+          try {
+            const sep = url.includes("?") ? "&" : "?";
+            const res = await fetch(`${url}${sep}action=stats&period=${encodeURIComponent(state.period)}&t=${Date.now()}`);
+            if (!res.ok) return false;
+            const data = await res.json();
+            if (data && typeof data === "object") {
+              ingestExternalPayload(data);
+              state.lastSyncTime = data.updatedAt || formatTime(new Date());
+              state.lastSyncMode = "JSON API (200 OK)";
+              return true;
+            }
+          } catch (_e2) {}
           return false;
         }
       }
@@ -608,9 +632,7 @@
         if (typeof k.pageViews === "number") cur.views = k.pageViews;
         else if (typeof k.views === "number") cur.views = k.views;
 
-        if (state.period === "today") {
-          cur.todayViews = cur.views;
-        }
+        cur.todayViews = cur.views;
 
         if (typeof k.uniqueUsers === "number") cur.unique = k.uniqueUsers;
         else if (typeof k.unique === "number") cur.unique = k.unique;
@@ -631,7 +653,7 @@
           }));
         }
 
-        if (Array.isArray(data.pages) && data.pages.length > 0) {
+        if (Array.isArray(data.pages)) {
           const nextPages = {
             "index.html": 0,
             "cases.html": 0,
@@ -644,7 +666,7 @@
           cur.pages = nextPages;
         }
 
-        if (Array.isArray(data.sources) && data.sources.length > 0) {
+        if (Array.isArray(data.sources)) {
           const nextSources = {
             "Telegram": 0,
             "Прямой заход": 0,
@@ -684,7 +706,7 @@
             state.lastSyncMode = "Симулятор потока";
           } else {
             state.lastSyncTime = formatTime(new Date());
-            state.lastSyncMode = "Нет ответа от GAS / симулятор выкл";
+            state.lastSyncMode = "Ожидание ответа GAS (проверь doGet JSONP)";
           }
         }
 
@@ -697,16 +719,17 @@
         const uniqShare = d.views > 0 ? Math.round((d.unique / d.views) * 100) : 0;
         const calcShare = d.views > 0 ? Math.round((d.calc / d.views) * 100) : 0;
 
+        const periodText = state.period === "today" ? "За сегодня" : state.period === "7d" ? "За 7 дней" : "За 30 дней";
+
         document.getElementById("kpi-views").textContent = d.views.toLocaleString("ru-RU");
-        document.getElementById("kpi-views-delta").textContent = d.viewsDelta;
-        document.getElementById("kpi-views-sub").textContent = `За сегодня: ${d.todayViews.toLocaleString("ru-RU")} просмотров`;
+        document.getElementById("kpi-views-sub").textContent = `${periodText}: ${d.views.toLocaleString("ru-RU")} просмотров`;
 
         document.getElementById("kpi-unique").textContent = d.unique.toLocaleString("ru-RU");
-        document.getElementById("kpi-unique-delta").textContent = d.uniqueDelta;
+        document.getElementById("kpi-unique-delta").textContent = `${uniqShare}%`;
         document.getElementById("kpi-unique-sub").textContent = `Доля уникальных: ${uniqShare}%`;
 
         document.getElementById("kpi-calc").textContent = d.calc.toLocaleString("ru-RU");
-        document.getElementById("kpi-calc-delta").textContent = d.calcDelta;
+        document.getElementById("kpi-calc-delta").textContent = `${calcShare}%`;
         document.getElementById("kpi-calc-sub").textContent = `Открыли калькулятор: ${calcShare}% визитов`;
 
         document.getElementById("kpi-leads").textContent = d.leads.toLocaleString("ru-RU");
@@ -924,7 +947,7 @@
           tbody.innerHTML = `
             <tr>
               <td colspan="5" class="py-10 px-4 text-center text-xs sm:text-sm text-zinc-500">
-                События по текущему фильтру не найдены
+                Событий за выбранный период пока нет
               </td>
             </tr>
           `;
@@ -944,10 +967,10 @@
             ev.isNew = false;
             return `
               <tr class="${animClass} hover:bg-white/[0.025] transition-colors">
-                <td class="py-3 px-4 font-mono text-xs text-zinc-400 whitespace-nowrap">${ev.time}</td>
-                <td class="py-3 px-4 whitespace-nowrap">${badgeMap[ev.type] || ev.type}</td>
-                <td class="py-3 px-4 font-mono text-xs text-zinc-200 whitespace-nowrap">${ev.page}</td>
-                <td class="py-3 px-4 text-xs text-zinc-300 whitespace-nowrap">${ev.source}</td>
+                <td class="py-3 px-4 font-mono text-xs text-zinc-400 whitespace-nowrap">${escapeHtml(ev.time)}</td>
+                <td class="py-3 px-4 whitespace-nowrap">${badgeMap[ev.type] || escapeHtml(ev.type)}</td>
+                <td class="py-3 px-4 font-mono text-xs text-zinc-200 whitespace-nowrap">${escapeHtml(ev.page)}</td>
+                <td class="py-3 px-4 text-xs text-zinc-300 whitespace-nowrap">${escapeHtml(ev.source)}</td>
                 <td class="py-3 px-4 text-xs sm:text-[13px] ${ev.type === "lead" ? "text-emerald-200 font-medium" : "text-zinc-400"}">${escapeHtml(ev.details)}</td>
               </tr>
             `;
@@ -986,7 +1009,7 @@
 
         modePill.textContent = state.simulatorEnabled
           ? "Режим: Живой поток + GAS"
-          : "Режим: Только GAS";
+          : "Режим: Только GAS (JSONP)";
 
         simBtn.textContent = state.simulatorEnabled ? "Симулятор: ВКЛ" : "Симулятор: ВЫКЛ";
         simBtn.classList.toggle("is-active", state.simulatorEnabled);
@@ -1005,9 +1028,7 @@
       }
 
       function restartInterval() {
-        if (state.pollTimer) {
-          clearInterval(state.pollTimer);
-        }
+        if (state.pollTimer) clearInterval(state.pollTimer);
         state.pollTimer = setInterval(tickStream, state.pollMs);
       }
 
@@ -1052,9 +1073,7 @@
         document.getElementById("btn-toggle-stream").addEventListener("click", () => {
           state.isStreaming = !state.isStreaming;
           renderStreamHeader();
-          if (state.isStreaming) {
-            tickStream();
-          }
+          if (state.isStreaming) tickStream();
         });
 
         document.getElementById("source-form").addEventListener("submit", (e) => {
