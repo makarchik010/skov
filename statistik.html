@@ -198,7 +198,7 @@
           <input
             id="endpoint-url"
             type="url"
-            value="https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec"
+            value="https://script.google.com/macros/s/AKfycbytPNUD3RvrUq3f0PtBrrsLFg0rP7oaW3ZcB_KKpR8_f4qoNgW9FIzLwwVXnsJvnYI-mA/exec"
             placeholder="https://script.google.com/macros/s/.../exec"
             class="skov-input w-full px-3.5 py-2.5 text-xs sm:text-sm font-mono"
           />
@@ -421,7 +421,7 @@
         searchQuery: "",
         isStreaming: true,
         simulatorEnabled: false,
-        endpointUrl: "https://script.google.com/macros/s/AKfycbwW2MijwCTGsTAjAjJBPy8x5v1TjDCnE620Ay5nJVsbMj99UQp6HxWWlP7TB2pj-V6Wig/exec",
+        endpointUrl: "https://script.google.com/macros/s/AKfycbytPNUD3RvrUq3f0PtBrrsLFg0rP7oaW3ZcB_KKpR8_f4qoNgW9FIzLwwVXnsJvnYI-mA/exec",
         pollMs: 5000,
         pollTimer: null,
         lastSyncTime: null,
@@ -544,7 +544,6 @@
         if (state.events.length > 80) state.events.length = 80;
       }
 
-      // Загрузка данных через JSONP (полностью обходит CORS на script.google.com)
       function fetchJsonp(baseUrl, params, timeoutMs) {
         return new Promise((resolve, reject) => {
           const cbName = "__skovGasCb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
@@ -608,7 +607,6 @@
           }
           return false;
         } catch (_err) {
-          // Резервная попытка через обычный fetch (если указан обычный JSON API)
           try {
             const sep = url.includes("?") ? "&" : "?";
             const res = await fetch(`${url}${sep}action=stats&period=${encodeURIComponent(state.period)}&t=${Date.now()}`);
